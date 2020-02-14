@@ -1,0 +1,995 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06ADE5365F6EDB2DA595FE9C /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */; };
+		220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */; };
+		221D9D4023ED0B3200256F25 /* JLSearchListTableViewSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D9D3E23ED0B3200256F25 /* JLSearchListTableViewSongCell.swift */; };
+		221D9D4123ED0B3200256F25 /* JLSearchListTableViewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */; };
+		221D9D4423ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */; };
+		221D9D4523ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221D9D4323ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib */; };
+		2230063A23F173B9005D09ED /* JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2230063923F173B9005D09ED /* JLExtension.swift */; };
+		2244865523ED506400163156 /* JLSearchListTableViewMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244865323ED506300163156 /* JLSearchListTableViewMoreCell.swift */; };
+		2244865623ED506400163156 /* JLSearchListTableViewMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2244865423ED506300163156 /* JLSearchListTableViewMoreCell.xib */; };
+		2244865A23ED9E0E00163156 /* JLSearchMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244865923ED9E0E00163156 /* JLSearchMoreTableViewController.swift */; };
+		2244865C23ED9F0100163156 /* JLNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244865B23ED9F0000163156 /* JLNavigationViewController.swift */; };
+		2249BFD523F53BFA00397706 /* JLLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFD323F53BFA00397706 /* JLLibraryViewController.swift */; };
+		2249BFD623F53BFA00397706 /* JLLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2249BFD423F53BFA00397706 /* JLLibraryViewController.xib */; };
+		2249BFF623F55FB600397706 /* PageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFED23F55FB600397706 /* PageViewManager.swift */; };
+		2249BFF723F55FB600397706 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFEE23F55FB600397706 /* PageContentView.swift */; };
+		2249BFF823F55FB600397706 /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFEF23F55FB600397706 /* PageTitleView.swift */; };
+		2249BFF923F55FB600397706 /* PageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFF023F55FB600397706 /* PageStyle.swift */; };
+		2249BFFA23F55FB600397706 /* PageCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFF123F55FB600397706 /* PageCollectionViewFlowLayout.swift */; };
+		2249BFFB23F55FB600397706 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFF223F55FB600397706 /* Helper.swift */; };
+		2249BFFC23F55FB600397706 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249BFF323F55FB600397706 /* PageView.swift */; };
+		2249BFFD23F55FB600397706 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2249BFF423F55FB600397706 /* LICENSE */; };
+		2249BFFE23F55FB600397706 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2249BFF523F55FB600397706 /* README.md */; };
+		226F813923EA84D40005FB78 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226F813823EA84D40005FB78 /* SpotifyiOS.framework */; };
+		226F814023EA85E50005FB78 /* JLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226F813E23EA85E50005FB78 /* JLLoginViewController.xib */; };
+		226F814123EA85E50005FB78 /* JLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F813F23EA85E50005FB78 /* JLLoginViewController.swift */; };
+		226F814523EA87760005FB78 /* JLTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814323EA87760005FB78 /* JLTabBar.swift */; };
+		226F814623EA87760005FB78 /* TabBarData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 226F814423EA87760005FB78 /* TabBarData.plist */; };
+		226F814A23EA8ED20005FB78 /* JLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814823EA8ED20005FB78 /* JLSearchViewController.swift */; };
+		226F814B23EA8ED20005FB78 /* JLSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226F814923EA8ED20005FB78 /* JLSearchViewController.xib */; };
+		226F814D23EAB9CE0005FB78 /* JLFetchManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */; };
+		226F815023EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814E23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift */; };
+		226F815123EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226F814F23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib */; };
+		226F815323EAFDEE0005FB78 /* JLSearchQuickJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */; };
+		227174B123EA6D83003387D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174B023EA6D83003387D5 /* AppDelegate.swift */; };
+		227174B323EA6D83003387D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174B223EA6D83003387D5 /* SceneDelegate.swift */; };
+		227174B523EA6D83003387D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174B423EA6D83003387D5 /* ViewController.swift */; };
+		227174BA23EA6D84003387D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227174B923EA6D84003387D5 /* Assets.xcassets */; };
+		227174BD23EA6D84003387D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227174BB23EA6D84003387D5 /* LaunchScreen.storyboard */; };
+		227174C823EA6D85003387D5 /* JLSptfyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174C723EA6D85003387D5 /* JLSptfyTests.swift */; };
+		227174D323EA6D85003387D5 /* JLSptfyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174D223EA6D85003387D5 /* JLSptfyUITests.swift */; };
+		2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */; };
+		2284F7D323F646ED00D8697E /* JLLibraryQuickJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */; };
+		22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */; };
+		22BA216223F0190F0018C7A4 /* JLPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */; };
+		22E96AB723EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E96AB523EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift */; };
+		22E96AB823EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E96AB623EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib */; };
+		C53FEBAD48B5500687F6A16A /* libPods-JLSptfy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */; };
+		C99F760028ABE7E3F38801DA /* libPods-JLSptfyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		227174C423EA6D85003387D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 227174A523EA6D83003387D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 227174AC23EA6D83003387D5;
+			remoteInfo = JLSptfy;
+		};
+		227174CF23EA6D85003387D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 227174A523EA6D83003387D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 227174AC23EA6D83003387D5;
+			remoteInfo = JLSptfy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		220BE2A523F29AFE00A7F6DE /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		221D9D3E23ED0B3200256F25 /* JLSearchListTableViewSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewSongCell.swift; sourceTree = "<group>"; };
+		221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewSongCell.xib; sourceTree = "<group>"; };
+		221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewAlbumCell.swift; sourceTree = "<group>"; };
+		221D9D4323ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewAlbumCell.xib; sourceTree = "<group>"; };
+		2230063923F173B9005D09ED /* JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLExtension.swift; sourceTree = "<group>"; };
+		2230063B23F17657005D09ED /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2230063F23F17661005D09ED /* Differentiator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Differentiator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2244865323ED506300163156 /* JLSearchListTableViewMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewMoreCell.swift; sourceTree = "<group>"; };
+		2244865423ED506300163156 /* JLSearchListTableViewMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewMoreCell.xib; sourceTree = "<group>"; };
+		2244865923ED9E0E00163156 /* JLSearchMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchMoreTableViewController.swift; sourceTree = "<group>"; };
+		2244865B23ED9F0000163156 /* JLNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLNavigationViewController.swift; sourceTree = "<group>"; };
+		2248F06BDC013F706736F626 /* Pods-JLSptfyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfyTests.debug.xcconfig"; path = "Target Support Files/Pods-JLSptfyTests/Pods-JLSptfyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2249BFD323F53BFA00397706 /* JLLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryViewController.swift; sourceTree = "<group>"; };
+		2249BFD423F53BFA00397706 /* JLLibraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLLibraryViewController.xib; sourceTree = "<group>"; };
+		2249BFED23F55FB600397706 /* PageViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewManager.swift; sourceTree = "<group>"; };
+		2249BFEE23F55FB600397706 /* PageContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentView.swift; sourceTree = "<group>"; };
+		2249BFEF23F55FB600397706 /* PageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
+		2249BFF023F55FB600397706 /* PageStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageStyle.swift; sourceTree = "<group>"; };
+		2249BFF123F55FB600397706 /* PageCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		2249BFF223F55FB600397706 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		2249BFF323F55FB600397706 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		2249BFF423F55FB600397706 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2249BFF523F55FB600397706 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		226F813823EA84D40005FB78 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = JLSptfy/SpotifyiOS.framework; sourceTree = SOURCE_ROOT; };
+		226F813B23EA855D0005FB78 /* JLSptfy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JLSptfy-Bridging-Header.h"; sourceTree = "<group>"; };
+		226F813E23EA85E50005FB78 /* JLLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JLLoginViewController.xib; sourceTree = "<group>"; };
+		226F813F23EA85E50005FB78 /* JLLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLoginViewController.swift; sourceTree = "<group>"; };
+		226F814323EA87760005FB78 /* JLTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTabBar.swift; sourceTree = "<group>"; };
+		226F814423EA87760005FB78 /* TabBarData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TabBarData.plist; sourceTree = "<group>"; };
+		226F814823EA8ED20005FB78 /* JLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchViewController.swift; sourceTree = "<group>"; };
+		226F814923EA8ED20005FB78 /* JLSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchViewController.xib; sourceTree = "<group>"; };
+		226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLFetchManagement.swift; sourceTree = "<group>"; };
+		226F814E23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewArtistCell.swift; sourceTree = "<group>"; };
+		226F814F23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewArtistCell.xib; sourceTree = "<group>"; };
+		226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchQuickJSON.swift; sourceTree = "<group>"; };
+		227174AD23EA6D83003387D5 /* JLSptfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLSptfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		227174B023EA6D83003387D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		227174B223EA6D83003387D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		227174B423EA6D83003387D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		227174B923EA6D84003387D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		227174BC23EA6D84003387D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		227174BE23EA6D84003387D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227174C323EA6D85003387D5 /* JLSptfyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLSptfyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		227174C723EA6D85003387D5 /* JLSptfyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSptfyTests.swift; sourceTree = "<group>"; };
+		227174C923EA6D85003387D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227174CE23EA6D85003387D5 /* JLSptfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLSptfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		227174D223EA6D85003387D5 /* JLSptfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSptfyUITests.swift; sourceTree = "<group>"; };
+		227174D423EA6D85003387D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryContentTableViewController.swift; sourceTree = "<group>"; };
+		2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryQuickJSON.swift; sourceTree = "<group>"; };
+		22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerViewController.swift; sourceTree = "<group>"; };
+		22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLPlayerViewController.xib; sourceTree = "<group>"; };
+		22E96AB223EC0A2B00F63EB7 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E96AB523EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewPlaylistCell.swift; sourceTree = "<group>"; };
+		22E96AB623EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewPlaylistCell.xib; sourceTree = "<group>"; };
+		3CBF54FB251B3BD486343FCF /* Pods-JLSptfy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy.release.xcconfig"; path = "Target Support Files/Pods-JLSptfy/Pods-JLSptfy.release.xcconfig"; sourceTree = "<group>"; };
+		4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56342250599E88CFF5C10C39 /* Pods-JLSptfy-JLSptfyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy-JLSptfyUITests.release.xcconfig"; path = "Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82788C3CCFAD2C1DE7742208 /* Pods-JLSptfy-JLSptfyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy-JLSptfyUITests.debug.xcconfig"; path = "Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfy-JLSptfyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E303AEA1E2052449A0AF03CF /* Pods-JLSptfyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfyTests.release.xcconfig"; path = "Target Support Files/Pods-JLSptfyTests/Pods-JLSptfyTests.release.xcconfig"; sourceTree = "<group>"; };
+		ED532F6088A63375F472C059 /* Pods-JLSptfy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy.debug.xcconfig"; path = "Target Support Files/Pods-JLSptfy/Pods-JLSptfy.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		227174AA23EA6D83003387D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				226F813923EA84D40005FB78 /* SpotifyiOS.framework in Frameworks */,
+				220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */,
+				C53FEBAD48B5500687F6A16A /* libPods-JLSptfy.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227174C023EA6D85003387D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C99F760028ABE7E3F38801DA /* libPods-JLSptfyTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227174CB23EA6D85003387D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06ADE5365F6EDB2DA595FE9C /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2230063823F17385005D09ED /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2230063923F173B9005D09ED /* JLExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2249BFD223F53B9A00397706 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				2249BFD323F53BFA00397706 /* JLLibraryViewController.swift */,
+				2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */,
+				2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */,
+				2249BFD423F53BFA00397706 /* JLLibraryViewController.xib */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		2249BFEB23F55FB600397706 /* DNSPageView */ = {
+			isa = PBXGroup;
+			children = (
+				2249BFEC23F55FB600397706 /* DNSPageView */,
+				2249BFF423F55FB600397706 /* LICENSE */,
+				2249BFF523F55FB600397706 /* README.md */,
+			);
+			path = DNSPageView;
+			sourceTree = "<group>";
+		};
+		2249BFEC23F55FB600397706 /* DNSPageView */ = {
+			isa = PBXGroup;
+			children = (
+				2249BFED23F55FB600397706 /* PageViewManager.swift */,
+				2249BFEE23F55FB600397706 /* PageContentView.swift */,
+				2249BFEF23F55FB600397706 /* PageTitleView.swift */,
+				2249BFF023F55FB600397706 /* PageStyle.swift */,
+				2249BFF123F55FB600397706 /* PageCollectionViewFlowLayout.swift */,
+				2249BFF223F55FB600397706 /* Helper.swift */,
+				2249BFF323F55FB600397706 /* PageView.swift */,
+			);
+			path = DNSPageView;
+			sourceTree = "<group>";
+		};
+		226F813723EA84BF0005FB78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */,
+				220BE2A523F29AFE00A7F6DE /* libYYKit.a */,
+				2230063F23F17661005D09ED /* Differentiator.framework */,
+				2230063B23F17657005D09ED /* RxSwift.framework */,
+				22E96AB223EC0A2B00F63EB7 /* SDWebImage.framework */,
+				226F813823EA84D40005FB78 /* SpotifyiOS.framework */,
+				70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */,
+				A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */,
+				4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		226F813A23EA854D0005FB78 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				226F813F23EA85E50005FB78 /* JLLoginViewController.swift */,
+				226F813E23EA85E50005FB78 /* JLLoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		226F814223EA875C0005FB78 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				226F814323EA87760005FB78 /* JLTabBar.swift */,
+				226F814423EA87760005FB78 /* TabBarData.plist */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		226F814723EA8EA50005FB78 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				226F814823EA8ED20005FB78 /* JLSearchViewController.swift */,
+				2244865923ED9E0E00163156 /* JLSearchMoreTableViewController.swift */,
+				2244865B23ED9F0000163156 /* JLNavigationViewController.swift */,
+				226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */,
+				226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */,
+				226F814923EA8ED20005FB78 /* JLSearchViewController.xib */,
+				22E96AB423EC34C500F63EB7 /* Cell */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		227174A423EA6D83003387D5 = {
+			isa = PBXGroup;
+			children = (
+				227174AF23EA6D83003387D5 /* JLSptfy */,
+				227174C623EA6D85003387D5 /* JLSptfyTests */,
+				227174D123EA6D85003387D5 /* JLSptfyUITests */,
+				227174AE23EA6D83003387D5 /* Products */,
+				226F813723EA84BF0005FB78 /* Frameworks */,
+				DA5D40C745FBE9244B4CD455 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		227174AE23EA6D83003387D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				227174AD23EA6D83003387D5 /* JLSptfy.app */,
+				227174C323EA6D85003387D5 /* JLSptfyTests.xctest */,
+				227174CE23EA6D85003387D5 /* JLSptfyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		227174AF23EA6D83003387D5 /* JLSptfy */ = {
+			isa = PBXGroup;
+			children = (
+				2249BFEB23F55FB600397706 /* DNSPageView */,
+				2249BFD223F53B9A00397706 /* Library */,
+				2230063823F17385005D09ED /* Extension */,
+				22BA215E23F018B60018C7A4 /* Player */,
+				226F814723EA8EA50005FB78 /* Search */,
+				226F814223EA875C0005FB78 /* TabBar */,
+				226F813A23EA854D0005FB78 /* Login */,
+				227174B023EA6D83003387D5 /* AppDelegate.swift */,
+				227174B223EA6D83003387D5 /* SceneDelegate.swift */,
+				227174B423EA6D83003387D5 /* ViewController.swift */,
+				227174B923EA6D84003387D5 /* Assets.xcassets */,
+				227174BB23EA6D84003387D5 /* LaunchScreen.storyboard */,
+				227174BE23EA6D84003387D5 /* Info.plist */,
+				226F813B23EA855D0005FB78 /* JLSptfy-Bridging-Header.h */,
+			);
+			path = JLSptfy;
+			sourceTree = "<group>";
+		};
+		227174C623EA6D85003387D5 /* JLSptfyTests */ = {
+			isa = PBXGroup;
+			children = (
+				227174C723EA6D85003387D5 /* JLSptfyTests.swift */,
+				227174C923EA6D85003387D5 /* Info.plist */,
+			);
+			path = JLSptfyTests;
+			sourceTree = "<group>";
+		};
+		227174D123EA6D85003387D5 /* JLSptfyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				227174D223EA6D85003387D5 /* JLSptfyUITests.swift */,
+				227174D423EA6D85003387D5 /* Info.plist */,
+			);
+			path = JLSptfyUITests;
+			sourceTree = "<group>";
+		};
+		22BA215E23F018B60018C7A4 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */,
+				22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		22E96AB423EC34C500F63EB7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2244865323ED506300163156 /* JLSearchListTableViewMoreCell.swift */,
+				2244865423ED506300163156 /* JLSearchListTableViewMoreCell.xib */,
+				226F814E23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift */,
+				226F814F23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib */,
+				22E96AB523EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift */,
+				22E96AB623EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib */,
+				221D9D3E23ED0B3200256F25 /* JLSearchListTableViewSongCell.swift */,
+				221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */,
+				221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */,
+				221D9D4323ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DA5D40C745FBE9244B4CD455 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED532F6088A63375F472C059 /* Pods-JLSptfy.debug.xcconfig */,
+				3CBF54FB251B3BD486343FCF /* Pods-JLSptfy.release.xcconfig */,
+				82788C3CCFAD2C1DE7742208 /* Pods-JLSptfy-JLSptfyUITests.debug.xcconfig */,
+				56342250599E88CFF5C10C39 /* Pods-JLSptfy-JLSptfyUITests.release.xcconfig */,
+				2248F06BDC013F706736F626 /* Pods-JLSptfyTests.debug.xcconfig */,
+				E303AEA1E2052449A0AF03CF /* Pods-JLSptfyTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		227174AC23EA6D83003387D5 /* JLSptfy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 227174D723EA6D85003387D5 /* Build configuration list for PBXNativeTarget "JLSptfy" */;
+			buildPhases = (
+				88FB02A4735B4756F56D2EC8 /* [CP] Check Pods Manifest.lock */,
+				227174A923EA6D83003387D5 /* Sources */,
+				227174AA23EA6D83003387D5 /* Frameworks */,
+				227174AB23EA6D83003387D5 /* Resources */,
+				611EC42D93F7F307CF427A12 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JLSptfy;
+			productName = JLSptfy;
+			productReference = 227174AD23EA6D83003387D5 /* JLSptfy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		227174C223EA6D85003387D5 /* JLSptfyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 227174DA23EA6D85003387D5 /* Build configuration list for PBXNativeTarget "JLSptfyTests" */;
+			buildPhases = (
+				7030716AE2AF998B105EDD7A /* [CP] Check Pods Manifest.lock */,
+				227174BF23EA6D85003387D5 /* Sources */,
+				227174C023EA6D85003387D5 /* Frameworks */,
+				227174C123EA6D85003387D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				227174C523EA6D85003387D5 /* PBXTargetDependency */,
+			);
+			name = JLSptfyTests;
+			productName = JLSptfyTests;
+			productReference = 227174C323EA6D85003387D5 /* JLSptfyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		227174CD23EA6D85003387D5 /* JLSptfyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 227174DD23EA6D85003387D5 /* Build configuration list for PBXNativeTarget "JLSptfyUITests" */;
+			buildPhases = (
+				D107087AF78A511B9E9E550B /* [CP] Check Pods Manifest.lock */,
+				227174CA23EA6D85003387D5 /* Sources */,
+				227174CB23EA6D85003387D5 /* Frameworks */,
+				227174CC23EA6D85003387D5 /* Resources */,
+				05CE3A2DC1BE151118053EB7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				227174D023EA6D85003387D5 /* PBXTargetDependency */,
+			);
+			name = JLSptfyUITests;
+			productName = JLSptfyUITests;
+			productReference = 227174CE23EA6D85003387D5 /* JLSptfyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		227174A523EA6D83003387D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Jonathan Lu";
+				TargetAttributes = {
+					227174AC23EA6D83003387D5 = {
+						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
+					};
+					227174C223EA6D85003387D5 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 227174AC23EA6D83003387D5;
+					};
+					227174CD23EA6D85003387D5 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 227174AC23EA6D83003387D5;
+					};
+				};
+			};
+			buildConfigurationList = 227174A823EA6D83003387D5 /* Build configuration list for PBXProject "JLSptfy" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 227174A423EA6D83003387D5;
+			productRefGroup = 227174AE23EA6D83003387D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				227174AC23EA6D83003387D5 /* JLSptfy */,
+				227174C223EA6D85003387D5 /* JLSptfyTests */,
+				227174CD23EA6D85003387D5 /* JLSptfyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		227174AB23EA6D83003387D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				226F814B23EA8ED20005FB78 /* JLSearchViewController.xib in Resources */,
+				2244865623ED506400163156 /* JLSearchListTableViewMoreCell.xib in Resources */,
+				2249BFFD23F55FB600397706 /* LICENSE in Resources */,
+				2249BFD623F53BFA00397706 /* JLLibraryViewController.xib in Resources */,
+				226F814023EA85E50005FB78 /* JLLoginViewController.xib in Resources */,
+				226F815123EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib in Resources */,
+				22E96AB823EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib in Resources */,
+				227174BD23EA6D84003387D5 /* LaunchScreen.storyboard in Resources */,
+				221D9D4123ED0B3200256F25 /* JLSearchListTableViewSongCell.xib in Resources */,
+				226F814623EA87760005FB78 /* TabBarData.plist in Resources */,
+				2249BFFE23F55FB600397706 /* README.md in Resources */,
+				22BA216223F0190F0018C7A4 /* JLPlayerViewController.xib in Resources */,
+				227174BA23EA6D84003387D5 /* Assets.xcassets in Resources */,
+				221D9D4523ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227174C123EA6D85003387D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227174CC23EA6D85003387D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05CE3A2DC1BE151118053EB7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		611EC42D93F7F307CF427A12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7030716AE2AF998B105EDD7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JLSptfyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88FB02A4735B4756F56D2EC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JLSptfy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D107087AF78A511B9E9E550B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JLSptfy-JLSptfyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		227174A923EA6D83003387D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				226F814A23EA8ED20005FB78 /* JLSearchViewController.swift in Sources */,
+				226F814123EA85E50005FB78 /* JLLoginViewController.swift in Sources */,
+				2244865A23ED9E0E00163156 /* JLSearchMoreTableViewController.swift in Sources */,
+				2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */,
+				2249BFF723F55FB600397706 /* PageContentView.swift in Sources */,
+				227174B523EA6D83003387D5 /* ViewController.swift in Sources */,
+				2244865523ED506400163156 /* JLSearchListTableViewMoreCell.swift in Sources */,
+				221D9D4023ED0B3200256F25 /* JLSearchListTableViewSongCell.swift in Sources */,
+				2249BFD523F53BFA00397706 /* JLLibraryViewController.swift in Sources */,
+				226F814D23EAB9CE0005FB78 /* JLFetchManagement.swift in Sources */,
+				2249BFFA23F55FB600397706 /* PageCollectionViewFlowLayout.swift in Sources */,
+				227174B123EA6D83003387D5 /* AppDelegate.swift in Sources */,
+				2249BFF923F55FB600397706 /* PageStyle.swift in Sources */,
+				226F815023EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift in Sources */,
+				2249BFF623F55FB600397706 /* PageViewManager.swift in Sources */,
+				22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */,
+				2244865C23ED9F0100163156 /* JLNavigationViewController.swift in Sources */,
+				2284F7D323F646ED00D8697E /* JLLibraryQuickJSON.swift in Sources */,
+				2230063A23F173B9005D09ED /* JLExtension.swift in Sources */,
+				2249BFF823F55FB600397706 /* PageTitleView.swift in Sources */,
+				221D9D4423ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift in Sources */,
+				227174B323EA6D83003387D5 /* SceneDelegate.swift in Sources */,
+				2249BFFC23F55FB600397706 /* PageView.swift in Sources */,
+				22E96AB723EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift in Sources */,
+				226F814523EA87760005FB78 /* JLTabBar.swift in Sources */,
+				226F815323EAFDEE0005FB78 /* JLSearchQuickJSON.swift in Sources */,
+				2249BFFB23F55FB600397706 /* Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227174BF23EA6D85003387D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				227174C823EA6D85003387D5 /* JLSptfyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227174CA23EA6D85003387D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				227174D323EA6D85003387D5 /* JLSptfyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		227174C523EA6D85003387D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 227174AC23EA6D83003387D5 /* JLSptfy */;
+			targetProxy = 227174C423EA6D85003387D5 /* PBXContainerItemProxy */;
+		};
+		227174D023EA6D85003387D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 227174AC23EA6D83003387D5 /* JLSptfy */;
+			targetProxy = 227174CF23EA6D85003387D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		227174BB23EA6D84003387D5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				227174BC23EA6D84003387D5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		227174D523EA6D85003387D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		227174D623EA6D85003387D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		227174D823EA6D85003387D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED532F6088A63375F472C059 /* Pods-JLSptfy.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JLSptfy/JLSptfy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3826XM56GE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JLSptfy",
+				);
+				INFOPLIST_FILE = JLSptfy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jltest.JLSptfy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JLSptfy/JLSptfy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		227174D923EA6D85003387D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CBF54FB251B3BD486343FCF /* Pods-JLSptfy.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = JLSptfy/JLSptfy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3826XM56GE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JLSptfy",
+				);
+				INFOPLIST_FILE = JLSptfy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jltest.JLSptfy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JLSptfy/JLSptfy-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		227174DB23EA6D85003387D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2248F06BDC013F706736F626 /* Pods-JLSptfyTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3826XM56GE;
+				INFOPLIST_FILE = JLSptfyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jltest.JLSptfyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLSptfy.app/JLSptfy";
+			};
+			name = Debug;
+		};
+		227174DC23EA6D85003387D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E303AEA1E2052449A0AF03CF /* Pods-JLSptfyTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3826XM56GE;
+				INFOPLIST_FILE = JLSptfyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jltest.JLSptfyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLSptfy.app/JLSptfy";
+			};
+			name = Release;
+		};
+		227174DE23EA6D85003387D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82788C3CCFAD2C1DE7742208 /* Pods-JLSptfy-JLSptfyUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3826XM56GE;
+				INFOPLIST_FILE = JLSptfyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jltest.JLSptfyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JLSptfy;
+			};
+			name = Debug;
+		};
+		227174DF23EA6D85003387D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56342250599E88CFF5C10C39 /* Pods-JLSptfy-JLSptfyUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3826XM56GE;
+				INFOPLIST_FILE = JLSptfyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jltest.JLSptfyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JLSptfy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		227174A823EA6D83003387D5 /* Build configuration list for PBXProject "JLSptfy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				227174D523EA6D85003387D5 /* Debug */,
+				227174D623EA6D85003387D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		227174D723EA6D85003387D5 /* Build configuration list for PBXNativeTarget "JLSptfy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				227174D823EA6D85003387D5 /* Debug */,
+				227174D923EA6D85003387D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		227174DA23EA6D85003387D5 /* Build configuration list for PBXNativeTarget "JLSptfyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				227174DB23EA6D85003387D5 /* Debug */,
+				227174DC23EA6D85003387D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		227174DD23EA6D85003387D5 /* Build configuration list for PBXNativeTarget "JLSptfyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				227174DE23EA6D85003387D5 /* Debug */,
+				227174DF23EA6D85003387D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 227174A523EA6D83003387D5 /* Project object */;
+}

@@ -1,0 +1,6 @@
+module Pods_JLSptfy {
+  umbrella header "Pods-JLSptfy-umbrella.h"
+
+  export *
+  module * { export * }
+}
