@@ -1,5 +1,5 @@
 //
-//  JLSearchListTableViewPlaylistCell.swift
+//  JLLibraryListTableViewPlaylistCell.swift
 //  JLSptfy
 //
 //  Created by Jonathan Lu on 2020/2/6.
@@ -9,12 +9,14 @@
 import UIKit
 
 
-class JLSearchListTableViewPlaylistCell: UITableViewCell {
+class JLLibraryListTableViewPlaylistCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     var item: Playlist_Simplified!
     
     @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var subTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +30,9 @@ class JLSearchListTableViewPlaylistCell: UITableViewCell {
     }
     
     func setupUI() {
+        
         self.titleLabel.text = item.name
+        self.subTitleLabel.text = "by " + (item.owner?.id ?? "-")
         fetchImage(URL(string: item.images?.last?.url ?? ""), imageView: iconImageView)
     }
     

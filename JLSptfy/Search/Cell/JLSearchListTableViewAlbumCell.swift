@@ -14,7 +14,7 @@ class JLSearchListTableViewAlbumCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
-    var item: AlbumElement!
+    var item: Album_Simplified!
     
     override func awakeFromNib() {
         super.awakeFromNib()

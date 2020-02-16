@@ -13,7 +13,7 @@ class JLSearchListTableViewSongCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
-    var item:TracksItem!
+    var item:Track_Full!
     
     override func awakeFromNib() {
         super.awakeFromNib()

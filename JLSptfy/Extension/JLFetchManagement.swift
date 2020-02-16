@@ -23,12 +23,6 @@ class JLFetchManagement: NSObject {
     public var limit:Int = 20
     /**
                 Optional.
-            An ISO 3166-1 alpha-2 country code or the string from_token.
-            If a country code is specified, only artists, albums, and tracks with content that is playable in that market is returned.
-     */
-    public var market:String = ""
-    /**
-                Optional.
             The index of the first result to return.
             Default: 0 (the first result).
             Maximum offset (including limit): 5,000.
@@ -49,6 +43,12 @@ class JLFetchManagement: NSObject {
     private var pulls:Int = 0
     
     public var searchText:String = ""
+    /**
+                用于Library的artist获取，他与其他的get请求的参数不相同
+     */
+    private var lastFollowedArtistID:String?
+    
+    
     /**
     Returns the default singleton instance.
     */
@@ -72,10 +72,9 @@ class JLFetchManagement: NSObject {
         super.init()
     }
     
-    init(limit:Int, market:String, type:JLSearchType) {
+    init(limit:Int, type:JLSearchType) {
         super.init()
         self.limit = limit
-        self.market = market
         self.type = type
     }
     /**
@@ -84,12 +83,9 @@ class JLFetchManagement: NSObject {
     func mutiSearch(text:String, completed completedBlock: JLMutiSearchCompletionBlock?)  {
         self.searchText = text
         let semaphore = DispatchSemaphore (value: 0)
-        var urlString = ""
-        if (self.market != "") {
-            urlString = "https://api.spotify.com/v1/search?"+"q="+text+"&type=track,artist,album,playlist"+"&limit="+String(5)+"&market="+self.market+"&offset=0"
-        } else {
-            urlString = "https://api.spotify.com/v1/search?"+"q="+text+"&type=track,artist,album,playlist"+"&limit="+String(5)+"&offset=0"
-        }
+
+        let urlString = "https://api.spotify.com/v1/search?"+"q="+text+"&type=track,artist,album,playlist"+"&limit="+String(5)+"&offset=0"
+        
         var request = URLRequest(url: URL.initPercent(string: urlString),timeoutInterval: Double.infinity)
         request.addValue("Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? ""), forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -129,12 +125,8 @@ class JLFetchManagement: NSObject {
         let oldOffset = self.offset
         self.offset = pulls*limit
         let semaphore = DispatchSemaphore (value: 0)
-        var urlString = ""
-        if (self.market != "") {
-            urlString = "https://api.spotify.com/v1/search?"+"q="+text+"&type="+type.description()+"&limit="+String(self.limit)+"&market="+self.market+"&offset="+String(self.offset)
-        } else {
-            urlString = "https://api.spotify.com/v1/search?"+"q="+text+"&type="+type.description()+"&limit="+String(self.limit)+"&offset="+String(self.offset)
-        }
+        let urlString = "https://api.spotify.com/v1/search?"+"q="+text+"&type="+type.description()+"&limit="+String(self.limit)+"&offset="+String(self.offset)
+        
         var request = URLRequest(url: URL.initPercent(string: urlString),timeoutInterval: Double.infinity)
         request.addValue("Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? ""), forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -176,11 +168,29 @@ class JLFetchManagement: NSObject {
     
     func fetchMyLibrary(type: ContentType, isReload: Bool, completed completedBlock: JLLibraryCompletionBlock?) {
         let oldOffset = self.offset
-        self.offset = pulls*limit
+        let oldLastFollowedArtistID = self.lastFollowedArtistID
+
+        if isReload == true {
+            self.lastFollowedArtistID = nil
+            self.offset = 0
+        } else {
+            
+            self.offset = pulls*limit
+        }
+        
+        
         let semaphore = DispatchSemaphore (value: 0)
         var urlString = ""
-        urlString = "https://api.spotify.com/v1/me/"+type.description()+"?limit="+String(self.limit)+"&offset="+String(self.offset)
+        if type == .Artists {
+            if self.lastFollowedArtistID != nil {
+            urlString = "https://api.spotify.com/v1/me/following"+"?type=artist"+"&limit="+String(self.limit)+"&after="+self.lastFollowedArtistID!
+            } else {
+                urlString = "https://api.spotify.com/v1/me/following"+"?type=artist"+"&limit="+String(self.limit)
+            }
 
+        } else {
+            urlString = "https://api.spotify.com/v1/me/"+type.description()+"?limit="+String(self.limit)+"&offset="+String(self.offset)
+        }
         var request = URLRequest(url: URL.initPercent(string: urlString),timeoutInterval: Double.infinity)
         request.addValue("Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? ""), forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
@@ -192,6 +202,7 @@ class JLFetchManagement: NSObject {
                 if (completedBlock != nil) {
                     print(error)
                     self.offset = oldOffset
+                    self.lastFollowedArtistID = oldLastFollowedArtistID
                     completedBlock?(nil, self.offset, error)
                 }
                 return
@@ -204,21 +215,23 @@ class JLFetchManagement: NSObject {
                 case .Playlists:
                     json = .Playlists(item: try .init(data: data))
                 case .Artists:
-                    json = .Artists(items: try .init(data: data))
+                    json = .Artists(item: try .init(data: data))
                 case .Albums:
                     json = .Albums(item: try .init(data: data))
                 case .Tracks:
-                    json = .Songs(items: try .init(data: data))
+                    json = .Songs(item: try .init(data: data))
                 }
 //                print(json!)
                 if (completedBlock != nil) {
                     if isReload == true {
-                        self.pulls = 0
-                        self.offset = 0
+                        self.pulls = 1
+                        self.lastFollowedArtistID = json.getLastFollowingID()
                         completedBlock!(json, self.offset, nil)
                     } else {
                         self.pulls += 1
+                        self.lastFollowedArtistID = json.getLastFollowingID()
                         completedBlock!(json, self.offset, nil)
+
                     }
                 }
 
@@ -226,6 +239,7 @@ class JLFetchManagement: NSObject {
                 print(error)
                 if (completedBlock != nil) {
                     self.offset = oldOffset
+                    self.lastFollowedArtistID = oldLastFollowedArtistID
                     completedBlock!(nil, self.offset, error)
                 }
             }

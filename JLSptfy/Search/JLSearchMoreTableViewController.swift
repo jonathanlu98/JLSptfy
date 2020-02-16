@@ -20,7 +20,7 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
     var searchManagement = JLFetchManagement()
     let dispose = DisposeBag()
     var jsons:[JLSearchQuickJSON] = []
-    var data = BehaviorRelay.init(value: [JLListSectionItem]())
+    var data = BehaviorRelay.init(value: [JLSearchListSectionItem]())
     
     init(style:UITableView.Style, searchText:String, type:JLSearchType) {
         self.searchText = searchText
@@ -56,20 +56,20 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
         
         switch type {
         case .album:
-            self.tableView.register(UINib.init(nibName: albumCellID, bundle: nil), forCellReuseIdentifier: albumCellID)
-            self.bindData(cellId: albumCellID, cellType: JLSearchListTableViewAlbumCell.self)
+            self.tableView.register(UINib.init(nibName: Search_AlbumCellID, bundle: nil), forCellReuseIdentifier: Search_AlbumCellID)
+            self.bindData(cellId: Search_AlbumCellID, cellType: JLSearchListTableViewAlbumCell.self)
             break
         case .artist:
-            self.tableView.register(UINib.init(nibName: artistCellID, bundle: nil), forCellReuseIdentifier: artistCellID)
-            self.bindData(cellId: artistCellID, cellType: JLSearchListTableViewArtistCell.self)
+            self.tableView.register(UINib.init(nibName: Search_ArtistCellID, bundle: nil), forCellReuseIdentifier: Search_ArtistCellID)
+            self.bindData(cellId: Search_ArtistCellID, cellType: JLSearchListTableViewArtistCell.self)
             break
         case .track:
-            self.tableView.register(UINib.init(nibName: songCellID, bundle: nil), forCellReuseIdentifier: songCellID)
-            self.bindData(cellId: songCellID, cellType: JLSearchListTableViewSongCell.self)
+            self.tableView.register(UINib.init(nibName: Search_SongCellID, bundle: nil), forCellReuseIdentifier: Search_SongCellID)
+            self.bindData(cellId: Search_SongCellID, cellType: JLSearchListTableViewSongCell.self)
             break
         case .playlist:
-            self.tableView.register(UINib.init(nibName: playlistCellID, bundle: nil), forCellReuseIdentifier: playlistCellID)
-            self.bindData(cellId: playlistCellID, cellType: JLSearchListTableViewPlaylistCell.self)
+            self.tableView.register(UINib.init(nibName: Search_PlaylistCellID, bundle: nil), forCellReuseIdentifier: Search_PlaylistCellID)
+            self.bindData(cellId: Search_PlaylistCellID, cellType: JLSearchListTableViewPlaylistCell.self)
             break
         case .all: break
 
@@ -165,8 +165,8 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     
-    func handleJsonData(_ json:JLSearchQuickJSON) -> [JLListSectionItem] {
-        var items = [JLListSectionItem]()
+    func handleJsonData(_ json:JLSearchQuickJSON) -> [JLSearchListSectionItem] {
+        var items = [JLSearchListSectionItem]()
         switch type {
 
         case .album:

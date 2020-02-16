@@ -13,12 +13,19 @@ import RxDataSources
 import MJRefresh
 import YYKit
 
+
+let Library_ArtistCellID = "JLLibraryListTableViewArtistCell"
+let Library_AlbumCellID = "JLLibraryListTableViewAlbumCell"
+let Library_PlaylistCellID = "JLLibraryListTableViewPlaylistCell"
+let Library_SongCellID = "JLLibraryListTableViewSongCell"
+
+
 class JLLibraryContentTableViewController: UITableViewController {
     let contentType: ContentType
     var fetchManagement = JLFetchManagement()
     let dispose = DisposeBag()
     var jsons:[JLLibraryQuickJSON] = []
-    var contentItems = BehaviorRelay<[JLListSectionItem]>.init(value: [JLListSectionItem]())
+    var contentItems = BehaviorRelay<[JLLibraryListSectionItem]>.init(value: [JLLibraryListSectionItem]())
     
     init(style: UITableView.Style, type: ContentType) {
         self.contentType = type
@@ -41,25 +48,25 @@ class JLLibraryContentTableViewController: UITableViewController {
 
         switch contentType {
         case .Albums:
-            self.tableView.register(UINib.init(nibName: albumCellID, bundle: nil), forCellReuseIdentifier: albumCellID)
-            self.bindData(cellId: albumCellID, cellType: JLSearchListTableViewAlbumCell.self)
+            self.tableView.register(UINib.init(nibName: Library_AlbumCellID, bundle: nil), forCellReuseIdentifier: Library_AlbumCellID)
+            self.bindData(cellId: Library_AlbumCellID, cellType: JLLibraryListTableViewAlbumCell.self)
             break
         case .Artists:
-            self.tableView.register(UINib.init(nibName: artistCellID, bundle: nil), forCellReuseIdentifier: artistCellID)
-            self.bindData(cellId: artistCellID, cellType: JLSearchListTableViewArtistCell.self)
+            self.tableView.register(UINib.init(nibName: Library_ArtistCellID, bundle: nil), forCellReuseIdentifier: Library_ArtistCellID)
+            self.bindData(cellId: Library_ArtistCellID, cellType: JLLibraryListTableViewArtistCell.self)
             break
         case .Tracks:
-            self.tableView.register(UINib.init(nibName: songCellID, bundle: nil), forCellReuseIdentifier: songCellID)
-            self.bindData(cellId: songCellID, cellType: JLSearchListTableViewSongCell.self)
+            self.tableView.register(UINib.init(nibName: Library_SongCellID, bundle: nil), forCellReuseIdentifier: Library_SongCellID)
+            self.bindData(cellId: Library_SongCellID, cellType: JLLibraryListTableViewSongCell.self)
             break
         case .Playlists:
-            self.tableView.register(UINib.init(nibName: playlistCellID, bundle: nil), forCellReuseIdentifier: playlistCellID)
-            self.bindData(cellId: playlistCellID, cellType: JLSearchListTableViewPlaylistCell.self)
+            self.tableView.register(UINib.init(nibName: Library_PlaylistCellID, bundle: nil), forCellReuseIdentifier: Library_PlaylistCellID)
+            self.bindData(cellId: Library_PlaylistCellID, cellType: JLLibraryListTableViewPlaylistCell.self)
             break
 
         }
         
-        YYDispatchQueuePool.init(name: "singeSearch", queueCount: 10, qos: .userInteractive).queue().async {
+        YYDispatchQueuePool.init(name: "singeFetchLibrary", queueCount: 10, qos: .userInteractive).queue().async {
             self.getData()
         }
         
@@ -131,7 +138,7 @@ class JLLibraryContentTableViewController: UITableViewController {
                 self.tableView.mj_header?.endRefreshing()
                 if (json != nil) {
                     self.jsons = [json!]
-                    self.contentItems = BehaviorRelay<[JLListSectionItem]>.init(value: [])
+//                    self.contentItems.accept([])
                     Observable
                         .just(
                             self.handleJsonData(json!)
@@ -151,33 +158,30 @@ class JLLibraryContentTableViewController: UITableViewController {
             switch item {
                 
                 case .ArtistSectionItem(let aritem):
-                    (cell as! JLSearchListTableViewArtistCell).item = aritem
-                    (cell as! JLSearchListTableViewArtistCell).viewWithTag(505)?.isHidden = true
-                    (cell as! JLSearchListTableViewArtistCell).setupUI()
+                    (cell as! JLLibraryListTableViewArtistCell).item = aritem
+                    (cell as! JLLibraryListTableViewArtistCell).setupUI()
                     
                 case .AlbumSectionItem(let alitem):
-                    (cell as! JLSearchListTableViewAlbumCell).item = alitem
-                    (cell as! JLSearchListTableViewAlbumCell).setupUI()
+                    (cell as! JLLibraryListTableViewAlbumCell).item = alitem.album
+                    (cell as! JLLibraryListTableViewAlbumCell).setupUI()
 
                 
                 case .SongSectionItem(let soitem):
-                    (cell as! JLSearchListTableViewSongCell).item = soitem
-                    (cell as! JLSearchListTableViewSongCell).viewWithTag(506)?.isHidden = true
-                    (cell as! JLSearchListTableViewSongCell).setupUI()
+                    (cell as! JLLibraryListTableViewSongCell).item = soitem.track
+                    (cell as! JLLibraryListTableViewSongCell).setupUI()
 
                 case .PlaylistSectionItem(let plitem):
-                    (cell as! JLSearchListTableViewPlaylistCell).item = plitem
-                    (cell as! JLSearchListTableViewPlaylistCell).setupUI()
+                    (cell as! JLLibraryListTableViewPlaylistCell).item = plitem
+                    (cell as! JLLibraryListTableViewPlaylistCell).setupUI()
 
-                case .MoreSectionItem( _): break
 
             }
         }.disposed(by: dispose)
     }
 
     
-    func handleJsonData(_ json:JLLibraryQuickJSON) -> [JLListSectionItem] {
-        var items = [JLListSectionItem]()
+    func handleJsonData(_ json:JLLibraryQuickJSON) -> [JLLibraryListSectionItem] {
+        var items = [JLLibraryListSectionItem]()
         switch json {
 
         case .Albums(let item):
@@ -185,7 +189,7 @@ class JLLibraryContentTableViewController: UITableViewController {
                 items.append(.AlbumSectionItem(item: iitem))
             }
         case .Artists(let item):
-            for iitem in item.items ?? [] {
+            for iitem in item.artists?.items ?? [] {
                 items.append(.ArtistSectionItem(item: iitem))
             }
         case .Songs(let item):

@@ -13,11 +13,11 @@ import YYKit
 import RxDataSources
 
 
-let artistCellID = "JLSearchListTableViewArtistCell"
-let albumCellID = "JLSearchListTableViewAlbumCell"
-let playlistCellID = "JLSearchListTableViewPlaylistCell"
-let songCellID = "JLSearchListTableViewSongCell"
-let moreCellID = "JLSearchListTableViewMoreCell"
+let Search_ArtistCellID = "JLSearchListTableViewArtistCell"
+let Search_AlbumCellID = "JLSearchListTableViewAlbumCell"
+let Search_PlaylistCellID = "JLSearchListTableViewPlaylistCell"
+let Search_SongCellID = "JLSearchListTableViewSongCell"
+let Search_MoreCellID = "JLSearchListTableViewMoreCell"
 
 class JLSearchViewController: UIViewController, UISearchBarDelegate {
     
@@ -35,33 +35,33 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
             switch dataSource[indexPath] {
                 
             case .ArtistSectionItem(let aritem):
-                let cell = tableView.dequeueReusableCell(withIdentifier: artistCellID,
+                let cell = tableView.dequeueReusableCell(withIdentifier: Search_ArtistCellID,
                 for: indexPath) as! JLSearchListTableViewArtistCell
                 cell.item = aritem
                 cell.setupUI()
                 return cell
                 
             case .AlbumSectionItem(let alitem):
-                let cell = tableView.dequeueReusableCell(withIdentifier: albumCellID,
+                let cell = tableView.dequeueReusableCell(withIdentifier: Search_AlbumCellID,
                 for: indexPath) as! JLSearchListTableViewAlbumCell
                 cell.item = alitem
                 cell.setupUI()
                 return cell
             case .SongSectionItem(let soitem):
-                let cell = tableView.dequeueReusableCell(withIdentifier: songCellID,
+                let cell = tableView.dequeueReusableCell(withIdentifier: Search_SongCellID,
                 for: indexPath) as! JLSearchListTableViewSongCell
                 cell.item = soitem
                 cell.setupUI()
                 return cell
                 
             case .PlaylistSectionItem(let plitem):
-                let cell = tableView.dequeueReusableCell(withIdentifier: playlistCellID,
+                let cell = tableView.dequeueReusableCell(withIdentifier: Search_PlaylistCellID,
                 for: indexPath) as! JLSearchListTableViewPlaylistCell
                 cell.item = plitem
                 cell.setupUI()
                 return cell
             case .MoreSectionItem(let type):
-                let cell = tableView.dequeueReusableCell(withIdentifier: moreCellID,
+                let cell = tableView.dequeueReusableCell(withIdentifier: Search_MoreCellID,
                 for: indexPath) as! JLSearchListTableViewMoreCell
                 cell.titleLabel.text = "See all "+type.type.description()
                 cell.type = type.type
@@ -97,15 +97,15 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
         searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
 
-        searchListTableView.register(UINib.init(nibName: artistCellID, bundle: nil), forCellReuseIdentifier: artistCellID)
-        searchListTableView.register(UINib.init(nibName: albumCellID, bundle: nil), forCellReuseIdentifier: albumCellID)
-        searchListTableView.register(UINib.init(nibName: playlistCellID, bundle: nil), forCellReuseIdentifier: playlistCellID)
-        searchListTableView.register(UINib.init(nibName: songCellID, bundle: nil), forCellReuseIdentifier: songCellID)
-        searchListTableView.register(UINib.init(nibName: moreCellID, bundle: nil), forCellReuseIdentifier: moreCellID)
+        searchListTableView.register(UINib.init(nibName: Search_ArtistCellID, bundle: nil), forCellReuseIdentifier: Search_ArtistCellID)
+        searchListTableView.register(UINib.init(nibName: Search_AlbumCellID, bundle: nil), forCellReuseIdentifier: Search_AlbumCellID)
+        searchListTableView.register(UINib.init(nibName: Search_PlaylistCellID, bundle: nil), forCellReuseIdentifier: Search_PlaylistCellID)
+        searchListTableView.register(UINib.init(nibName: Search_SongCellID, bundle: nil), forCellReuseIdentifier: Search_SongCellID)
+        searchListTableView.register(UINib.init(nibName: Search_MoreCellID, bundle: nil), forCellReuseIdentifier: Search_MoreCellID)
         
         self.data.bind(to: self.searchListTableView.rx.items(dataSource: dataSource)).disposed(by: dispose)
         
-        searchListTableView.rx.modelSelected(JLListSectionItem.self).subscribe(onNext: { (item) in
+        searchListTableView.rx.modelSelected(JLSearchListSectionItem.self).subscribe(onNext: { (item) in
             switch item {
                 
             case .ArtistSectionItem(let item):
@@ -166,11 +166,11 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
     
     func handleSectionData(json: JLSearchQuickJSON, limit: Int, text: String) -> [JLSearchListSection] {
         var sections = [JLSearchListSection]()
-        var artistSectionItems = [JLListSectionItem]()
-        var albumSectionItems = [JLListSectionItem]()
-        var songSectionItems = [JLListSectionItem]()
-        var playlistSectionItems = [JLListSectionItem]()
-        var moreSectionItems = [JLListSectionItem]()
+        var artistSectionItems = [JLSearchListSectionItem]()
+        var albumSectionItems = [JLSearchListSectionItem]()
+        var songSectionItems = [JLSearchListSectionItem]()
+        var playlistSectionItems = [JLSearchListSectionItem]()
+        var moreSectionItems = [JLSearchListSectionItem]()
 
         for item in json.artists?.items ?? [] {
             artistSectionItems.append( .ArtistSectionItem(item: item))
@@ -224,22 +224,22 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
 }
 
 //单元格类型
-enum JLListSectionItem {
-    case ArtistSectionItem(item: ArtistsItem)
-    case AlbumSectionItem(item: AlbumElement)
-    case SongSectionItem(item: TracksItem)
-    case PlaylistSectionItem(item: PlaylistsItem)
+enum JLSearchListSectionItem {
+    case ArtistSectionItem(item: Artist_Full)
+    case AlbumSectionItem(item: Album_Simplified)
+    case SongSectionItem(item: Track_Full)
+    case PlaylistSectionItem(item: Playlist_Simplified)
     case MoreSectionItem(type: JLSearchType,text: String)
 }
  
 //自定义Section
 struct JLSearchListSection {
     var header: String
-    var items: [JLListSectionItem]
+    var items: [JLSearchListSectionItem]
 }
  
 extension JLSearchListSection : SectionModelType {
-    typealias Item = JLListSectionItem
+    typealias Item = JLSearchListSectionItem
      
     init(original: JLSearchListSection, items: [Item]) {
         self = original

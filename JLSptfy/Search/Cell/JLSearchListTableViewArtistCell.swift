@@ -24,7 +24,7 @@ class JLSearchListTableViewArtistCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     
-    var item: ArtistsItem!
+    var item: Artist_Full!
     
     @IBOutlet weak var iconImageView: UIImageView!
     
@@ -48,6 +48,8 @@ class JLSearchListTableViewArtistCell: UITableViewCell {
     }
     
     func setupUI() {
+        
+
         self.titleLabel.text = item.name
         fetchImage(URL.init(string: self.item.images?.last?.url ?? ""), imageView: iconImageView)
 

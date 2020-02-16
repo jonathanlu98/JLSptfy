@@ -56,7 +56,7 @@ class JLLoginViewController: UIViewController, SPTSessionManagerDelegate {
             button.backgroundColor = #colorLiteral(red: 0.3254599571, green: 0.3255102634, blue: 0.3254440129, alpha: 1)
         }
 
-        let scope: SPTScope = [.appRemoteControl, .playlistReadPrivate, .streaming, .userLibraryRead]
+        let scope: SPTScope = [.appRemoteControl, .playlistReadPrivate, .streaming, .userLibraryRead, .userReadPrivate, .userFollowRead]
 
         if #available(iOS 11, *) {
             // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
