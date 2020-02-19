@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TabBarChildViewControllers</key>
+	<array>
+		<dict>
+			<key>ClassName</key>
+			<string></string>
+			<key>NormalImage</key>
+			<string></string>
+			<key>SelectedImage</key>
+			<string></string>
+			<key>Title</key>
+			<string>Home</string>
+		</dict>
+		<dict>
+			<key>ClassName</key>
+			<string></string>
+			<key>NormalImage</key>
+			<string></string>
+			<key>SelectedImage</key>
+			<string></string>
+			<key>Title</key>
+			<string>Search</string>
+		</dict>
+		<dict>
+			<key>ClassName</key>
+			<string></string>
+			<key>NormalImage</key>
+			<string></string>
+			<key>SelectedImage</key>
+			<string></string>
+			<key>Title</key>
+			<string>Your Library</string>
+		</dict>
+	</array>
+</dict>
+</plist>

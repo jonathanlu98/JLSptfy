@@ -1,0 +1,6 @@
+module Pods_JLSptfy_JLSptfyUITests {
+  umbrella header "Pods-JLSptfy-JLSptfyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

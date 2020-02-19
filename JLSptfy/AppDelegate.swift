@@ -8,9 +8,16 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import AVFoundation
+
+
+let JLRefreshTokenKey = "refreshToken"
+let JLTokenExpriedDateKey = "tokenExpirationDate"
+let JLAccessTokenKey = "accessToken"
+let JLSessionKey = "session"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
 
@@ -23,23 +30,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
         let configuration = SPTConfiguration(clientID: SpotifyClientID, redirectURL: SpotifyRedirectURI)
         // Set the playURI to a non-nil value so that Spotify plays music after authenticating and App Remote can connect
         // otherwise another app switch will be required
-        configuration.playURI = ""
+        configuration.playURI = nil
 
         // Set these url's to your backend which contains the secret to exchange for an access token
         // You can use the provided ruby script spotify_token_swap.rb for testing purposes
         configuration.tokenSwapURL = URL(string: "https://jlsptfy-login.herokuapp.com/swap")
         configuration.tokenRefreshURL = URL(string: "https://jlsptfy-login.herokuapp.com/refresh")
         
+        
+        
         return configuration
     }()
     
-    lazy var appRemote: SPTAppRemote = {
-        let configuration = SPTConfiguration(clientID: self.SpotifyClientID, redirectURL: self.SpotifyRedirectURI)
-        let appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)
-        appRemote.connectionParameters.accessToken = self.accessToken
-        appRemote.delegate = self
-        return appRemote
-    }()
+
 
     
     class var sharedInstance: AppDelegate {
@@ -48,18 +51,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
         }
     }
     
-    // keys
-    static private let kAccessTokenKey = "accessToken"
 
-    var accessToken = UserDefaults.standard.string(forKey: kAccessTokenKey) {
+
+    var accessToken = UserDefaults.standard.string(forKey: JLAccessTokenKey) {
         didSet {
             let defaults = UserDefaults.standard
-            defaults.set(accessToken, forKey: AppDelegate.kAccessTokenKey)
+            defaults.set(accessToken, forKey: JLAccessTokenKey)
             defaults.synchronize()
         }
     }
     
+
+    
+    var refreshToken = UserDefaults.standard.string(forKey: JLRefreshTokenKey) {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(refreshToken, forKey: JLRefreshTokenKey)
+            defaults.synchronize()
+        }
+    }
+    
+    var sptSession = UserDefaults.standard.value(forKey: JLSessionKey) {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(sptSession, forKey: JLSessionKey)
+            defaults.synchronize()
+        }
+    }
+    
+
+    
+    var tokenExpirationDate = UserDefaults.standard.value(forKey: JLTokenExpriedDateKey) {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(tokenExpirationDate, forKey: JLTokenExpriedDateKey)
+            
+            defaults.synchronize()
+        }
+
+    }
+    
+    lazy var sessionManager: SPTSessionManager = {
+        let manager = SPTSessionManager(configuration: AppDelegate.sharedInstance.configuration, delegate: self)
+        
+        return manager
+    }()
+    
+    
     var rootController = JLLoginViewController.init(nibName: "JLLoginViewController", bundle: nil)
+    
+    
+    var mediaPlayer: STKAudioPlayer = STKAudioPlayer()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -69,6 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
         //        window?.rootViewController = JLPlayerViewController()
         window?.makeKeyAndVisible()
         
+        
+        
         /*第三方键盘辅助*/
         IQKeyboardManager.shared.enable = true
 //        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "完成"
@@ -76,8 +120,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
 //        IQKeyboardManager.shared.toolbarManageBehaviour = .byTag
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
+
+
         
-        //UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
     
@@ -85,19 +130,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if window?.rootViewController?.isKind(of: JLLoginViewController.self) == true {
-            (window?.rootViewController as! JLLoginViewController).sessionManager.application(app, open: url, options: options)
+            sessionManager.application(app, open: url, options: options)
         }
 
         return true
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        //appRemote.disconnect()
-    }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        //appRemote.connect()
-    }
+
+    
+
     
     // MARK: UISceneSession Lifecycle
 
@@ -113,19 +155,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate {
 //        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 //    }
     
-    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        self.appRemote = appRemote
-        
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        //appRemote.connect()
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        //appRemote.connect()
-    }
+
 
 
 }
 
+extension AppDelegate: SPTSessionManagerDelegate {
+    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
+        DispatchQueue.main.async {
+
+            self.accessToken = session.accessToken
+            self.refreshToken = session.refreshToken
+            self.tokenExpirationDate = session.expirationDate.addingTimeInterval(3600*8)
+            
+            do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: session, requiringSecureCoding: false)
+                self.sptSession = data
+            } catch {
+                print(error)
+            }
+            
+            let viewController = TabBarController()
+            viewController.modalPresentationStyle = .fullScreen
+            self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
+        DispatchQueue.main.async {
+            self.window?.rootViewController?.presentAlertController(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
+            if self.window?.rootViewController?.isKind(of: JLLoginViewController.self) ?? false {
+                (self.window?.rootViewController as! JLLoginViewController).changeButtonStatus(true)
+            }
+        }
+    }
+    
+    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+        DispatchQueue.main.async {
+            if self.window?.rootViewController?.isKind(of: JLLoginViewController.self) ?? false {
+                DispatchQueue.main.async {
+
+                    self.accessToken = session.accessToken
+                    self.refreshToken = session.refreshToken
+                    self.tokenExpirationDate = session.expirationDate.addingTimeInterval(3600*8)
+                    
+                    do {
+                        let data = try NSKeyedArchiver.archivedData(withRootObject: session, requiringSecureCoding: false)
+                        self.sptSession = data
+                    } catch {
+                        print(error)
+                    }
+                    
+                    let viewController = TabBarController()
+                    viewController.modalPresentationStyle = .fullScreen
+                    self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+                    
+                }
+            }
+        }
+    }
+    
+    
+}

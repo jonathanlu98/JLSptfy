@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		06ADE5365F6EDB2DA595FE9C /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */; };
 		220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */; };
+		2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216E09123FA930A00E0FECE /* JLHomeViewController.swift */; };
+		2216E09423FA930A00E0FECE /* JLHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2216E09223FA930A00E0FECE /* JLHomeViewController.xib */; };
+		2216E09623FA97FF00E0FECE /* JLPlayerMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216E09523FA97FE00E0FECE /* JLPlayerMenuBarView.swift */; };
 		221D9D4023ED0B3200256F25 /* JLSearchListTableViewSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D9D3E23ED0B3200256F25 /* JLSearchListTableViewSongCell.swift */; };
 		221D9D4123ED0B3200256F25 /* JLSearchListTableViewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */; };
 		221D9D4423ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */; };
@@ -49,6 +52,7 @@
 		227174D323EA6D85003387D5 /* JLSptfyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174D223EA6D85003387D5 /* JLSptfyUITests.swift */; };
 		2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */; };
 		2284F7D323F646ED00D8697E /* JLLibraryQuickJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */; };
+		2289FF4423FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289FF4223FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m */; };
 		22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */; };
 		22BA216223F0190F0018C7A4 /* JLPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */; };
 		22D3472D23F7E1E8003A3551 /* AlbumJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */; };
@@ -66,6 +70,7 @@
 		22EA42C023F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EA42B823F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib */; };
 		22EA42C123F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA42B923F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift */; };
 		22EA42C223F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA42BA23F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift */; };
+		22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */; };
 		C53FEBAD48B5500687F6A16A /* libPods-JLSptfy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */; };
 		C99F760028ABE7E3F38801DA /* libPods-JLSptfyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */; };
 /* End PBXBuildFile section */
@@ -90,6 +95,9 @@
 /* Begin PBXFileReference section */
 		220BE2A523F29AFE00A7F6DE /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2216E09123FA930A00E0FECE /* JLHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLHomeViewController.swift; sourceTree = "<group>"; };
+		2216E09223FA930A00E0FECE /* JLHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLHomeViewController.xib; sourceTree = "<group>"; };
+		2216E09523FA97FE00E0FECE /* JLPlayerMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerMenuBarView.swift; sourceTree = "<group>"; };
 		221D9D3E23ED0B3200256F25 /* JLSearchListTableViewSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewSongCell.swift; sourceTree = "<group>"; };
 		221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewSongCell.xib; sourceTree = "<group>"; };
 		221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewAlbumCell.swift; sourceTree = "<group>"; };
@@ -140,6 +148,9 @@
 		227174D423EA6D85003387D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryContentTableViewController.swift; sourceTree = "<group>"; };
 		2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryQuickJSON.swift; sourceTree = "<group>"; };
+		2289FF4023FB97FC0027C429 /* libStreamingKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libStreamingKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2289FF4223FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STKAutoRecoveringHTTPDataSource+PBPrivate.m"; sourceTree = "<group>"; };
+		2289FF4323FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STKAutoRecoveringHTTPDataSource+PBPrivate.h"; sourceTree = "<group>"; };
 		22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerViewController.swift; sourceTree = "<group>"; };
 		22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLPlayerViewController.xib; sourceTree = "<group>"; };
 		22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumJSONModel.swift; sourceTree = "<group>"; };
@@ -158,6 +169,7 @@
 		22EA42B823F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JLLibraryListTableViewPlaylistCell.xib; sourceTree = "<group>"; };
 		22EA42B923F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLibraryListTableViewAlbumCell.swift; sourceTree = "<group>"; };
 		22EA42BA23F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLibraryListTableViewPlaylistCell.swift; sourceTree = "<group>"; };
+		22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTJSONError.swift; sourceTree = "<group>"; };
 		3CBF54FB251B3BD486343FCF /* Pods-JLSptfy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy.release.xcconfig"; path = "Target Support Files/Pods-JLSptfy/Pods-JLSptfy.release.xcconfig"; sourceTree = "<group>"; };
 		4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56342250599E88CFF5C10C39 /* Pods-JLSptfy-JLSptfyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy-JLSptfyUITests.release.xcconfig"; path = "Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,14 +210,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2216E09023FA92AF00E0FECE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2216E09123FA930A00E0FECE /* JLHomeViewController.swift */,
+				2216E09223FA930A00E0FECE /* JLHomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		2230063823F17385005D09ED /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2289FF4323FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.h */,
+				2289FF4223FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m */,
 				2230063923F173B9005D09ED /* JLExtension.swift */,
 				226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */,
 				22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */,
 				22D3472E23F7E502003A3551 /* ArtistJSONModel.swift */,
 				22D3473423F7F1B4003A3551 /* TrackJSONModel.swift */,
+				22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */,
 				22D3473023F7E80E003A3551 /* PlaylistJSONModel.swift */,
 				22D3473223F7EA53003A3551 /* SPTJSONModel.swift */,
 			);
@@ -251,6 +275,7 @@
 		226F813723EA84BF0005FB78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2289FF4023FB97FC0027C429 /* libStreamingKit.a */,
 				220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */,
 				220BE2A523F29AFE00A7F6DE /* libYYKit.a */,
 				2230063F23F17661005D09ED /* Differentiator.framework */,
@@ -277,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				226F814323EA87760005FB78 /* JLTabBar.swift */,
+				2216E09523FA97FE00E0FECE /* JLPlayerMenuBarView.swift */,
 				226F814423EA87760005FB78 /* TabBarData.plist */,
 			);
 			path = TabBar;
@@ -320,6 +346,7 @@
 		227174AF23EA6D83003387D5 /* JLSptfy */ = {
 			isa = PBXGroup;
 			children = (
+				2216E09023FA92AF00E0FECE /* Home */,
 				2249BFEB23F55FB600397706 /* DNSPageView */,
 				2249BFD223F53B9A00397706 /* Library */,
 				2230063823F17385005D09ED /* Extension */,
@@ -537,6 +564,7 @@
 				2249BFFE23F55FB600397706 /* README.md in Resources */,
 				22BA216223F0190F0018C7A4 /* JLPlayerViewController.xib in Resources */,
 				227174BA23EA6D84003387D5 /* Assets.xcassets in Resources */,
+				2216E09423FA930A00E0FECE /* JLHomeViewController.xib in Resources */,
 				221D9D4523ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,12 +693,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2289FF4423FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m in Sources */,
 				226F814A23EA8ED20005FB78 /* JLSearchViewController.swift in Sources */,
 				22EA42BC23F8E76700303201 /* JLLibraryListTableViewSongCell.swift in Sources */,
 				22D3472F23F7E502003A3551 /* ArtistJSONModel.swift in Sources */,
 				22EA42C223F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift in Sources */,
 				226F814123EA85E50005FB78 /* JLLoginViewController.swift in Sources */,
 				2244865A23ED9E0E00163156 /* JLSearchMoreTableViewController.swift in Sources */,
+				2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */,
 				2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */,
 				2249BFF723F55FB600397706 /* PageContentView.swift in Sources */,
 				227174B523EA6D83003387D5 /* ViewController.swift in Sources */,
@@ -679,6 +709,7 @@
 				22EA42BD23F8E76700303201 /* JLLibraryListTableViewArtistCell.swift in Sources */,
 				2249BFD523F53BFA00397706 /* JLLibraryViewController.swift in Sources */,
 				226F814D23EAB9CE0005FB78 /* JLFetchManagement.swift in Sources */,
+				22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */,
 				2249BFFA23F55FB600397706 /* PageCollectionViewFlowLayout.swift in Sources */,
 				227174B123EA6D83003387D5 /* AppDelegate.swift in Sources */,
 				2249BFF923F55FB600397706 /* PageStyle.swift in Sources */,
@@ -688,6 +719,7 @@
 				22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */,
 				2244865C23ED9F0100163156 /* JLNavigationViewController.swift in Sources */,
 				2284F7D323F646ED00D8697E /* JLLibraryQuickJSON.swift in Sources */,
+				2216E09623FA97FF00E0FECE /* JLPlayerMenuBarView.swift in Sources */,
 				2230063A23F173B9005D09ED /* JLExtension.swift in Sources */,
 				2249BFF823F55FB600397706 /* PageTitleView.swift in Sources */,
 				221D9D4423ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift in Sources */,
@@ -867,6 +899,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = JLSptfy/JLSptfy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3826XM56GE;
@@ -898,6 +931,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = JLSptfy/JLSptfy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3826XM56GE;

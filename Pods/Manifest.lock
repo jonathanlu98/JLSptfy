@@ -17,6 +17,7 @@ PODS:
   - SDWebImage (5.5.2):
     - SDWebImage/Core (= 5.5.2)
   - SDWebImage/Core (5.5.2)
+  - StreamingKit (0.1.30)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - SDWebImage
+  - StreamingKit
   - YYKit
 
 SPEC REPOS:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - StreamingKit
     - YYKit
 
 SPEC CHECKSUMS:
@@ -57,8 +60,9 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  StreamingKit: 70ca8608c206864b4d54a577eacb3c8bf7c72209
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: d97a42e39468747c40d71886822fd6d96c2e877c
+PODFILE CHECKSUM: edcaa693905a43ab52dce27b1e18ed5e1e670c53
 
 COCOAPODS: 1.8.4
