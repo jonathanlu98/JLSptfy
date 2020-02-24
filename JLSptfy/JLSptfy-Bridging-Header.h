@@ -3,5 +3,3 @@
 //
 
 #import <SpotifyiOS/SpotifyiOS.h>
-#import <STKAudioPlayer.h>
-#import "STKAutoRecoveringHTTPDataSource+PBPrivate.h"

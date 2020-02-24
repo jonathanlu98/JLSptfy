@@ -83,7 +83,7 @@ class TabBarController: UITabBarController {
     }
     
     func loadViewControllers() {
-        let vc1 = JLPlayerViewController()
+        let vc1 = JLHomeViewController()
         config(tabBarItem: vc1.tabBarItem, title: "Home", image: #imageLiteral(resourceName: "home-o"), selectedImage: #imageLiteral(resourceName: "home"), textColor: #colorLiteral(red: 0.7019607843, green: 0.7019607843, blue: 0.7019607843, alpha: 1), selectedTextColor: .white, textFont: UIFont.systemFont(ofSize: 11))
         
 

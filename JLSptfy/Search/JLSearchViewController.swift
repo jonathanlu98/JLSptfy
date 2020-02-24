@@ -9,7 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import YYKit
+
 import RxDataSources
 
 
@@ -117,8 +117,20 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
                 break
                 
             case .SongSectionItem(let item):
-                
-                break
+                DispatchQueue.init(label: "playQueue").async {
+                    JLMusicFetchManagement.shared.getMusicUrl(item: item) { (url, error) in
+                        if (url != nil) {
+                            DispatchQueue.main.async {
+                                self.present(JLPlayerViewController.init(item: .init(item: item, songUrl: url!)), animated: true, completion: nil)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                self.presentAlertController(title: "Error", message: error?.localizedDescription ?? "", buttonTitle: "Ok")
+                            }
+
+                        }
+                    }
+                }
                 
             case .PlaylistSectionItem(let item):
                 
@@ -220,6 +232,8 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
         
         return sections
     }
+    
+    
 
 }
 

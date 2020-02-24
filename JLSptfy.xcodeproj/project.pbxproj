@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06ADE5365F6EDB2DA595FE9C /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */; };
 		220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */; };
 		2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216E09123FA930A00E0FECE /* JLHomeViewController.swift */; };
 		2216E09423FA930A00E0FECE /* JLHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2216E09223FA930A00E0FECE /* JLHomeViewController.xib */; };
@@ -16,6 +15,10 @@
 		221D9D4123ED0B3200256F25 /* JLSearchListTableViewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */; };
 		221D9D4423ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */; };
 		221D9D4523ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221D9D4323ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib */; };
+		22219B062403717300D3EE3D /* ListenerCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22219B032403717000D3EE3D /* ListenerCenter.swift */; };
+		22219B072403717300D3EE3D /* ListenerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22219B042403717100D3EE3D /* ListenerNode.swift */; };
+		22219B082403717300D3EE3D /* ListenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22219B052403717300D3EE3D /* ListenerProtocol.swift */; };
+		22219B0B24039DD400D3EE3D /* JLPlayerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22219B0A24039DD400D3EE3D /* JLPlayerProgressView.swift */; };
 		2230063A23F173B9005D09ED /* JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2230063923F173B9005D09ED /* JLExtension.swift */; };
 		2244865523ED506400163156 /* JLSearchListTableViewMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244865323ED506300163156 /* JLSearchListTableViewMoreCell.swift */; };
 		2244865623ED506400163156 /* JLSearchListTableViewMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2244865423ED506300163156 /* JLSearchListTableViewMoreCell.xib */; };
@@ -52,7 +55,9 @@
 		227174D323EA6D85003387D5 /* JLSptfyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227174D223EA6D85003387D5 /* JLSptfyUITests.swift */; };
 		2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */; };
 		2284F7D323F646ED00D8697E /* JLLibraryQuickJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */; };
-		2289FF4423FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289FF4223FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m */; };
+		229A298523FE096A004FABA2 /* JLMusicFetchManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A298423FE096A004FABA2 /* JLMusicFetchManagement.swift */; };
+		229A298723FE267D004FABA2 /* JLWYMusicJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A298623FE267D004FABA2 /* JLWYMusicJSONModel.swift */; };
+		22B5C4182402A137006DA2F8 /* JLPlayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4172402A137006DA2F8 /* JLPlayItem.swift */; };
 		22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */; };
 		22BA216223F0190F0018C7A4 /* JLPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */; };
 		22D3472D23F7E1E8003A3551 /* AlbumJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */; };
@@ -60,6 +65,11 @@
 		22D3473123F7E80E003A3551 /* PlaylistJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3473023F7E80E003A3551 /* PlaylistJSONModel.swift */; };
 		22D3473323F7EA53003A3551 /* SPTJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3473223F7EA53003A3551 /* SPTJSONModel.swift */; };
 		22D3473523F7F1B4003A3551 /* TrackJSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3473423F7F1B4003A3551 /* TrackJSONModel.swift */; };
+		22E1AC582401075B008DF95B /* JLMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1AC562401075B008DF95B /* JLMeTableViewCell.swift */; };
+		22E1AC592401075B008DF95B /* JLMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E1AC572401075B008DF95B /* JLMeTableViewCell.xib */; };
+		22E1AC5B240119BA008DF95B /* JLWYLoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1AC5A240119BA008DF95B /* JLWYLoginManagement.swift */; };
+		22E1AC5E24012542008DF95B /* JLWYLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1AC5C24012542008DF95B /* JLWYLoginViewController.swift */; };
+		22E1AC5F24012542008DF95B /* JLWYLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E1AC5D24012542008DF95B /* JLWYLoginViewController.xib */; };
 		22E96AB723EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E96AB523EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift */; };
 		22E96AB823EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E96AB623EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib */; };
 		22EA42BB23F8E76700303201 /* JLLibraryListTableViewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EA42B323F8E76600303201 /* JLLibraryListTableViewSongCell.xib */; };
@@ -71,8 +81,11 @@
 		22EA42C123F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA42B923F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift */; };
 		22EA42C223F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA42BA23F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift */; };
 		22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */; };
-		C53FEBAD48B5500687F6A16A /* libPods-JLSptfy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */; };
-		C99F760028ABE7E3F38801DA /* libPods-JLSptfyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */; };
+		22FE07B12400DAE80080D2EE /* JLMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */; };
+		22FE07B22400DAE80080D2EE /* JLMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FE07B02400DAE80080D2EE /* JLMeViewController.xib */; };
+		4CA083B997F0DEB4DD126672 /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E7B72F9590E704DCB876D7 /* libPods-JLSptfy-JLSptfyUITests.a */; };
+		66C90559E5D2BBBA9C7A9BA5 /* libPods-JLSptfy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F836DA30598AE37F5FDC6A03 /* libPods-JLSptfy.a */; };
+		960959EEB3CF629CFAF2E91A /* libPods-JLSptfyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F61E28EF218015675E71DAEC /* libPods-JLSptfyTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +115,10 @@
 		221D9D3F23ED0B3200256F25 /* JLSearchListTableViewSongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewSongCell.xib; sourceTree = "<group>"; };
 		221D9D4223ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewAlbumCell.swift; sourceTree = "<group>"; };
 		221D9D4323ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewAlbumCell.xib; sourceTree = "<group>"; };
+		22219B032403717000D3EE3D /* ListenerCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenerCenter.swift; sourceTree = "<group>"; };
+		22219B042403717100D3EE3D /* ListenerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenerNode.swift; sourceTree = "<group>"; };
+		22219B052403717300D3EE3D /* ListenerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenerProtocol.swift; sourceTree = "<group>"; };
+		22219B0A24039DD400D3EE3D /* JLPlayerProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerProgressView.swift; sourceTree = "<group>"; };
 		2230063923F173B9005D09ED /* JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLExtension.swift; sourceTree = "<group>"; };
 		2230063B23F17657005D09ED /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2230063F23F17661005D09ED /* Differentiator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Differentiator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,8 +166,9 @@
 		2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryContentTableViewController.swift; sourceTree = "<group>"; };
 		2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryQuickJSON.swift; sourceTree = "<group>"; };
 		2289FF4023FB97FC0027C429 /* libStreamingKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libStreamingKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2289FF4223FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STKAutoRecoveringHTTPDataSource+PBPrivate.m"; sourceTree = "<group>"; };
-		2289FF4323FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STKAutoRecoveringHTTPDataSource+PBPrivate.h"; sourceTree = "<group>"; };
+		229A298423FE096A004FABA2 /* JLMusicFetchManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLMusicFetchManagement.swift; sourceTree = "<group>"; };
+		229A298623FE267D004FABA2 /* JLWYMusicJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLWYMusicJSONModel.swift; sourceTree = "<group>"; };
+		22B5C4172402A137006DA2F8 /* JLPlayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayItem.swift; sourceTree = "<group>"; };
 		22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerViewController.swift; sourceTree = "<group>"; };
 		22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLPlayerViewController.xib; sourceTree = "<group>"; };
 		22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumJSONModel.swift; sourceTree = "<group>"; };
@@ -158,6 +176,11 @@
 		22D3473023F7E80E003A3551 /* PlaylistJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistJSONModel.swift; sourceTree = "<group>"; };
 		22D3473223F7EA53003A3551 /* SPTJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTJSONModel.swift; sourceTree = "<group>"; };
 		22D3473423F7F1B4003A3551 /* TrackJSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackJSONModel.swift; sourceTree = "<group>"; };
+		22E1AC562401075B008DF95B /* JLMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLMeTableViewCell.swift; sourceTree = "<group>"; };
+		22E1AC572401075B008DF95B /* JLMeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLMeTableViewCell.xib; sourceTree = "<group>"; };
+		22E1AC5A240119BA008DF95B /* JLWYLoginManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLWYLoginManagement.swift; sourceTree = "<group>"; };
+		22E1AC5C24012542008DF95B /* JLWYLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLWYLoginViewController.swift; sourceTree = "<group>"; };
+		22E1AC5D24012542008DF95B /* JLWYLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLWYLoginViewController.xib; sourceTree = "<group>"; };
 		22E96AB223EC0A2B00F63EB7 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E96AB523EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewPlaylistCell.swift; sourceTree = "<group>"; };
 		22E96AB623EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewPlaylistCell.xib; sourceTree = "<group>"; };
@@ -170,14 +193,16 @@
 		22EA42B923F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLibraryListTableViewAlbumCell.swift; sourceTree = "<group>"; };
 		22EA42BA23F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLibraryListTableViewPlaylistCell.swift; sourceTree = "<group>"; };
 		22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTJSONError.swift; sourceTree = "<group>"; };
+		22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLMeViewController.swift; sourceTree = "<group>"; };
+		22FE07B02400DAE80080D2EE /* JLMeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLMeViewController.xib; sourceTree = "<group>"; };
 		3CBF54FB251B3BD486343FCF /* Pods-JLSptfy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy.release.xcconfig"; path = "Target Support Files/Pods-JLSptfy/Pods-JLSptfy.release.xcconfig"; sourceTree = "<group>"; };
-		4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56342250599E88CFF5C10C39 /* Pods-JLSptfy-JLSptfyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy-JLSptfyUITests.release.xcconfig"; path = "Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82788C3CCFAD2C1DE7742208 /* Pods-JLSptfy-JLSptfyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy-JLSptfyUITests.debug.xcconfig"; path = "Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfy-JLSptfyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97E7B72F9590E704DCB876D7 /* libPods-JLSptfy-JLSptfyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfy-JLSptfyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E303AEA1E2052449A0AF03CF /* Pods-JLSptfyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfyTests.release.xcconfig"; path = "Target Support Files/Pods-JLSptfyTests/Pods-JLSptfyTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED532F6088A63375F472C059 /* Pods-JLSptfy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLSptfy.debug.xcconfig"; path = "Target Support Files/Pods-JLSptfy/Pods-JLSptfy.debug.xcconfig"; sourceTree = "<group>"; };
+		F61E28EF218015675E71DAEC /* libPods-JLSptfyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F836DA30598AE37F5FDC6A03 /* libPods-JLSptfy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JLSptfy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +212,7 @@
 			files = (
 				226F813923EA84D40005FB78 /* SpotifyiOS.framework in Frameworks */,
 				220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */,
-				C53FEBAD48B5500687F6A16A /* libPods-JLSptfy.a in Frameworks */,
+				66C90559E5D2BBBA9C7A9BA5 /* libPods-JLSptfy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C99F760028ABE7E3F38801DA /* libPods-JLSptfyTests.a in Frameworks */,
+				960959EEB3CF629CFAF2E91A /* libPods-JLSptfyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,13 +228,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06ADE5365F6EDB2DA595FE9C /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */,
+				4CA083B997F0DEB4DD126672 /* libPods-JLSptfy-JLSptfyUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22086D7523FFEC1B006F6A3C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				22219B032403717000D3EE3D /* ListenerCenter.swift */,
+				22219B042403717100D3EE3D /* ListenerNode.swift */,
+				22219B052403717300D3EE3D /* ListenerProtocol.swift */,
+				22B5C4172402A137006DA2F8 /* JLPlayItem.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		2216E09023FA92AF00E0FECE /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,11 +255,18 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		22219B0924039DA300D3EE3D /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				22219B0A24039DD400D3EE3D /* JLPlayerProgressView.swift */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
 		2230063823F17385005D09ED /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2289FF4323FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.h */,
-				2289FF4223FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m */,
+				22086D7523FFEC1B006F6A3C /* Player */,
 				2230063923F173B9005D09ED /* JLExtension.swift */,
 				226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */,
 				22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */,
@@ -232,6 +275,9 @@
 				22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */,
 				22D3473023F7E80E003A3551 /* PlaylistJSONModel.swift */,
 				22D3473223F7EA53003A3551 /* SPTJSONModel.swift */,
+				229A298423FE096A004FABA2 /* JLMusicFetchManagement.swift */,
+				22E1AC5A240119BA008DF95B /* JLWYLoginManagement.swift */,
+				229A298623FE267D004FABA2 /* JLWYMusicJSONModel.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -282,9 +328,9 @@
 				2230063B23F17657005D09ED /* RxSwift.framework */,
 				22E96AB223EC0A2B00F63EB7 /* SDWebImage.framework */,
 				226F813823EA84D40005FB78 /* SpotifyiOS.framework */,
-				70BD869A61F3809219D7DDC4 /* libPods-JLSptfy.a */,
-				A86FFE4B1F367FF40808BD87 /* libPods-JLSptfy-JLSptfyUITests.a */,
-				4C8AC3C23A12AC6DE01442FA /* libPods-JLSptfyTests.a */,
+				F836DA30598AE37F5FDC6A03 /* libPods-JLSptfy.a */,
+				97E7B72F9590E704DCB876D7 /* libPods-JLSptfy-JLSptfyUITests.a */,
+				F61E28EF218015675E71DAEC /* libPods-JLSptfyTests.a */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -346,6 +392,7 @@
 		227174AF23EA6D83003387D5 /* JLSptfy */ = {
 			isa = PBXGroup;
 			children = (
+				22FE07AE2400DA890080D2EE /* Me */,
 				2216E09023FA92AF00E0FECE /* Home */,
 				2249BFEB23F55FB600397706 /* DNSPageView */,
 				2249BFD223F53B9A00397706 /* Library */,
@@ -386,10 +433,20 @@
 		22BA215E23F018B60018C7A4 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				22219B0924039DA300D3EE3D /* ProgressView */,
 				22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */,
 				22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		22E1AC5524010718008DF95B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				22E1AC562401075B008DF95B /* JLMeTableViewCell.swift */,
+				22E1AC572401075B008DF95B /* JLMeTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		22E96AB423EC34C500F63EB7 /* Cell */ = {
@@ -424,6 +481,18 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		22FE07AE2400DA890080D2EE /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				22E1AC5524010718008DF95B /* Cell */,
+				22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */,
+				22FE07B02400DAE80080D2EE /* JLMeViewController.xib */,
+				22E1AC5C24012542008DF95B /* JLWYLoginViewController.swift */,
+				22E1AC5D24012542008DF95B /* JLWYLoginViewController.xib */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		DA5D40C745FBE9244B4CD455 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,7 +517,7 @@
 				227174A923EA6D83003387D5 /* Sources */,
 				227174AA23EA6D83003387D5 /* Frameworks */,
 				227174AB23EA6D83003387D5 /* Resources */,
-				611EC42D93F7F307CF427A12 /* [CP] Copy Pods Resources */,
+				93DB759DCE338FBF877FB55F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -486,7 +555,7 @@
 				227174CA23EA6D85003387D5 /* Sources */,
 				227174CB23EA6D85003387D5 /* Frameworks */,
 				227174CC23EA6D85003387D5 /* Resources */,
-				05CE3A2DC1BE151118053EB7 /* [CP] Copy Pods Resources */,
+				1C87B50C8B538D0F71091A58 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -547,6 +616,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E1AC5F24012542008DF95B /* JLWYLoginViewController.xib in Resources */,
 				226F814B23EA8ED20005FB78 /* JLSearchViewController.xib in Resources */,
 				22EA42BB23F8E76700303201 /* JLLibraryListTableViewSongCell.xib in Resources */,
 				2244865623ED506400163156 /* JLSearchListTableViewMoreCell.xib in Resources */,
@@ -561,10 +631,12 @@
 				22EA42BF23F8E76700303201 /* JLLibraryListTableViewAlbumCell.xib in Resources */,
 				221D9D4123ED0B3200256F25 /* JLSearchListTableViewSongCell.xib in Resources */,
 				226F814623EA87760005FB78 /* TabBarData.plist in Resources */,
+				22E1AC592401075B008DF95B /* JLMeTableViewCell.xib in Resources */,
 				2249BFFE23F55FB600397706 /* README.md in Resources */,
 				22BA216223F0190F0018C7A4 /* JLPlayerViewController.xib in Resources */,
 				227174BA23EA6D84003387D5 /* Assets.xcassets in Resources */,
 				2216E09423FA930A00E0FECE /* JLHomeViewController.xib in Resources */,
+				22FE07B22400DAE80080D2EE /* JLMeViewController.xib in Resources */,
 				221D9D4523ED0BBE00256F25 /* JLSearchListTableViewAlbumCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,7 +658,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05CE3A2DC1BE151118053EB7 /* [CP] Copy Pods Resources */ = {
+		1C87B50C8B538D0F71091A58 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -601,23 +673,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JLSptfy-JLSptfyUITests/Pods-JLSptfy-JLSptfyUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		611EC42D93F7F307CF427A12 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7030716AE2AF998B105EDD7A /* [CP] Check Pods Manifest.lock */ = {
@@ -664,6 +719,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		93DB759DCE338FBF877FB55F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JLSptfy/Pods-JLSptfy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D107087AF78A511B9E9E550B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -693,18 +765,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2289FF4423FB9C1A0027C429 /* STKAutoRecoveringHTTPDataSource+PBPrivate.m in Sources */,
 				226F814A23EA8ED20005FB78 /* JLSearchViewController.swift in Sources */,
 				22EA42BC23F8E76700303201 /* JLLibraryListTableViewSongCell.swift in Sources */,
 				22D3472F23F7E502003A3551 /* ArtistJSONModel.swift in Sources */,
 				22EA42C223F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift in Sources */,
 				226F814123EA85E50005FB78 /* JLLoginViewController.swift in Sources */,
+				22219B0B24039DD400D3EE3D /* JLPlayerProgressView.swift in Sources */,
+				22219B062403717300D3EE3D /* ListenerCenter.swift in Sources */,
 				2244865A23ED9E0E00163156 /* JLSearchMoreTableViewController.swift in Sources */,
+				22219B082403717300D3EE3D /* ListenerProtocol.swift in Sources */,
 				2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */,
+				22E1AC5B240119BA008DF95B /* JLWYLoginManagement.swift in Sources */,
 				2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */,
 				2249BFF723F55FB600397706 /* PageContentView.swift in Sources */,
 				227174B523EA6D83003387D5 /* ViewController.swift in Sources */,
+				229A298723FE267D004FABA2 /* JLWYMusicJSONModel.swift in Sources */,
 				2244865523ED506400163156 /* JLSearchListTableViewMoreCell.swift in Sources */,
+				229A298523FE096A004FABA2 /* JLMusicFetchManagement.swift in Sources */,
 				221D9D4023ED0B3200256F25 /* JLSearchListTableViewSongCell.swift in Sources */,
 				22EA42BD23F8E76700303201 /* JLLibraryListTableViewArtistCell.swift in Sources */,
 				2249BFD523F53BFA00397706 /* JLLibraryViewController.swift in Sources */,
@@ -712,8 +789,10 @@
 				22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */,
 				2249BFFA23F55FB600397706 /* PageCollectionViewFlowLayout.swift in Sources */,
 				227174B123EA6D83003387D5 /* AppDelegate.swift in Sources */,
+				22E1AC582401075B008DF95B /* JLMeTableViewCell.swift in Sources */,
 				2249BFF923F55FB600397706 /* PageStyle.swift in Sources */,
 				226F815023EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift in Sources */,
+				22FE07B12400DAE80080D2EE /* JLMeViewController.swift in Sources */,
 				22D3473523F7F1B4003A3551 /* TrackJSONModel.swift in Sources */,
 				2249BFF623F55FB600397706 /* PageViewManager.swift in Sources */,
 				22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */,
@@ -727,7 +806,10 @@
 				2249BFFC23F55FB600397706 /* PageView.swift in Sources */,
 				22D3472D23F7E1E8003A3551 /* AlbumJSONModel.swift in Sources */,
 				22D3473123F7E80E003A3551 /* PlaylistJSONModel.swift in Sources */,
+				22B5C4182402A137006DA2F8 /* JLPlayItem.swift in Sources */,
 				22EA42C123F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift in Sources */,
+				22219B072403717300D3EE3D /* ListenerNode.swift in Sources */,
+				22E1AC5E24012542008DF95B /* JLWYLoginViewController.swift in Sources */,
 				22E96AB723EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift in Sources */,
 				226F814523EA87760005FB78 /* JLTabBar.swift in Sources */,
 				226F815323EAFDEE0005FB78 /* JLSearchQuickJSON.swift in Sources */,

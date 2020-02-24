@@ -9,12 +9,14 @@
 import UIKit
 import IQKeyboardManagerSwift
 import AVFoundation
-
+import Alamofire
+import SZAVPlayer
 
 let JLRefreshTokenKey = "refreshToken"
 let JLTokenExpriedDateKey = "tokenExpirationDate"
 let JLAccessTokenKey = "accessToken"
 let JLSessionKey = "session"
+let JLWYUserCookiesKey = "wy_UserCookies"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configuration.tokenRefreshURL = URL(string: "https://jlsptfy-login.herokuapp.com/refresh")
         
         
+        SZAVPlayerAssetLoader
         
         return configuration
     }()
@@ -91,6 +94,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    @objc dynamic var WY_UserCookies = UserDefaults.standard.value(forKey: JLWYUserCookiesKey) {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(WY_UserCookies, forKey: JLWYUserCookiesKey)
+            defaults.synchronize()
+        }
+    }
+    
     lazy var sessionManager: SPTSessionManager = {
         let manager = SPTSessionManager(configuration: AppDelegate.sharedInstance.configuration, delegate: self)
         
@@ -101,7 +112,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootController = JLLoginViewController.init(nibName: "JLLoginViewController", bundle: nil)
     
     
-    var mediaPlayer: STKAudioPlayer = STKAudioPlayer()
+    var mediaPlayer: SZAVPlayer = SZAVPlayer()
+    
+    
+    
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -121,6 +136,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
 
+
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setActive(true)
+            try session.setCategory(AVAudioSession.Category.playback)
+        } catch {
+            print(error)
+        }
+        
+        Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
 
         
         return true
@@ -176,8 +201,17 @@ extension AppDelegate: SPTSessionManagerDelegate {
             }
             
             let viewController = TabBarController()
-            viewController.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+//            viewController.modalPresentationStyle = .fullScreen
+//            self.window?.rootViewController?.present(viewController, animated: true, completion: {
+////                self.window?.rootViewController = viewController
+////                self.window?.makeKeyAndVisible()
+//            })
+            
+            let transtition = CATransition()
+            transtition.duration = 0.5
+            transtition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+            self.window?.layer.add(transtition, forKey: "animation")
+            self.window?.rootViewController = viewController
             
         }
     }
@@ -208,8 +242,21 @@ extension AppDelegate: SPTSessionManagerDelegate {
                     }
                     
                     let viewController = TabBarController()
-                    viewController.modalPresentationStyle = .fullScreen
-                    self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+                    
+//                    viewController.modalPresentationStyle = .fullScreen
+//                    self.window?.rootViewController?.present(viewController, animated: true, completion:
+//                        {
+//
+//                            UIApplication.shared.windows[0].rootViewController = viewController
+//                            UIApplication.shared.windows[0].makeKeyAndVisible()
+//                    })
+//
+                    
+                    let transtition = CATransition()
+                    transtition.duration = 0.5
+                    transtition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+                    self.window?.layer.add(transtition, forKey: "animation")
+                    self.window?.rootViewController = viewController
                     
                 }
             }

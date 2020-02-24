@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.9.1)
   - Differentiator (4.0.1)
   - IQKeyboardManagerSwift (6.5.5)
   - MarqueeLabel (4.0.2)
@@ -17,12 +18,13 @@ PODS:
   - SDWebImage (5.5.2):
     - SDWebImage/Core (= 5.5.2)
   - SDWebImage/Core (5.5.2)
-  - StreamingKit (0.1.30)
+  - SZAVPlayer (1.1.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
+  - Alamofire (= 4.9.1)
   - IQKeyboardManagerSwift
   - MarqueeLabel
   - Masonry
@@ -31,11 +33,12 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - SDWebImage
-  - StreamingKit
+  - SZAVPlayer
   - YYKit
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Differentiator
     - IQKeyboardManagerSwift
     - MarqueeLabel
@@ -46,10 +49,11 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
-    - StreamingKit
+    - SZAVPlayer
     - YYKit
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   MarqueeLabel: f762aa681ae201f66c1d511858b171f75d83013a
@@ -60,9 +64,9 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
-  StreamingKit: 70ca8608c206864b4d54a577eacb3c8bf7c72209
+  SZAVPlayer: b59ddf6bf07dfc40edef2f46b0c74e5d0a9ade96
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: edcaa693905a43ab52dce27b1e18ed5e1e670c53
+PODFILE CHECKSUM: 063eeeb50668510f716d5cca248f1514cfb8de93
 
 COCOAPODS: 1.8.4

@@ -94,3 +94,42 @@ extension String {
         return ceil(rect.width)
     }
 }
+
+
+extension UILabel {
+    func timeFormatter(_ value: Double?) {
+        //一个小算法，来实现00：00这种格式的播放时间
+        if value != nil {
+            let all:Int=Int(value!)
+            let m:Int=all % 60
+            let f:Int=Int(all/60)
+            var time:String=""
+            if f<10{
+                time="0\(f):"
+            }else {
+                time="\(f)"
+            }
+            if m<10{
+                time+="0\(m)"
+            }else {
+                time+="\(m)"
+            }
+            //更新播放时间
+            self.text=time
+        }
+    }
+}
+
+
+extension UIButton {
+    func changStatus(isDisabled: Bool, disabledColor: UIColor, enabledColor: UIColor) {
+
+        if isDisabled == true {
+            self.isEnabled = false
+            self.backgroundColor = disabledColor
+        } else {
+            self.isEnabled = true
+            self.backgroundColor = enabledColor
+        }
+    }
+}

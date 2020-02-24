@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdD-S6-5T3">
-                    <rect key="frame" x="16" y="61" width="343" height="35"/>
+                    <rect key="frame" x="16" y="61" width="259" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="SUb-mp-iPx"/>
                     </constraints>
@@ -39,9 +39,25 @@
                         <constraint firstAttribute="height" constant="45" id="WUc-oZ-Di2"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ob9-jh-Umh">
+                    <rect key="frame" x="324" y="63" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="a6j-05-VxQ"/>
+                        <constraint firstAttribute="height" constant="35" id="czu-ch-f2H"/>
+                    </constraints>
+                    <color key="tintColor" white="0.80142337330000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="person.circle.fill" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                    </state>
+                    <connections>
+                        <action selector="MeButtonAction:" destination="-1" eventType="touchUpInside" id="xtM-08-hNF"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ob9-jh-Umh" firstAttribute="centerY" secondItem="GdD-S6-5T3" secondAttribute="centerY" constant="2" id="2QK-Fl-WgG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ob9-jh-Umh" secondAttribute="trailing" constant="16" id="3T9-Eq-dCc"/>
                 <constraint firstItem="0wV-9L-GDo" firstAttribute="top" secondItem="UXL-7M-H7m" secondAttribute="bottom" id="6kd-P3-U7Z"/>
                 <constraint firstItem="0wV-9L-GDo" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7b6-Z4-HaR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0wV-9L-GDo" secondAttribute="bottom" id="8K8-Ol-Xve"/>
@@ -51,10 +67,13 @@
                 <constraint firstItem="UXL-7M-H7m" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-16" id="Umn-Tn-ApG"/>
                 <constraint firstItem="UXL-7M-H7m" firstAttribute="top" secondItem="GdD-S6-5T3" secondAttribute="bottom" constant="19" id="qeR-Wt-7tb"/>
                 <constraint firstItem="UXL-7M-H7m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="yXs-iV-Rzv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GdD-S6-5T3" secondAttribute="trailing" constant="16" id="zzI-pt-hXo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GdD-S6-5T3" secondAttribute="trailing" constant="100" id="zzI-pt-hXo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="130.88455772113943"/>
         </view>
     </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
