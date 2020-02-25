@@ -11,17 +11,23 @@ import RxSwift
 import MarqueeLabel
 
 extension UITableViewCell {
+    
+    //在使用RXSwift时，为cell添加的dispose以便监听的释放
     var dispose: DisposeBag {
         get {
             return DisposeBag()
         }
     }
-    
+    /**
+     用于cell中图片的获取，使用SDWebImage
+     - Parameter url: 图片的URL
+     - Parameter imageView: 所作用的imageView
+     */
     func fetchImage(_ url:URL?,imageView:UIImageView) {
         imageView.alpha = 0
         if (url != nil) {
             imageView.sd_setImage(with: url, placeholderImage: nil, options: .retryFailed) { image, error, type, uurl in
-                
+                //对于图片的渐出效果，通过判断图片来源（内存还是磁盘还是刚下载的），来选择效果
                 if (image != nil) {
                 switch type {
                 case .none, .disk, .all:
@@ -45,13 +51,18 @@ extension UITableViewCell {
 }
 
 extension  MarqueeLabel {
+    /**
+     移除translatesAutoresizingMaskIntoConstraints效果，这在使用Masonry布局时是必要的，否则再来无用的j布局添加
+     */
     func shouldCancelAutoresizing(_ bool:Bool) -> MarqueeLabel {
         if bool == true {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
         return self
     }
-    
+    /**
+     设置Label样式
+     */
     func configLabel(font:UIFont, textColor:UIColor, textAlignment:NSTextAlignment, type:MarqueeType) {
         self.animationDelay = 2
         self.leadingBuffer = 0
@@ -67,6 +78,9 @@ extension  MarqueeLabel {
 
 
 extension UIImageView {
+    /**
+     移除translatesAutoresizingMaskIntoConstraints效果，这在使用Masonry布局时是必要的，否则再来无用的j布局添加
+     */
     func shouldCancelAutoresizing(_ bool:Bool) -> UIImageView {
         if bool == true {
             self.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +90,13 @@ extension UIImageView {
 }
 
 extension UIViewController {
-
+    /**
+     对于错误弹出⚠️窗口，默认确认按钮
+     
+     - Parameter title: 窗口名
+     - Parameter message: 错误信息
+     - Parameter buttonTitle: 按钮提示名
+     */
     func presentAlertController(title: String, message: String, buttonTitle: String) {
         DispatchQueue.main.async {
             let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -89,6 +109,10 @@ extension UIViewController {
 }
 
 extension String {
+    /// 输出String的长度
+    /// - Parameters:
+    ///   - font: 当前字体
+    ///   - height: label高度（实则无需）
     func widthForComment(font: UIFont, height: CGFloat = 15) -> CGFloat {
         let rect = NSString(string: self).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         return ceil(rect.width)
@@ -97,6 +121,9 @@ extension String {
 
 
 extension UILabel {
+
+    /// 将label的文本转为时间格式
+    /// - Parameter value: 秒数
     func timeFormatter(_ value: Double?) {
         //一个小算法，来实现00：00这种格式的播放时间
         if value != nil {
@@ -122,6 +149,12 @@ extension UILabel {
 
 
 extension UIButton {
+    
+    /// 改变Button,用于加载时的等待以防用户的多次点击
+    /// - Parameters:
+    ///   - isDisabled: 是否为有效
+    ///   - disabledColor: 无效的颜色
+    ///   - enabledColor: 有效的颜色
     func changStatus(isDisabled: Bool, disabledColor: UIColor, enabledColor: UIColor) {
 
         if isDisabled == true {
@@ -131,5 +164,18 @@ extension UIButton {
             self.isEnabled = true
             self.backgroundColor = enabledColor
         }
+    }
+}
+
+
+extension URL{
+    /**
+     用于修复URL中特殊字符产生Crash的bug
+     */
+    static func initPercent(string:String) -> URL
+    {
+        let urlwithPercentEscapes = string.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+        let url = URL.init(string: urlwithPercentEscapes!)
+        return url!
     }
 }

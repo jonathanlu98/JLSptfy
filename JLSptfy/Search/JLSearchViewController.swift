@@ -9,7 +9,6 @@
 import UIKit
 import RxCocoa
 import RxSwift
-
 import RxDataSources
 
 
@@ -19,16 +18,26 @@ let Search_PlaylistCellID = "JLSearchListTableViewPlaylistCell"
 let Search_SongCellID = "JLSearchListTableViewSongCell"
 let Search_MoreCellID = "JLSearchListTableViewMoreCell"
 
-class JLSearchViewController: UIViewController, UISearchBarDelegate {
+class JLSearchViewController: UIViewController {
     
-    let searchManagement = JLFetchManagement.shared
+
     
-    let dispose = DisposeBag()
+
+    
     @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var searchListTableView: UITableView!
+    
+    
+    let searchManagement = JLSearchManagement.shared
+    
+    /// 获取的json
     fileprivate var json:JLSearchQuickJSON?
+    
+    /// 处理后的数据（RX）
     fileprivate var data = BehaviorRelay.init(value: [JLSearchListSection]())
     
+    /// tableView的数据源（RX）
     fileprivate var dataSource = RxTableViewSectionedReloadDataSource<JLSearchListSection>(
         //设置单元格
         configureCell: { dataSource, tableView, indexPath, item in
@@ -74,22 +83,20 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
         }
     )
     
+    let dispose = DisposeBag()
     
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            self.navigationController?.navigationBar.isHidden = true
-    //        self.navigationBarExtraView.isHidden = false
-    //        self.navigationBarPlayerMenuView.isHidden = false
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
 
-        }
-        
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            self.navigationController?.navigationBar.isHidden = false
-    //        self.navigationBarExtraView.isHidden = true
-    //        self.navigationBarPlayerMenuView.isHidden = true
-
-        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +104,12 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
         searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
 
+        handleTableView()
+    }
+    
+    
+    private func handleTableView() {
+        
         searchListTableView.register(UINib.init(nibName: Search_ArtistCellID, bundle: nil), forCellReuseIdentifier: Search_ArtistCellID)
         searchListTableView.register(UINib.init(nibName: Search_AlbumCellID, bundle: nil), forCellReuseIdentifier: Search_AlbumCellID)
         searchListTableView.register(UINib.init(nibName: Search_PlaylistCellID, bundle: nil), forCellReuseIdentifier: Search_PlaylistCellID)
@@ -146,37 +159,12 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: dispose)
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if (searchBar.text != nil && searchBar.text != "") {
-            let text = searchBar.text!
-            DispatchQueue.init(label: "mutiSearch").async {
-                
-                self.searchManagement.mutiSearch(text: text) { (json, error) in
-                    
-                    self.json = json
-                    DispatchQueue.main.async {
-                        if (json != nil) {
-                            Observable
-                                .just(
-                                    self.handleSectionData(json: json!, limit: 5, text: text)
-                                )
-                                .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
-                                .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
-                        } else {
-                            Observable
-                            .just(
-                                []
-                            )
-                            .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
-                            .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func handleSectionData(json: JLSearchQuickJSON, limit: Int, text: String) -> [JLSearchListSection] {
+    /// 处理获取的json数据
+    /// - Parameters:
+    ///   - json: json
+    ///   - limit: 当前limit
+    ///   - text: section文本
+    private func handleSectionData(json: JLSearchQuickJSON, limit: Int, text: String) -> [JLSearchListSection] {
         var sections = [JLSearchListSection]()
         var artistSectionItems = [JLSearchListSectionItem]()
         var albumSectionItems = [JLSearchListSectionItem]()
@@ -226,9 +214,6 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
         if moreSectionItems.count != 0 {
             sections.append(JLSearchListSection(header: "", items: moreSectionItems))
         }
-
-        
-
         
         return sections
     }
@@ -237,26 +222,41 @@ class JLSearchViewController: UIViewController, UISearchBarDelegate {
 
 }
 
-//单元格类型
-enum JLSearchListSectionItem {
-    case ArtistSectionItem(item: Artist_Full)
-    case AlbumSectionItem(item: Album_Simplified)
-    case SongSectionItem(item: Track_Full)
-    case PlaylistSectionItem(item: Playlist_Simplified)
-    case MoreSectionItem(type: JLSearchType,text: String)
-}
- 
-//自定义Section
-struct JLSearchListSection {
-    var header: String
-    var items: [JLSearchListSectionItem]
-}
- 
-extension JLSearchListSection : SectionModelType {
-    typealias Item = JLSearchListSectionItem
-     
-    init(original: JLSearchListSection, items: [Item]) {
-        self = original
-        self.items = items
+
+//MARK: UISearchBarDelegate
+
+extension JLSearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if (searchBar.text != nil && searchBar.text != "") {
+            let text = searchBar.text!
+            DispatchQueue.init(label: "mutiSearch").async {
+                
+                self.searchManagement.mutiSearch(text: text) { (json, error) in
+                    
+                    self.json = json
+                    DispatchQueue.main.async {
+                        if (json != nil) {
+                            Observable
+                                .just(
+                                    self.handleSectionData(json: json!, limit: 5, text: text)
+                                )
+                                .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+                                .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
+                        } else {
+                            Observable
+                            .just(
+                                []
+                            )
+                            .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+                            .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
+                        }
+                    }
+                }
+            }
+        }
     }
+    
+    
+    
 }

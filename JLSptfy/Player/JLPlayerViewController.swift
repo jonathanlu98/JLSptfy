@@ -16,7 +16,7 @@ import SZAVPlayer
 
 class JLPlayerViewController: UIViewController {
     
-    let dispose = DisposeBag()
+
     
     var naLabel:MarqueeLabel = {
         let label = MarqueeLabel.init(frame: .zero, rate: 30, fadeLength: 0).shouldCancelAutoresizing(true)
@@ -61,8 +61,8 @@ class JLPlayerViewController: UIViewController {
     
     var audios:[JLPlayItem] = []
     
-    
     private var currentAudio: JLPlayItem?
+    
     private var isPaused: Bool = false
     private var playerControllerEvent: PlayerControllerEventType = .none {
         didSet {
@@ -70,13 +70,8 @@ class JLPlayerViewController: UIViewController {
         }
     }
     
-//    let trackItem: Track_Full
-//
-//    let songUrl: URL
-//
-//    var timeObserver:Any?
-//
-//    var timer:Timer!
+    let dispose = DisposeBag()
+    
     
     init(item: JLPlayItem) {
         self.currentAudio = item

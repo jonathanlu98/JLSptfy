@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cr-I7-8YK">
-                    <rect key="frame" x="16" y="61" width="343" height="35"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cr-I7-8YK">
+                    <rect key="frame" x="120" y="61" width="239" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Vaj-Hx-JgQ"/>
                         <constraint firstAttribute="height" constant="35" id="nx1-im-n4u"/>
@@ -32,6 +32,28 @@
                     <rect key="frame" x="0.0" y="136" width="375" height="531"/>
                     <color key="backgroundColor" red="0.070578239860000003" green="0.070594854649999997" blue="0.070573009549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bla-Bc-IH8">
+                    <rect key="frame" x="16" y="61" width="35" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ZO-8j-OVY">
+                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="chevron.left" catalog="system">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21" weight="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="popButtonAction:" destination="-1" eventType="touchUpInside" id="F7A-V6-T1m"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="b9P-xK-DQL"/>
+                        <constraint firstAttribute="width" constant="35" id="jWS-fo-Pdj"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -39,12 +61,17 @@
                 <constraint firstItem="MG5-u5-WJc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BVB-4M-2NP"/>
                 <constraint firstItem="MG5-u5-WJc" firstAttribute="top" secondItem="9cr-I7-8YK" secondAttribute="bottom" constant="40" id="Pc0-dO-Fn4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9cr-I7-8YK" secondAttribute="trailing" constant="16" id="WGv-X9-fKC"/>
-                <constraint firstItem="9cr-I7-8YK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="cVt-pw-cKk"/>
+                <constraint firstItem="9cr-I7-8YK" firstAttribute="centerY" secondItem="bla-Bc-IH8" secondAttribute="centerY" id="ZEU-17-XJJ"/>
+                <constraint firstItem="9cr-I7-8YK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="120" id="cVt-pw-cKk"/>
                 <constraint firstItem="9cr-I7-8YK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="61" id="llv-GJ-dqh"/>
+                <constraint firstItem="bla-Bc-IH8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="qWB-t2-Zjg"/>
                 <constraint firstItem="MG5-u5-WJc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="stF-jA-9m8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="69.599999999999994" y="260.41979010494754"/>
         </view>
     </objects>
+    <resources>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
+    </resources>
 </document>

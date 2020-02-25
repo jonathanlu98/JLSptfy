@@ -35,9 +35,26 @@ class JLMeTableViewCell: UITableViewCell {
         connectButton.layer.shadowOffset = .init(width: 0, height: 3)
         connectButton.layer.shadowOpacity = 6
         
+        self.contentView.layer.cornerRadius = 7
+        self.contentView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        self.contentView.layer.shadowOffset = .init(width: 0, height: 3)
+        self.contentView.layer.shadowOpacity = 6
+
+        
+        self.contentView.mas_makeConstraints { (make) in
+            make?.leading.equalTo()(self.mas_leading)?.offset()(16)
+            make?.trailing.equalTo()(self.mas_trailing)?.offset()(-16)
+            make?.top.equalTo()(self.mas_top)?.offset()(30)
+            make?.bottom.equalTo()(self.mas_bottom)
+        }
+        
         // Initialization code
         
     }
+    
+
+
+
     
     
     func setupCell(_ type: JLMeTableViewCellType) {

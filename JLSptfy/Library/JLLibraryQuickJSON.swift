@@ -17,7 +17,7 @@ enum JLLibraryListSectionItem {
 
 }
 
-enum ContentType {
+enum JLLibraryContentType {
     case Playlists
     case Artists
     case Albums

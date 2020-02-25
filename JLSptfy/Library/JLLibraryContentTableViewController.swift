@@ -21,14 +21,14 @@ let Library_SongCellID = "JLLibraryListTableViewSongCell"
 
 
 class JLLibraryContentTableViewController: UITableViewController {
-    let contentType: ContentType
-    var fetchManagement = JLFetchManagement()
+    let JLLibraryContentType: JLLibraryContentType
+    var fetchManagement = JLLibraryFetchManagement()
     let dispose = DisposeBag()
     var jsons:[JLLibraryQuickJSON] = []
     var contentItems = BehaviorRelay<[JLLibraryListSectionItem]>.init(value: [JLLibraryListSectionItem]())
     
-    init(style: UITableView.Style, type: ContentType) {
-        self.contentType = type
+    init(style: UITableView.Style, type: JLLibraryContentType) {
+        self.JLLibraryContentType = type
         super.init(style: style)
     }
     
@@ -46,7 +46,7 @@ class JLLibraryContentTableViewController: UITableViewController {
         self.tableView.delegate = nil
         self.tableView.dataSource = nil
 
-        switch contentType {
+        switch JLLibraryContentType {
         case .Albums:
             self.tableView.register(UINib.init(nibName: Library_AlbumCellID, bundle: nil), forCellReuseIdentifier: Library_AlbumCellID)
             self.bindData(cellId: Library_AlbumCellID, cellType: JLLibraryListTableViewAlbumCell.self)
@@ -88,7 +88,7 @@ class JLLibraryContentTableViewController: UITableViewController {
     }
 
     func pullData() {
-        self.fetchManagement.fetchMyLibrary(type: self.contentType, isReload: false) { (json, offset, error) in
+        self.fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: false) { (json, offset, error) in
             DispatchQueue.main.async {
                 if (json != nil) {
                     self.tableView.mj_footer?.endRefreshing()
@@ -112,7 +112,7 @@ class JLLibraryContentTableViewController: UITableViewController {
         
     func getData() {
         
-        fetchManagement.fetchMyLibrary(type: self.contentType, isReload: false) { (json, offset, error) in
+        fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: false) { (json, offset, error) in
 
             DispatchQueue.main.async {
                 if (json != nil) {
@@ -133,7 +133,7 @@ class JLLibraryContentTableViewController: UITableViewController {
     }
     
     func refreshData() {
-        fetchManagement.fetchMyLibrary(type: self.contentType, isReload: true) { (json, offset, error) in
+        fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: true) { (json, offset, error) in
             DispatchQueue.main.async {
                 self.tableView.mj_header?.endRefreshing()
                 if (json != nil) {

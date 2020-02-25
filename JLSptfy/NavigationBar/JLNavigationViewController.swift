@@ -9,7 +9,8 @@
 import UIKit
 
 class JLNavigationViewController: UINavigationController {
-
+    
+    /// 返回按钮，这里放这为了统一调取，实则是在rootViewcontroller中生效
     let backitem: UIBarButtonItem = {
         let item = UIBarButtonItem.init()
         item.image = UIImage.init(systemName: "chevron.left")
@@ -17,15 +18,13 @@ class JLNavigationViewController: UINavigationController {
         return item
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
+
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
     }
+    
+    
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         self.navigationBar.barStyle = .black
@@ -37,7 +36,11 @@ class JLNavigationViewController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
     
 
     /*

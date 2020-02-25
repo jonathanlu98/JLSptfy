@@ -20,6 +20,8 @@
 		22219B082403717300D3EE3D /* ListenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22219B052403717300D3EE3D /* ListenerProtocol.swift */; };
 		22219B0B24039DD400D3EE3D /* JLPlayerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22219B0A24039DD400D3EE3D /* JLPlayerProgressView.swift */; };
 		2230063A23F173B9005D09ED /* JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2230063923F173B9005D09ED /* JLExtension.swift */; };
+		2234914B240539690030F403 /* JLLibraryFetchManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234914A240539690030F403 /* JLLibraryFetchManagement.swift */; };
+		2234914F24054E3B0030F403 /* JLSearchListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234914E24054E3B0030F403 /* JLSearchListSection.swift */; };
 		2244865523ED506400163156 /* JLSearchListTableViewMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244865323ED506300163156 /* JLSearchListTableViewMoreCell.swift */; };
 		2244865623ED506400163156 /* JLSearchListTableViewMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2244865423ED506300163156 /* JLSearchListTableViewMoreCell.xib */; };
 		2244865A23ED9E0E00163156 /* JLSearchMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244865923ED9E0E00163156 /* JLSearchMoreTableViewController.swift */; };
@@ -42,7 +44,7 @@
 		226F814623EA87760005FB78 /* TabBarData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 226F814423EA87760005FB78 /* TabBarData.plist */; };
 		226F814A23EA8ED20005FB78 /* JLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814823EA8ED20005FB78 /* JLSearchViewController.swift */; };
 		226F814B23EA8ED20005FB78 /* JLSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226F814923EA8ED20005FB78 /* JLSearchViewController.xib */; };
-		226F814D23EAB9CE0005FB78 /* JLFetchManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */; };
+		226F814D23EAB9CE0005FB78 /* JLSearchManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814C23EAB9CE0005FB78 /* JLSearchManagement.swift */; };
 		226F815023EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F814E23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift */; };
 		226F815123EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226F814F23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib */; };
 		226F815323EAFDEE0005FB78 /* JLSearchQuickJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */; };
@@ -122,6 +124,8 @@
 		2230063923F173B9005D09ED /* JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLExtension.swift; sourceTree = "<group>"; };
 		2230063B23F17657005D09ED /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2230063F23F17661005D09ED /* Differentiator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Differentiator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2234914A240539690030F403 /* JLLibraryFetchManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLLibraryFetchManagement.swift; sourceTree = "<group>"; };
+		2234914E24054E3B0030F403 /* JLSearchListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListSection.swift; sourceTree = "<group>"; };
 		2244865323ED506300163156 /* JLSearchListTableViewMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewMoreCell.swift; sourceTree = "<group>"; };
 		2244865423ED506300163156 /* JLSearchListTableViewMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewMoreCell.xib; sourceTree = "<group>"; };
 		2244865923ED9E0E00163156 /* JLSearchMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchMoreTableViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +150,7 @@
 		226F814423EA87760005FB78 /* TabBarData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TabBarData.plist; sourceTree = "<group>"; };
 		226F814823EA8ED20005FB78 /* JLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchViewController.swift; sourceTree = "<group>"; };
 		226F814923EA8ED20005FB78 /* JLSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchViewController.xib; sourceTree = "<group>"; };
-		226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLFetchManagement.swift; sourceTree = "<group>"; };
+		226F814C23EAB9CE0005FB78 /* JLSearchManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchManagement.swift; sourceTree = "<group>"; };
 		226F814E23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchListTableViewArtistCell.swift; sourceTree = "<group>"; };
 		226F814F23EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLSearchListTableViewArtistCell.xib; sourceTree = "<group>"; };
 		226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSearchQuickJSON.swift; sourceTree = "<group>"; };
@@ -266,20 +270,46 @@
 		2230063823F17385005D09ED /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2234914C240540340030F403 /* JSONModel */,
+				22349149240539190030F403 /* Fetch */,
 				22086D7523FFEC1B006F6A3C /* Player */,
 				2230063923F173B9005D09ED /* JLExtension.swift */,
-				226F814C23EAB9CE0005FB78 /* JLFetchManagement.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		22349149240539190030F403 /* Fetch */ = {
+			isa = PBXGroup;
+			children = (
+				226F814C23EAB9CE0005FB78 /* JLSearchManagement.swift */,
+				2234914A240539690030F403 /* JLLibraryFetchManagement.swift */,
+				229A298423FE096A004FABA2 /* JLMusicFetchManagement.swift */,
+				22E1AC5A240119BA008DF95B /* JLWYLoginManagement.swift */,
+			);
+			path = Fetch;
+			sourceTree = "<group>";
+		};
+		2234914C240540340030F403 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */,
 				22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */,
 				22D3472E23F7E502003A3551 /* ArtistJSONModel.swift */,
 				22D3473423F7F1B4003A3551 /* TrackJSONModel.swift */,
 				22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */,
 				22D3473023F7E80E003A3551 /* PlaylistJSONModel.swift */,
 				22D3473223F7EA53003A3551 /* SPTJSONModel.swift */,
-				229A298423FE096A004FABA2 /* JLMusicFetchManagement.swift */,
-				22E1AC5A240119BA008DF95B /* JLWYLoginManagement.swift */,
 				229A298623FE267D004FABA2 /* JLWYMusicJSONModel.swift */,
 			);
-			path = Extension;
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		2234914D24054D8E0030F403 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				2244865B23ED9F0000163156 /* JLNavigationViewController.swift */,
+			);
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		2249BFD223F53B9A00397706 /* Library */ = {
@@ -358,9 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				226F814823EA8ED20005FB78 /* JLSearchViewController.swift */,
+				2234914E24054E3B0030F403 /* JLSearchListSection.swift */,
 				2244865923ED9E0E00163156 /* JLSearchMoreTableViewController.swift */,
-				2244865B23ED9F0000163156 /* JLNavigationViewController.swift */,
-				226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */,
 				226F814923EA8ED20005FB78 /* JLSearchViewController.xib */,
 				22E96AB423EC34C500F63EB7 /* Cell */,
 			);
@@ -392,6 +421,7 @@
 		227174AF23EA6D83003387D5 /* JLSptfy */ = {
 			isa = PBXGroup;
 			children = (
+				2234914D24054D8E0030F403 /* NavigationBar */,
 				22FE07AE2400DA890080D2EE /* Me */,
 				2216E09023FA92AF00E0FECE /* Home */,
 				2249BFEB23F55FB600397706 /* DNSPageView */,
@@ -785,7 +815,7 @@
 				221D9D4023ED0B3200256F25 /* JLSearchListTableViewSongCell.swift in Sources */,
 				22EA42BD23F8E76700303201 /* JLLibraryListTableViewArtistCell.swift in Sources */,
 				2249BFD523F53BFA00397706 /* JLLibraryViewController.swift in Sources */,
-				226F814D23EAB9CE0005FB78 /* JLFetchManagement.swift in Sources */,
+				226F814D23EAB9CE0005FB78 /* JLSearchManagement.swift in Sources */,
 				22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */,
 				2249BFFA23F55FB600397706 /* PageCollectionViewFlowLayout.swift in Sources */,
 				227174B123EA6D83003387D5 /* AppDelegate.swift in Sources */,
@@ -806,12 +836,14 @@
 				2249BFFC23F55FB600397706 /* PageView.swift in Sources */,
 				22D3472D23F7E1E8003A3551 /* AlbumJSONModel.swift in Sources */,
 				22D3473123F7E80E003A3551 /* PlaylistJSONModel.swift in Sources */,
+				2234914F24054E3B0030F403 /* JLSearchListSection.swift in Sources */,
 				22B5C4182402A137006DA2F8 /* JLPlayItem.swift in Sources */,
 				22EA42C123F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift in Sources */,
 				22219B072403717300D3EE3D /* ListenerNode.swift in Sources */,
 				22E1AC5E24012542008DF95B /* JLWYLoginViewController.swift in Sources */,
 				22E96AB723EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.swift in Sources */,
 				226F814523EA87760005FB78 /* JLTabBar.swift in Sources */,
+				2234914B240539690030F403 /* JLLibraryFetchManagement.swift in Sources */,
 				226F815323EAFDEE0005FB78 /* JLSearchQuickJSON.swift in Sources */,
 				2249BFFB23F55FB600397706 /* Helper.swift in Sources */,
 				22D3473323F7EA53003A3551 /* SPTJSONModel.swift in Sources */,
@@ -984,7 +1016,7 @@
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = JLSptfy/JLSptfy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3826XM56GE;
+				DEVELOPMENT_TEAM = VEPK8889X2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JLSptfy",
@@ -1016,7 +1048,7 @@
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = JLSptfy/JLSptfy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3826XM56GE;
+				DEVELOPMENT_TEAM = VEPK8889X2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JLSptfy",

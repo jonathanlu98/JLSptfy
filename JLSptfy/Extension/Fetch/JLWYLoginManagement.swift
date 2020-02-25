@@ -15,10 +15,17 @@ class JLWYLoginManagement: NSObject {
     */
     @objc public static let shared = JLWYLoginManagement()
     
+    /// 网易用户的cookie
     var userCookies: Array<String> = []
     
     typealias JLLoginCompletionBlock = (Bool,Error?) -> Void
     
+    
+    /// 登录网易云音乐
+    /// - Parameters:
+    ///   - phone: 手机号
+    ///   - password: 密码
+    ///   - completedBlock: 完成Block，返回succeed，error
     func login(phone: String, password: String, completedBlock:@escaping JLLoginCompletionBlock) {
         let urlString = "http://developer.iscuec.club:3000/login/cellphone"
         let paras = ["phone":phone,"password":password]

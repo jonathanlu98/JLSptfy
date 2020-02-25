@@ -74,50 +74,6 @@ extension Album_Full {
         try self.init(data: try Data(contentsOf: url))
     }
 
-//    func with(
-//        albumType: AlbumTypeEnum?? = nil,
-//        artists: [Artist_Simplified]?? = nil,
-//        availableMarkets: [String]?? = nil,
-//        copyrights: [Copyright]?? = nil,
-//        externalIDS: ExternalIDS?? = nil,
-//        externalUrls: ExternalUrls?? = nil,
-//        genres: [String]?? = nil,
-//        href: String?? = nil,
-//        id: String?? = nil,
-//        images: [Image]?? = nil,
-//        label: String?? = nil,
-//        name: String?? = nil,
-//        popularity: Int?? = nil,
-//        releaseDate: String?? = nil,
-//        releaseDatePrecision: String?? = nil,
-//        totalTracks: Int?? = nil,
-//        tracks: Paging_Simplified_Tracks?? = nil,
-//        type: String?? = nil,
-//        url: String?? = nil
-//        
-//    ) -> Album_Full {
-//        return Album_Full(
-//            albumType: albumType ?? self.albumType,
-//            artists: artists ?? self.artists,
-//            availableMarkets: availableMarkets ?? self.availableMarkets,
-//            copyrights: copyrights ?? self.copyrights,
-//            externalIDS: externalIDS ?? self.externalIDS,
-//            externalUrls: externalUrls ?? self.externalUrls,
-//            genres: genres ?? self.genres,
-//            href: href ?? self.href,
-//            id: id ?? self.id,
-//            images: images ?? self.images,
-//            label: label ?? self.label,
-//            name: name ?? self.name,
-//            popularity: popularity ?? self.popularity,
-//            releaseDate: releaseDate ?? self.releaseDate,
-//            releaseDatePrecision: releaseDatePrecision ?? self.releaseDatePrecision,
-//            totalTracks: totalTracks ?? self.totalTracks,
-//            tracks: tracks ?? self.tracks,
-//            type: type ?? self.type,
-//            url: url ?? self.url
-//        )
-//    }
 
     func jsonData() throws -> Data {
         return try newJSONEncoder().encode(self)

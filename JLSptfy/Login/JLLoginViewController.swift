@@ -10,16 +10,6 @@ import UIKit
 
 
 class JLLoginViewController: UIViewController {
-    
-    
-
-    
-    
-
-
-
-
-
 
     @IBOutlet weak var loginButton: UIButton!
     
@@ -30,7 +20,7 @@ class JLLoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(didTapConnect(_:)), for: .touchUpInside)
         
         if (AppDelegate.sharedInstance.sptSession != nil) {
-            self.changeButtonStatus(false)
+            loginButton.changStatus(isDisabled: true, disabledColor: #colorLiteral(red: 0.3254599571, green: 0.3255102634, blue: 0.3254440129, alpha: 1), enabledColor: #colorLiteral(red: 0.1137254902, green: 0.8392156863, blue: 0.3764705882, alpha: 1))
             do {
                 let session: SPTSession = try NSKeyedUnarchiver.unarchivedObject(ofClass: SPTSession.self, from: AppDelegate.sharedInstance.sptSession! as! Data)!
                 AppDelegate.sharedInstance.sessionManager.session = session
@@ -40,12 +30,14 @@ class JLLoginViewController: UIViewController {
             }
         }
 
-        // Do any additional setup after loading the view.
     }
     
+    
+    
+    //MARK: Actions
+    
     @objc func didTapConnect(_ button: UIButton) {
-        self.changeButtonStatus(false)
-        
+        button.changStatus(isDisabled: true, disabledColor: #colorLiteral(red: 0.3254599571, green: 0.3255102634, blue: 0.3254440129, alpha: 1), enabledColor: #colorLiteral(red: 0.1137254902, green: 0.8392156863, blue: 0.3764705882, alpha: 1))
         let scope: SPTScope = [ .playlistReadPrivate, .userLibraryRead, .userReadPrivate, .userFollowRead]
         
         if (AppDelegate.sharedInstance.sptSession != nil) {
@@ -58,8 +50,6 @@ class JLLoginViewController: UIViewController {
                 self.presentAlertController(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
             
-
-            
         } else {
             if #available(iOS 11, *) {
                 // Use this on iOS 11 and above to take advantage of SFAuthenticationSession
@@ -70,39 +60,6 @@ class JLLoginViewController: UIViewController {
             }
         }
         
-
-
-
-            
-        
     }
-    
-
-    func changeButtonStatus(_ bool:Bool) {
-        if !bool {
-            loginButton.isEnabled = false
-            loginButton.backgroundColor = #colorLiteral(red: 0.3254599571, green: 0.3255102634, blue: 0.3254440129, alpha: 1)
-        } else {
-            loginButton.isEnabled = true
-            loginButton.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.8392156863, blue: 0.3764705882, alpha: 1)
-        }
-    }
-
-    
-
-    
-    
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

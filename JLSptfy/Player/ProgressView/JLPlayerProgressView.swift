@@ -24,8 +24,8 @@ class JLPlayerProgressView: UIView {
         slider.tintColor = #colorLiteral(red: 0.1137254902, green: 0.8392156863, blue: 0.3764705882, alpha: 1)
         slider.setThumbImage(thumbImage, for: .highlighted)
         slider.setThumbImage(thumbImage, for: .selected)
-        slider.addTarget(self, action: #selector(handleSliderValueChanged(_:event:)), for: .touchDragInside)
-        slider.addTarget(self, action: #selector(handleSliderValueChanged(_:event:)), for: .touchDragOutside)
+//        slider.addTarget(self, action: #selector(handleSliderValueChanged(_:event:)), for: .touchDragInside)
+        slider.addTarget(self, action: #selector(handleSliderValueChanged(_:event:)), for: .valueChanged)
         slider.addTarget(self, action: #selector(handleSliderTouchUp(_:)), for: .touchUpInside)
         slider.addTarget(self, action: #selector(handleSliderTouchUp(_:)), for: .touchUpOutside)
         return slider
@@ -77,24 +77,24 @@ class JLPlayerProgressView: UIView {
         addSubview(progressSlider)
         
         progressSlider.mas_makeConstraints { (make) in
-            make?.leading.isEqual(self.mas_leading)
-            make?.trailing.isEqual(self.mas_trailing)
-            make?.top.isEqual(self.mas_top)
+            make?.leading.equalTo()(self.mas_leading)
+            make?.trailing.equalTo()(self.mas_trailing)
+            make?.top.equalTo()(self.mas_top)
             make?.height.offset()(29)
         }
 
         addSubview(minTimeLabel)
         minTimeLabel.mas_makeConstraints { (make) in
-            make?.leading.isEqual(self.mas_leading)
-            make?.bottom.isEqual(self.mas_bottom)
+            make?.leading.equalTo()(self.mas_leading)
+            make?.bottom.equalTo()(self.mas_bottom)
             make?.height.offset()(16)
             make?.width.offset()(42)
         }
 
         addSubview(maxTimeLabel)
         maxTimeLabel.mas_makeConstraints { (make) in
-            make?.trailing.isEqual(self.mas_trailing)
-            make?.bottom.isEqual(self.mas_bottom)
+            make?.trailing.equalTo()(self.mas_trailing)
+            make?.bottom.equalTo()(self.mas_bottom)
             make?.height.offset()(16)
             make?.width.offset()(42)
         }

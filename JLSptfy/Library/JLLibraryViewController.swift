@@ -65,10 +65,7 @@ class JLLibraryViewController: UIViewController {
         pageTitleView.currentIndex = 0
 
         pageTitleView.setupUI()
-//        pageTitleView.titleLabels[0].textAlignment = .left
-//        pageTitleView.titleLabels[1].textAlignment = .center
-//        pageTitleView.titleLabels[2].textAlignment = .center
-//        pageTitleView.titleLabels[3].textAlignment = .right
+
         
         // 创建每一页对应的controller
         let childViewControllers: [UIViewController] = ["Playlists","Artists","Albums","Songs"].map { string -> UIViewController in

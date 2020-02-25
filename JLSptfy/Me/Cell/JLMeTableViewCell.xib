@@ -9,22 +9,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JLMeTableViewCell" rowHeight="154" id="KGk-i7-Jjw" customClass="JLMeTableViewCell" customModule="JLSptfy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JLMeTableViewCell" rowHeight="154" id="KGk-i7-Jjw" customClass="JLMeTableViewCell" customModule="JLSptfy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spotify" translatesAutoresizingMaskIntoConstraints="NO" id="Q2k-Tw-MGr">
-                        <rect key="frame" x="32" y="42" width="70" height="70"/>
+                        <rect key="frame" x="32" y="57" width="70" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="OJK-CP-pwg"/>
                             <constraint firstAttribute="width" constant="70" id="yXq-RI-QXR"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yur-pD-Jtz">
-                        <rect key="frame" x="223" y="53" width="120" height="48"/>
+                        <rect key="frame" x="223" y="68" width="120" height="48"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="LAT-K8-Z8n"/>
@@ -41,17 +41,15 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="Q2k-Tw-MGr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9GV-9d-trq"/>
                     <constraint firstItem="yur-pD-Jtz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Dgf-7k-jUY"/>
                     <constraint firstAttribute="trailing" secondItem="yur-pD-Jtz" secondAttribute="trailing" constant="32" id="L1B-HF-6wx"/>
                     <constraint firstItem="Q2k-Tw-MGr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="XTQ-RW-DZH"/>
-                    <constraint firstItem="Q2k-Tw-MGr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="qFw-Ti-8l7"/>
-                    <constraint firstAttribute="bottom" secondItem="Q2k-Tw-MGr" secondAttribute="bottom" constant="42" id="tNt-3B-bmc"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.15800479049999999" green="0.15815737839999999" blue="0.15802845360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="connectButton" destination="yur-pD-Jtz" id="9bw-Xy-XXn"/>

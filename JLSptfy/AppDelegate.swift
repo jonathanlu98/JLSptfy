@@ -20,10 +20,9 @@ let JLWYUserCookiesKey = "wy_UserCookies"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     
-
-    var window: UIWindow?
+    
+    // MARK: spotify 配置，请仔细阅读spotify developer官网中iOS开发的介绍，该Framework在这只做登录获取Token，采用OAuth 2.0协议
     
     fileprivate let SpotifyClientID = "16828f5eeb34451d878de2e60b6b5474"
     fileprivate let SpotifyRedirectURI = URL(string: "jlsptfy-login://callback")!
@@ -38,24 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // You can use the provided ruby script spotify_token_swap.rb for testing purposes
         configuration.tokenSwapURL = URL(string: "https://jlsptfy-login.herokuapp.com/swap")
         configuration.tokenRefreshURL = URL(string: "https://jlsptfy-login.herokuapp.com/refresh")
-        
-        
-        SZAVPlayerAssetLoader
-        
+
         return configuration
     }()
     
-
-
-    
-    class var sharedInstance: AppDelegate {
-        get {
-            return UIApplication.shared.delegate as! AppDelegate
-        }
-    }
-    
-
-
     var accessToken = UserDefaults.standard.string(forKey: JLAccessTokenKey) {
         didSet {
             let defaults = UserDefaults.standard
@@ -63,8 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.synchronize()
         }
     }
-    
-
     
     var refreshToken = UserDefaults.standard.string(forKey: JLRefreshTokenKey) {
         didSet {
@@ -82,8 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-
-    
     var tokenExpirationDate = UserDefaults.standard.value(forKey: JLTokenExpriedDateKey) {
         didSet {
             let defaults = UserDefaults.standard
@@ -94,6 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    lazy var sessionManager: SPTSessionManager = {
+        let manager = SPTSessionManager(configuration: AppDelegate.sharedInstance.configuration, delegate: self)
+        
+        return manager
+    }()
+    
+    // MARK: 网易云用户的Cookies
+    
     @objc dynamic var WY_UserCookies = UserDefaults.standard.value(forKey: JLWYUserCookiesKey) {
         didSet {
             let defaults = UserDefaults.standard
@@ -102,30 +91,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    lazy var sessionManager: SPTSessionManager = {
-        let manager = SPTSessionManager(configuration: AppDelegate.sharedInstance.configuration, delegate: self)
-        
-        return manager
-    }()
     
+    // MARK: UI
+    
+
+    var window: UIWindow?
     
     var rootController = JLLoginViewController.init(nibName: "JLLoginViewController", bundle: nil)
     
-    
+    /// 第三方播放器
     var mediaPlayer: SZAVPlayer = SZAVPlayer()
     
     
+    //MARK: FUNC
     
-    
+    class var sharedInstance: AppDelegate {
+        get {
+            return UIApplication.shared.delegate as! AppDelegate
+        }
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        
         window?.rootViewController = rootController
-        //        window?.rootViewController = JLPlayerViewController()
         window?.makeKeyAndVisible()
-        
         
         
         /*第三方键盘辅助*/
@@ -135,8 +126,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        IQKeyboardManager.shared.toolbarManageBehaviour = .byTag
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
-
-
+        
+        //AVFoundation中的必须，用于后台激活
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setActive(true)
@@ -144,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error)
         }
-        
+        //让Alamofire中不带缓存请求
         Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
 
         
@@ -181,14 +172,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
     
 
-
-
 }
 
+
+
 extension AppDelegate: SPTSessionManagerDelegate {
+    
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         DispatchQueue.main.async {
-
+            
             self.accessToken = session.accessToken
             self.refreshToken = session.refreshToken
             self.tokenExpirationDate = session.expirationDate.addingTimeInterval(3600*8)
@@ -200,13 +192,8 @@ extension AppDelegate: SPTSessionManagerDelegate {
                 print(error)
             }
             
-            let viewController = TabBarController()
-//            viewController.modalPresentationStyle = .fullScreen
-//            self.window?.rootViewController?.present(viewController, animated: true, completion: {
-////                self.window?.rootViewController = viewController
-////                self.window?.makeKeyAndVisible()
-//            })
-            
+            let viewController = JLTabBarController()
+            //渐进效果加载
             let transtition = CATransition()
             transtition.duration = 0.5
             transtition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
@@ -220,7 +207,7 @@ extension AppDelegate: SPTSessionManagerDelegate {
         DispatchQueue.main.async {
             self.window?.rootViewController?.presentAlertController(title: "Error", message: error.localizedDescription, buttonTitle: "Ok")
             if self.window?.rootViewController?.isKind(of: JLLoginViewController.self) ?? false {
-                (self.window?.rootViewController as! JLLoginViewController).changeButtonStatus(true)
+                (self.window?.rootViewController as! JLLoginViewController).loginButton.changStatus(isDisabled: false, disabledColor: #colorLiteral(red: 0.3254599571, green: 0.3255102634, blue: 0.3254440129, alpha: 1), enabledColor: #colorLiteral(red: 0.1137254902, green: 0.8392156863, blue: 0.3764705882, alpha: 1))
             }
         }
     }
@@ -241,17 +228,9 @@ extension AppDelegate: SPTSessionManagerDelegate {
                         print(error)
                     }
                     
-                    let viewController = TabBarController()
+                    let viewController = JLTabBarController()
                     
-//                    viewController.modalPresentationStyle = .fullScreen
-//                    self.window?.rootViewController?.present(viewController, animated: true, completion:
-//                        {
-//
-//                            UIApplication.shared.windows[0].rootViewController = viewController
-//                            UIApplication.shared.windows[0].makeKeyAndVisible()
-//                    })
-//
-                    
+                    //渐进效果加载
                     let transtition = CATransition()
                     transtition.duration = 0.5
                     transtition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)

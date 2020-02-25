@@ -48,7 +48,7 @@ extension SPTJSONError {
     }
     
     func getError() -> Error {
-        let error = NSError.init(domain: JLFetchManagement.description(), code: (self.error?.status)!, userInfo: ["error":self.error?.message])
+        let error = NSError.init(domain: JLSearchManagement.description(), code: (self.error?.status)!, userInfo: ["error":self.error?.message])
         return error
     }
 }

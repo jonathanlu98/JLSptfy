@@ -24,13 +24,13 @@ class JLMusicFetchManagement: NSObject {
     */
     @objc public static let shared = JLMusicFetchManagement()
     
-    
-    
+    /// 获取网易音乐url
+    /// - Parameters:
+    ///   - item: spotify的单曲item
+    ///   - completedBlock: 完成的Block，返回url，error
     func getMusicUrl(item: Track_Full, completedBlock: JLGetMusicUrlCompletionBlock?) {
         self.searchId(item: item) { (id, error) in
             if (id != nil) {
-                
-                
                 let urlString = "http://developer.iscuec.club:3000/song/url"
                 let paras = ["id":String(id!)]
                 var cookiesString = ""
@@ -45,7 +45,6 @@ class JLMusicFetchManagement: NSObject {
                 Alamofire.request(urlString, method: .get, parameters: paras, encoding: URLEncoding.default, headers: cookies).responseData { (response) in
                     guard let data = response.data else {
                         
-                        print(String(describing: response.error))
                         if (completedBlock != nil) {
                             completedBlock!(nil, response.error)
                         }
@@ -53,7 +52,6 @@ class JLMusicFetchManagement: NSObject {
                     }
                         do {
                             let json = try WYMusicDataJSON.init(data: data)
-                            print(json)
                             if (completedBlock != nil && json.data?.first?.url != nil) {
                                 completedBlock!(URL(string: (json.data?.first?.url)!), nil)
                             } else if (completedBlock != nil && json.data?.first?.url == nil) {
@@ -61,7 +59,6 @@ class JLMusicFetchManagement: NSObject {
                             }
                             
                         } catch {
-                            print(error)
                             if (completedBlock != nil) {
                                 completedBlock!(nil, error)
                             }
@@ -76,8 +73,12 @@ class JLMusicFetchManagement: NSObject {
         }
     }
     
+    /// 搜索关键字在网易云中的歌曲id
+    /// - Parameters:
+    ///   - item: spotify的单曲item
+    ///   - completedBlock: 完成Block，返回Id，error'
     func searchId(item: Track_Full, completedBlock: JLSearchIdCompletionBlock?) {
-//        let semaphore = DispatchSemaphore (value: 0)
+
         var searchString = ""
         if item.name != nil {
             searchString = (item.name ?? "")
@@ -114,10 +115,12 @@ class JLMusicFetchManagement: NSObject {
         
     }
     
-//    func fetchMp3(item: Track_Full, completedBlock: JLSearchIdCompletionBlock?)
     
-    
-    func screenData(json: WYMusicJSON, original: Track_Full) -> Int? {
+    /// 对于搜索结果的内容匹配，不精确
+    /// - Parameters:
+    ///   - json: 搜索id返回的json
+    ///   - original: spotify的单曲item
+    private func screenData(json: WYMusicJSON, original: Track_Full) -> Int? {
         for item in json.result?.songs ?? [] {
             if item.album?.name == original.album?.name && item.name == original.name && item.artists?.first?.name == original.artists?.first?.name {
                 return item.id
@@ -125,11 +128,6 @@ class JLMusicFetchManagement: NSObject {
         }
         return nil
     }
-    
-    func isPlayable(id: String) {
-        
-    }
-    
     
     
 }

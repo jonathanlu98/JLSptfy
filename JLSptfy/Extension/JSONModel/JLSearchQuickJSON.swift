@@ -15,6 +15,8 @@ import Foundation
 
 import Foundation
 
+
+/// 搜索类型
 enum JLSearchType {
     case album
     case artist

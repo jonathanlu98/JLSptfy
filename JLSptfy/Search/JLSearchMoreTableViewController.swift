@@ -15,12 +15,25 @@ import YYKit
 
 
 class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizerDelegate {
+    
+    /// 搜索关键字
     let searchText:String
+    
+    /// 搜索类型
     let type:JLSearchType
-    var searchManagement = JLFetchManagement()
-    let dispose = DisposeBag()
+    
+    var searchManagement = JLSearchManagement()
+    
+    /// json数据
     var jsons:[JLSearchQuickJSON] = []
+    
+    /// 处理后的数据（RX）
     var data = BehaviorRelay.init(value: [JLSearchListSectionItem]())
+    
+    let dispose = DisposeBag()
+    
+    
+    
     
     init(style:UITableView.Style, searchText:String, type:JLSearchType) {
         self.searchText = searchText
@@ -37,6 +50,15 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupBackBar()
+        
+        handleTableView()
+            
+
+    }
+    
+    /// 添加返回按钮
+    private func setupBackBar() {
         let backBarItem = (self.navigationController as! JLNavigationViewController).backitem
         self.navigationItem.setLeftBarButton(backBarItem, animated:true)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -45,14 +67,16 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
             self.navigationController?.popViewController(animated: true)
         }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: dispose)
         self.title = "\""+searchText+"\""+" in "+type.description().capitalized+"s"
-        
+    }
+    
+    
+    /// 处理tableview
+    private func handleTableView() {
         self.tableView.backgroundColor = #colorLiteral(red: 0.07058823529, green: 0.07058823529, blue: 0.07058823529, alpha: 1)
         self.tableView.separatorStyle = .none
         
         self.tableView.delegate = nil
         self.tableView.dataSource = nil
-        
-
         
         switch type {
         case .album:
@@ -86,11 +110,10 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
             
         })
         self.tableView.mj_footer?.isHidden = true
-            
-
     }
     
-    func pullData() {
+    /// 下拉拉取数据
+    private func pullData() {
         self.searchManagement.singleSearch(text: self.searchText, type: self.type) { (json, offset, error) in
             DispatchQueue.main.async {
                 if (json != nil) {
@@ -110,8 +133,9 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
             }
         }
     }
-        
-    func getData() {
+    
+    /// 获取数据
+    private func getData() {
         
         searchManagement.singleSearch(text: searchText, type: type) { (json, offset, error) in
 
@@ -131,8 +155,12 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
     }
     
 
-            
-    func bindData(cellId:String, cellType:UITableViewCell.Type) {
+    
+    /// 绑定数据（RX）
+    /// - Parameters:
+    ///   - cellId: cell的id
+    ///   - cellType: cell种类
+    private func bindData(cellId:String, cellType:UITableViewCell.Type) {
         self.data.bind(to: self.tableView.rx.items(cellIdentifier: cellId, cellType: cellType)) {index,item,cell in
             switch item {
                 
@@ -159,13 +187,10 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
         }.disposed(by: dispose)
     }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     
-    func handleJsonData(_ json:JLSearchQuickJSON) -> [JLSearchListSectionItem] {
+    /// 处理json数据
+    /// - Parameter json: json
+    private func handleJsonData(_ json:JLSearchQuickJSON) -> [JLSearchListSectionItem] {
         var items = [JLSearchListSectionItem]()
         switch type {
 
@@ -192,7 +217,6 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
         return items
         
     }
-
 
 }
 

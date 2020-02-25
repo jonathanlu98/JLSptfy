@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 播放器中audio的item
 class JLPlayItem: NSObject {
     let trackItem: Track_Full
     let songUrl: URL
