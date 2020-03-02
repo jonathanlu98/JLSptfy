@@ -11,7 +11,8 @@ import UIKit
 /// 播放器中audio的item
 class JLPlayItem: NSObject {
     let trackItem: Track_Full
-    let songUrl: URL
+    let wySongUrl: URL
+    let wySongId: Int
 
     var isSelected: Bool = false
     var isFirst: Bool = false
@@ -19,16 +20,16 @@ class JLPlayItem: NSObject {
     
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? JLPlayItem {
-            return songUrl == object.songUrl
+            return wySongId == object.wySongId
         }
 
         return false
         
     }
     
-    init(item:Track_Full, songUrl:URL) {
+    init(item:Track_Full, wySongUrl:URL, wySongId:Int) {
         self.trackItem = item
-        self.songUrl = songUrl
-    
+        self.wySongUrl = wySongUrl
+        self.wySongId = wySongId
     }
 }

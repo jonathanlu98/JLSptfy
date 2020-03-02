@@ -121,7 +121,6 @@ class JLSearchManagement: NSObject {
         Alamofire.request(urlString, method: .get, parameters: paras, encoding: URLEncoding.default, headers: headers).responseData { (response) in
             
             guard let data = response.data else {
-                print(String(describing: response.error))
                 if (completedBlock != nil) {
                     self.offset = oldOffset
                     completedBlock?(nil, self.offset, response.error)
@@ -137,7 +136,6 @@ class JLSearchManagement: NSObject {
                 }
 
             } catch {
-                print(error)
                 if (completedBlock != nil) {
                     self.offset = oldOffset
                     completedBlock!(nil, self.offset, error)

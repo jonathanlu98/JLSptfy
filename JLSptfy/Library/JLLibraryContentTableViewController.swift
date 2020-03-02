@@ -12,6 +12,7 @@ import RxSwift
 import RxDataSources
 import MJRefresh
 import YYKit
+import PanModal
 
 
 let Library_ArtistCellID = "JLLibraryListTableViewArtistCell"
@@ -63,7 +64,9 @@ class JLLibraryContentTableViewController: UITableViewController {
             self.tableView.register(UINib.init(nibName: Library_PlaylistCellID, bundle: nil), forCellReuseIdentifier: Library_PlaylistCellID)
             self.bindData(cellId: Library_PlaylistCellID, cellType: JLLibraryListTableViewPlaylistCell.self)
             break
-
+            
+            
+            
         }
         
         YYDispatchQueuePool.init(name: "singeFetchLibrary", queueCount: 10, qos: .userInteractive).queue().async {
@@ -89,6 +92,7 @@ class JLLibraryContentTableViewController: UITableViewController {
 
     func pullData() {
         self.fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: false) { (json, offset, error) in
+            
             DispatchQueue.main.async {
                 if (json != nil) {
                     self.tableView.mj_footer?.endRefreshing()
@@ -116,6 +120,7 @@ class JLLibraryContentTableViewController: UITableViewController {
 
             DispatchQueue.main.async {
                 if (json != nil) {
+                    
                     self.jsons.append(json!)
                     Observable
                         .just(
@@ -177,6 +182,7 @@ class JLLibraryContentTableViewController: UITableViewController {
 
             }
         }.disposed(by: dispose)
+        
     }
 
     
@@ -193,9 +199,35 @@ class JLLibraryContentTableViewController: UITableViewController {
                 items.append(.ArtistSectionItem(item: iitem))
             }
         case .Songs(let item):
+            var tracks:[Track_Full] = []
             for iitem in item.items ?? [] {
                 items.append(.SongSectionItem(item: iitem))
+                tracks.append(iitem.track!)
             }
+           
+            JLMusicFetchManagement.shared.getMusicUrls(items: tracks) { (results) in
+                if results != nil {
+                    
+//                    let dataItems = Array(results!.values)
+//                    let keys = Array(results!.keys)
+                    let dataItems = results?.sorted(by: { (arg0, arg1) -> Bool in
+                        if arg0.key < arg1.key {
+                            return true
+                        }
+                        return false
+                    })
+                    var playItems:[JLPlayItem] = []
+                    
+                    if item.items != nil {
+                        for data in dataItems! {
+                            playItems.append( .init(item: item.items![data.key].track!, wySongUrl: URL.init(string: data.value.url!)!, wySongId: data.value.id!))
+                        }
+                        (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(JLPlayerViewController.init(items: playItems,playlistName: "From My Liked Songs"), animated: true, completion: nil)
+                    }
+
+                }
+            }
+            
         case .Playlists(let item):
             for iitem in item.items ?? [] {
                 items.append(.PlaylistSectionItem(item: iitem))

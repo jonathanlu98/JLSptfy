@@ -106,6 +106,7 @@ class JLLibraryFetchManagement: NSObject {
                     json = .Albums(item: try .init(data: data))
                 case .Tracks:
                     json = .Songs(item: try .init(data: data))
+                    
                 }
                 
                 if (completedBlock != nil) {

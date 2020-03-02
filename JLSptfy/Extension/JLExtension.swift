@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import MarqueeLabel
+import PanModal
 
 extension UITableViewCell {
     
@@ -49,6 +50,73 @@ extension UITableViewCell {
         
     }
 }
+
+
+extension UICollectionViewCell {
+    /**
+     用于cell中图片的获取，使用SDWebImage
+     - Parameter url: 图片的URL
+     - Parameter imageView: 所作用的imageView
+     */
+    func fetchImage(_ url:URL?,imageView:UIImageView) {
+        imageView.alpha = 0
+        if (url != nil) {
+            imageView.sd_setImage(with: url, placeholderImage: nil, options: .retryFailed) { image, error, type, uurl in
+                //对于图片的渐出效果，通过判断图片来源（内存还是磁盘还是刚下载的），来选择效果
+                if (image != nil) {
+                switch type {
+                case .none, .disk, .all:
+                        UIImageView.animate(withDuration: 0.2) {
+                            imageView.alpha = 1
+                        }
+                case .memory:
+                        imageView.alpha = 1
+
+                @unknown default: break
+                    }
+                }
+            }
+        } else {
+            UIImageView.animate(withDuration: 0.2) {
+                imageView.alpha = 1
+            }
+        }
+        
+    }
+}
+
+extension UIImageView {
+    
+    /// 图片加载
+    /// - Parameter url: 图片url
+    func fetchImage(_ url:URL?) {
+        self.alpha = 0
+        if (url != nil) {
+            self.sd_setImage(with: url, placeholderImage: nil, options: .retryFailed) { image, error, type, uurl in
+                //对于图片的渐出效果，通过判断图片来源（内存还是磁盘还是刚下载的），来选择效果
+                if (image != nil) {
+                switch type {
+                case .none, .disk, .all:
+                        UIImageView.animate(withDuration: 0.2) {
+                            self.alpha = 1
+                        }
+                case .memory:
+                        self.alpha = 1
+
+                @unknown default: break
+                    }
+                }
+            }
+        } else {
+            UIImageView.animate(withDuration: 0.2) {
+                self.alpha = 1
+            }
+        }
+        
+    }
+
+}
+
 
 extension  MarqueeLabel {
     /**
@@ -179,3 +247,18 @@ extension URL{
         return url!
     }
 }
+
+extension String {
+    
+    /// 繁体转简体
+    /// - Parameter isEnabled: bool
+    func convert(_ isEnabled:Bool = true)->String {
+        if isEnabled {
+            return ZMChineseConvert.convertTraditional(toSimplified: self)
+        } else {
+            return ""
+        }
+    }
+}
+
+

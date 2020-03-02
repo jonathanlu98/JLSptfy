@@ -9,13 +9,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JLPlayerViewController" customModule="JLSptfy" customModuleProvider="target">
             <connections>
+                <outlet property="imageCollectionView" destination="QgI-ul-lGT" id="DkS-tp-Tcv"/>
                 <outlet property="naLabelContainerView" destination="sai-ax-pkG" id="7lW-VF-YHY"/>
                 <outlet property="nextButton" destination="B4X-iP-M1r" id="Vti-Dm-JxM"/>
                 <outlet property="playButton" destination="k33-4j-6qa" id="qbe-6w-Dr9"/>
                 <outlet property="previousButton" destination="Gne-2s-08W" id="H2O-Fs-SNy"/>
                 <outlet property="progressView" destination="xGp-hA-NPV" id="cju-iw-HWk"/>
                 <outlet property="titleContainerView" destination="BBI-Wi-Xxf" id="44S-Fq-kF4"/>
-                <outlet property="trackImageContainerView" destination="fMg-73-UaK" id="oig-Jx-B9d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k33-4j-6qa" userLabel="Play Button">
-                    <rect key="frame" x="155.5" y="553" width="64" height="64"/>
+                    <rect key="frame" x="155.5" y="536" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="4Rx-Hi-9W5"/>
                         <constraint firstAttribute="height" constant="64" id="nH5-gu-sw9"/>
@@ -35,8 +35,8 @@
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="64" scale="large"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-2s-08W">
-                    <rect key="frame" x="71.5" y="557" width="56" height="56"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-2s-08W">
+                    <rect key="frame" x="71.5" y="540" width="56" height="56"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="56" id="eaY-rS-VlM"/>
                         <constraint firstAttribute="height" constant="56" id="mv6-X6-mz1"/>
@@ -46,8 +46,8 @@
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24" scale="large"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4X-iP-M1r">
-                    <rect key="frame" x="247.5" y="557" width="56" height="56"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4X-iP-M1r">
+                    <rect key="frame" x="247.5" y="540" width="56" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="qNa-1V-Qn7"/>
                         <constraint firstAttribute="width" constant="56" id="qYN-0m-7Al"/>
@@ -58,14 +58,14 @@
                     </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGp-hA-NPV" customClass="JLPlayerProgressView" customModule="JLSptfy" customModuleProvider="target">
-                    <rect key="frame" x="40" y="499" width="295" height="46"/>
+                    <rect key="frame" x="40" y="485" width="295" height="46"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="t6F-BT-jcX"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sai-ax-pkG">
-                    <rect key="frame" x="80" y="40" width="215" height="34"/>
+                    <rect key="frame" x="100" y="40" width="175" height="34"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="8Jh-VW-gCN"/>
@@ -78,44 +78,106 @@
                         <constraint firstAttribute="height" constant="59" id="gdb-1b-KQT"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMg-73-UaK">
-                    <rect key="frame" x="40" y="94" width="295" height="295"/>
-                    <color key="backgroundColor" red="0.15684586759999999" green="0.1568739116" blue="0.15683701629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QgI-ul-lGT">
+                    <rect key="frame" x="0.0" y="94" width="375" height="295"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="UP9-Os-NTq">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yP-7t-sC9">
+                    <rect key="frame" x="32" y="40" width="34" height="34"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="fMg-73-UaK" secondAttribute="height" multiplier="1:1" id="lY2-bz-k0t"/>
+                        <constraint firstAttribute="width" constant="34" id="10K-Jb-mMa"/>
+                        <constraint firstAttribute="height" constant="34" id="dcd-xH-eZm"/>
                     </constraints>
-                </view>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="chevron.down" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                    </state>
+                    <connections>
+                        <action selector="dismissButtonAction:" destination="-1" eventType="touchUpInside" id="Mhr-rJ-RhC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rH-21-wSI">
+                    <rect key="frame" x="309" y="40" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="JQg-eE-pZ2"/>
+                        <constraint firstAttribute="width" constant="34" id="g0z-TA-vfe"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="ellipsis" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4X-an-CAJ">
+                    <rect key="frame" x="32" y="608" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="Te5-Qa-9dg"/>
+                        <constraint firstAttribute="height" constant="34" id="rSh-Oc-X8Y"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="hifispeaker.fill" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fr-xW-oIM">
+                    <rect key="frame" x="309" y="608" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="ADW-FC-5s3"/>
+                        <constraint firstAttribute="height" constant="34" id="d33-gW-N9b"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="list.dash" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="19"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="B4X-iP-M1r" firstAttribute="leading" secondItem="k33-4j-6qa" secondAttribute="trailing" constant="28" id="1HM-fV-aFS"/>
-                <constraint firstItem="fMg-73-UaK" firstAttribute="top" secondItem="sai-ax-pkG" secondAttribute="bottom" constant="20" id="1vs-7a-7Ar"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sai-ax-pkG" secondAttribute="trailing" constant="80" id="KTO-bo-RNC"/>
+                <constraint firstItem="QgI-ul-lGT" firstAttribute="top" secondItem="sai-ax-pkG" secondAttribute="bottom" constant="20" id="2dn-l1-xnw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9Fr-xW-oIM" secondAttribute="trailing" constant="32" id="Jel-4j-2SP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sai-ax-pkG" secondAttribute="trailing" constant="100" id="KTO-bo-RNC"/>
                 <constraint firstItem="k33-4j-6qa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="M2f-5v-pLb"/>
-                <constraint firstItem="sai-ax-pkG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="80" id="QGg-QU-Lqj"/>
-                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="fMg-73-UaK" secondAttribute="bottom" constant="278" id="TKM-7Q-aIA"/>
-                <constraint firstItem="fMg-73-UaK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="750" constant="40" id="TNM-zB-d0j"/>
-                <constraint firstItem="k33-4j-6qa" firstAttribute="top" secondItem="xGp-hA-NPV" secondAttribute="bottom" constant="8" id="Xva-db-zgW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9Fr-xW-oIM" secondAttribute="bottom" constant="25" id="PUE-xN-bUW"/>
+                <constraint firstItem="sai-ax-pkG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="QGg-QU-Lqj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0rH-21-wSI" secondAttribute="trailing" constant="32" id="SU6-yy-Usd"/>
+                <constraint firstItem="6yP-7t-sC9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="UlI-Xl-5CE"/>
+                <constraint firstItem="x4X-an-CAJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="Vr9-AZ-ofU"/>
+                <constraint firstItem="k33-4j-6qa" firstAttribute="top" secondItem="xGp-hA-NPV" secondAttribute="bottom" constant="5" id="Xva-db-zgW"/>
                 <constraint firstItem="xGp-hA-NPV" firstAttribute="trailing" secondItem="BBI-Wi-Xxf" secondAttribute="trailing" id="bbu-FY-l2R"/>
+                <constraint firstItem="QgI-ul-lGT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cN3-Py-HgO"/>
+                <constraint firstItem="BBI-Wi-Xxf" firstAttribute="top" secondItem="QgI-ul-lGT" secondAttribute="bottom" constant="27" id="cpb-Yp-MRD"/>
                 <constraint firstItem="sai-ax-pkG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="elL-pO-39j"/>
-                <constraint firstItem="BBI-Wi-Xxf" firstAttribute="top" secondItem="fMg-73-UaK" secondAttribute="bottom" constant="27" id="fQN-Nd-Ccx"/>
+                <constraint firstItem="sai-ax-pkG" firstAttribute="centerY" secondItem="6yP-7t-sC9" secondAttribute="centerY" id="ie4-hf-Fwa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xGp-hA-NPV" secondAttribute="trailing" constant="40" id="keX-F2-wWn"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="k33-4j-6qa" secondAttribute="bottom" constant="50" id="m93-pr-IXr"/>
+                <constraint firstItem="QgI-ul-lGT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="l7B-ZD-x4R"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="k33-4j-6qa" secondAttribute="bottom" constant="67" id="m93-pr-IXr"/>
                 <constraint firstItem="k33-4j-6qa" firstAttribute="leading" secondItem="Gne-2s-08W" secondAttribute="trailing" constant="28" id="mhP-FO-Mzb"/>
                 <constraint firstItem="xGp-hA-NPV" firstAttribute="leading" secondItem="BBI-Wi-Xxf" secondAttribute="leading" id="nQQ-O7-zdM"/>
+                <constraint firstItem="0rH-21-wSI" firstAttribute="centerY" secondItem="sai-ax-pkG" secondAttribute="centerY" id="ooZ-dI-ys1"/>
                 <constraint firstItem="xGp-hA-NPV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="ssY-Zp-3mN"/>
-                <constraint firstItem="fMg-73-UaK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tLM-y2-gyQ"/>
-                <constraint firstAttribute="bottom" secondItem="B4X-iP-M1r" secondAttribute="bottom" constant="54" id="waA-3E-buv"/>
-                <constraint firstAttribute="bottom" secondItem="Gne-2s-08W" secondAttribute="bottom" constant="54" id="x49-iH-Rj2"/>
-                <constraint firstItem="xGp-hA-NPV" firstAttribute="top" secondItem="BBI-Wi-Xxf" secondAttribute="bottom" constant="24" id="ydq-qQ-LQH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="x4X-an-CAJ" secondAttribute="bottom" constant="25" id="tbB-0h-l7x"/>
+                <constraint firstAttribute="bottom" secondItem="B4X-iP-M1r" secondAttribute="bottom" constant="71" id="waA-3E-buv"/>
+                <constraint firstAttribute="bottom" secondItem="Gne-2s-08W" secondAttribute="bottom" constant="71" id="x49-iH-Rj2"/>
+                <constraint firstItem="xGp-hA-NPV" firstAttribute="top" secondItem="BBI-Wi-Xxf" secondAttribute="bottom" constant="10" id="ydq-qQ-LQH"/>
+                <constraint firstItem="QgI-ul-lGT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zES-d9-R3O"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="144.80000000000001" y="98.50074962518741"/>
+            <point key="canvasLocation" x="141.59999999999999" y="98.50074962518741"/>
         </view>
     </objects>
     <resources>
         <image name="backward.end.fill" catalog="system" width="64" height="50"/>
+        <image name="chevron.down" catalog="system" width="64" height="36"/>
+        <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="forward.end.fill" catalog="system" width="64" height="50"/>
+        <image name="hifispeaker.fill" catalog="system" width="54" height="64"/>
+        <image name="list.dash" catalog="system" width="64" height="42"/>
         <image name="play.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

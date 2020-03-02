@@ -26,7 +26,7 @@ protocol SystemEventListenerProtocol: ListenerBaseProtocol {
 
 // MARK: - PlayerControllerEvent
 
-enum PlayerControllerEventType {
+@objc enum PlayerControllerEventType: Int {
     case none
     case playing
     case paused

@@ -5,6 +5,7 @@ PODS:
   - MarqueeLabel (4.0.2)
   - Masonry (1.1.0)
   - MJRefresh (3.3.1)
+  - PanModal (1.2.5)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - MarqueeLabel
   - Masonry
   - MJRefresh
+  - PanModal
   - RxCocoa
   - RxDataSources
   - RxSwift
@@ -44,6 +46,7 @@ SPEC REPOS:
     - MarqueeLabel
     - Masonry
     - MJRefresh
+    - PanModal
     - RxCocoa
     - RxDataSources
     - RxRelay
@@ -59,6 +62,7 @@ SPEC CHECKSUMS:
   MarqueeLabel: f762aa681ae201f66c1d511858b171f75d83013a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
+  PanModal: 7c5af3ad4fe22b91508040965bebffb89fb607ae
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
@@ -67,6 +71,6 @@ SPEC CHECKSUMS:
   SZAVPlayer: b59ddf6bf07dfc40edef2f46b0c74e5d0a9ade96
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 063eeeb50668510f716d5cca248f1514cfb8de93
+PODFILE CHECKSUM: eb7aef85aeb5815eaeee77f05cba9f8456109b83
 
 COCOAPODS: 1.8.4

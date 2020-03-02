@@ -87,7 +87,6 @@ class JLMeTableViewCell: UITableViewCell {
     
     @objc func WYLoginAction() {
         self.WYloginViewController = JLWYLoginViewController()
-        print(AppDelegate.sharedInstance.window?.rootViewController)
         AppDelegate.sharedInstance.window?.rootViewController?.present(self.WYloginViewController!, animated: true, completion: nil)
         self.WYloginViewController!.updateBlock = { value in
             if value {

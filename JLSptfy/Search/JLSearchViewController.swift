@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
+import PanModal
 
 
 let Search_ArtistCellID = "JLSearchListTableViewArtistCell"
@@ -93,11 +94,11 @@ class JLSearchViewController: UIViewController {
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-    }
-    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.navigationBar.isHidden = false
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,10 +132,12 @@ class JLSearchViewController: UIViewController {
                 
             case .SongSectionItem(let item):
                 DispatchQueue.init(label: "playQueue").async {
-                    JLMusicFetchManagement.shared.getMusicUrl(item: item) { (url, error) in
-                        if (url != nil) {
+                    JLMusicFetchManagement.shared.getMusicUrl(item: item) { (json, error) in
+                        if (json != nil) {
                             DispatchQueue.main.async {
-                                self.present(JLPlayerViewController.init(item: .init(item: item, songUrl: url!)), animated: true, completion: nil)
+
+                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
+                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -151,7 +154,6 @@ class JLSearchViewController: UIViewController {
                 
             case .MoreSectionItem(let type, let text):
                 let moreViewController = JLSearchMoreTableViewController.init(style: .grouped, searchText: text, type: type)
-                
                 self.navigationController?.pushViewController(moreViewController, animated: true)
                 
                 

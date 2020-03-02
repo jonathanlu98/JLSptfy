@@ -44,7 +44,15 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
 
     override func viewDidLoad() {
@@ -185,6 +193,37 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
 
             }
         }.disposed(by: dispose)
+        
+        self.tableView.rx.modelSelected(JLSearchListSectionItem.self).subscribe(onNext: { (item) in
+            switch item {
+                
+            case .ArtistSectionItem(let item):
+                break
+            case .AlbumSectionItem(let item):
+                break
+            case .SongSectionItem(let item):
+                DispatchQueue.init(label: "playQueue").async {
+                    JLMusicFetchManagement.shared.getMusicUrl(item: item) { (json, error) in
+                        if (json != nil) {
+                            DispatchQueue.main.async {
+
+                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
+                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                self.presentAlertController(title: "Error", message: error?.localizedDescription ?? "", buttonTitle: "Ok")
+                            }
+
+                        }
+                    }
+                }
+            case .PlaylistSectionItem(let item):
+                break
+            @unknown default:
+                break
+            }
+            }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: dispose)
     }
 
     

@@ -21,6 +21,7 @@ target 'JLSptfy' do
   #pod 'KDEAudioPlayer'
   pod 'Alamofire', '4.9.1'
   pod 'SZAVPlayer'
+  pod 'PanModal'
   # Pods for JLSptfy
   
 

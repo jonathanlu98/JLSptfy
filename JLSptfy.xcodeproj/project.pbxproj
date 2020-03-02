@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2202E56E24078358005648A0 /* JLPlayerImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202E56C24078358005648A0 /* JLPlayerImageCollectionViewCell.swift */; };
+		2202E56F24078358005648A0 /* JLPlayerImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2202E56D24078358005648A0 /* JLPlayerImageCollectionViewCell.xib */; };
 		220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */; };
 		2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216E09123FA930A00E0FECE /* JLHomeViewController.swift */; };
 		2216E09423FA930A00E0FECE /* JLHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2216E09223FA930A00E0FECE /* JLHomeViewController.xib */; };
@@ -82,6 +84,9 @@
 		22EA42C023F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EA42B823F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib */; };
 		22EA42C123F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA42B923F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift */; };
 		22EA42C223F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA42BA23F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift */; };
+		22EED240240CFD46000FCF7B /* ZMChineseConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EED23C240CFD46000FCF7B /* ZMChineseConvert.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		22EED241240CFD46000FCF7B /* SimplifiedCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 22EED23D240CFD46000FCF7B /* SimplifiedCode.txt */; };
+		22EED242240CFD46000FCF7B /* TraditionalCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 22EED23F240CFD46000FCF7B /* TraditionalCode.txt */; };
 		22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */; };
 		22FE07B12400DAE80080D2EE /* JLMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */; };
 		22FE07B22400DAE80080D2EE /* JLMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FE07B02400DAE80080D2EE /* JLMeViewController.xib */; };
@@ -108,6 +113,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2202E56C24078358005648A0 /* JLPlayerImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		2202E56D24078358005648A0 /* JLPlayerImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLPlayerImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		220BE2A523F29AFE00A7F6DE /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2216E09123FA930A00E0FECE /* JLHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLHomeViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +203,10 @@
 		22EA42B823F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JLLibraryListTableViewPlaylistCell.xib; sourceTree = "<group>"; };
 		22EA42B923F8E76700303201 /* JLLibraryListTableViewAlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLibraryListTableViewAlbumCell.swift; sourceTree = "<group>"; };
 		22EA42BA23F8E76700303201 /* JLLibraryListTableViewPlaylistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLibraryListTableViewPlaylistCell.swift; sourceTree = "<group>"; };
+		22EED23C240CFD46000FCF7B /* ZMChineseConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMChineseConvert.m; sourceTree = "<group>"; };
+		22EED23D240CFD46000FCF7B /* SimplifiedCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimplifiedCode.txt; sourceTree = "<group>"; };
+		22EED23E240CFD46000FCF7B /* ZMChineseConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMChineseConvert.h; sourceTree = "<group>"; };
+		22EED23F240CFD46000FCF7B /* TraditionalCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TraditionalCode.txt; sourceTree = "<group>"; };
 		22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTJSONError.swift; sourceTree = "<group>"; };
 		22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLMeViewController.swift; sourceTree = "<group>"; };
 		22FE07B02400DAE80080D2EE /* JLMeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLMeViewController.xib; sourceTree = "<group>"; };
@@ -270,6 +281,7 @@
 		2230063823F17385005D09ED /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				22EED23B240CFD46000FCF7B /* ChineseConvert */,
 				2234914C240540340030F403 /* JSONModel */,
 				22349149240539190030F403 /* Fetch */,
 				22086D7523FFEC1B006F6A3C /* Player */,
@@ -293,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				226F815223EAFDEE0005FB78 /* JLSearchQuickJSON.swift */,
+				2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */,
 				22D3472C23F7E1E8003A3551 /* AlbumJSONModel.swift */,
 				22D3472E23F7E502003A3551 /* ArtistJSONModel.swift */,
 				22D3473423F7F1B4003A3551 /* TrackJSONModel.swift */,
@@ -317,7 +330,6 @@
 			children = (
 				22EA42B223F8E6E700303201 /* Cell */,
 				2249BFD323F53BFA00397706 /* JLLibraryViewController.swift */,
-				2284F7D223F646ED00D8697E /* JLLibraryQuickJSON.swift */,
 				2284F7D023F6401800D8697E /* JLLibraryContentTableViewController.swift */,
 				2249BFD423F53BFA00397706 /* JLLibraryViewController.xib */,
 			);
@@ -466,6 +478,8 @@
 				22219B0924039DA300D3EE3D /* ProgressView */,
 				22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */,
 				22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */,
+				2202E56C24078358005648A0 /* JLPlayerImageCollectionViewCell.swift */,
+				2202E56D24078358005648A0 /* JLPlayerImageCollectionViewCell.xib */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -509,6 +523,17 @@
 				22EA42B323F8E76600303201 /* JLLibraryListTableViewSongCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		22EED23B240CFD46000FCF7B /* ChineseConvert */ = {
+			isa = PBXGroup;
+			children = (
+				22EED23C240CFD46000FCF7B /* ZMChineseConvert.m */,
+				22EED23D240CFD46000FCF7B /* SimplifiedCode.txt */,
+				22EED23E240CFD46000FCF7B /* ZMChineseConvert.h */,
+				22EED23F240CFD46000FCF7B /* TraditionalCode.txt */,
+			);
+			path = ChineseConvert;
 			sourceTree = "<group>";
 		};
 		22FE07AE2400DA890080D2EE /* Me */ = {
@@ -647,15 +672,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E1AC5F24012542008DF95B /* JLWYLoginViewController.xib in Resources */,
+				22EED241240CFD46000FCF7B /* SimplifiedCode.txt in Resources */,
 				226F814B23EA8ED20005FB78 /* JLSearchViewController.xib in Resources */,
 				22EA42BB23F8E76700303201 /* JLLibraryListTableViewSongCell.xib in Resources */,
 				2244865623ED506400163156 /* JLSearchListTableViewMoreCell.xib in Resources */,
+				22EED242240CFD46000FCF7B /* TraditionalCode.txt in Resources */,
 				2249BFFD23F55FB600397706 /* LICENSE in Resources */,
 				2249BFD623F53BFA00397706 /* JLLibraryViewController.xib in Resources */,
 				226F814023EA85E50005FB78 /* JLLoginViewController.xib in Resources */,
 				22EA42BE23F8E76700303201 /* JLLibraryListTableViewArtistCell.xib in Resources */,
 				226F815123EAE0E10005FB78 /* JLSearchListTableViewArtistCell.xib in Resources */,
 				22E96AB823EC3E6000F63EB7 /* JLSearchListTableViewPlaylistCell.xib in Resources */,
+				2202E56F24078358005648A0 /* JLPlayerImageCollectionViewCell.xib in Resources */,
 				22EA42C023F8E76700303201 /* JLLibraryListTableViewPlaylistCell.xib in Resources */,
 				227174BD23EA6D84003387D5 /* LaunchScreen.storyboard in Resources */,
 				22EA42BF23F8E76700303201 /* JLLibraryListTableViewAlbumCell.xib in Resources */,
@@ -807,6 +835,7 @@
 				2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */,
 				22E1AC5B240119BA008DF95B /* JLWYLoginManagement.swift in Sources */,
 				2284F7D123F6401800D8697E /* JLLibraryContentTableViewController.swift in Sources */,
+				22EED240240CFD46000FCF7B /* ZMChineseConvert.m in Sources */,
 				2249BFF723F55FB600397706 /* PageContentView.swift in Sources */,
 				227174B523EA6D83003387D5 /* ViewController.swift in Sources */,
 				229A298723FE267D004FABA2 /* JLWYMusicJSONModel.swift in Sources */,
@@ -824,6 +853,7 @@
 				226F815023EAE0E10005FB78 /* JLSearchListTableViewArtistCell.swift in Sources */,
 				22FE07B12400DAE80080D2EE /* JLMeViewController.swift in Sources */,
 				22D3473523F7F1B4003A3551 /* TrackJSONModel.swift in Sources */,
+				2202E56E24078358005648A0 /* JLPlayerImageCollectionViewCell.swift in Sources */,
 				2249BFF623F55FB600397706 /* PageViewManager.swift in Sources */,
 				22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */,
 				2244865C23ED9F0100163156 /* JLNavigationViewController.swift in Sources */,
@@ -1021,11 +1051,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JLSptfy",
 				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = JLSptfy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -1036,6 +1068,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64e armv7 arm7s arm64";
 			};
 			name = Debug;
 		};
@@ -1053,11 +1086,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JLSptfy",
 				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = JLSptfy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -1067,6 +1102,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "JLSptfy/JLSptfy-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64e armv7 arm7s arm64";
 			};
 			name = Release;
 		};

@@ -3,3 +3,4 @@
 //
 
 #import <SpotifyiOS/SpotifyiOS.h>
+#import "ZMChineseConvert.h"

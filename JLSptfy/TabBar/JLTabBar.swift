@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import PanModal
 
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
@@ -90,6 +91,20 @@ class JLTabBarController: UITabBarController {
 
 }
 
+
+extension JLTabBarController {
+    /// 解决ipad上的尺寸问题
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        if let presentableController = viewControllerToPresent as? PanModalPresentable, let controller = presentableController as? UIViewController {
+            controller.modalPresentationStyle = .custom
+            controller.modalPresentationCapturesStatusBarAppearance = true
+            controller.transitioningDelegate = PanModalPresentationDelegate.default
+            super.present(controller, animated: flag, completion: completion)
+            return
+        }
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+}
 
 
 

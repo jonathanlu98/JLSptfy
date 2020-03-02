@@ -28,13 +28,13 @@ class JLLibraryViewController: UIViewController {
 
         }
         
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-            self.navigationController?.navigationBar.isHidden = false
-    //        self.navigationBarExtraView.isHidden = true
-    //        self.navigationBarPlayerMenuView.isHidden = true
-
-        }
+//        override func viewWillDisappear(_ animated: Bool) {
+//            super.viewWillDisappear(animated)
+//            self.navigationController?.navigationBar.isHidden = false
+//    //        self.navigationBarExtraView.isHidden = true
+//    //        self.navigationBarPlayerMenuView.isHidden = true
+//
+//        }
     
     override func viewDidLoad() {
         super.viewDidLoad()

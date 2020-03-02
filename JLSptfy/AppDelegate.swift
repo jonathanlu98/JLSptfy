@@ -136,8 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error)
         }
         //让Alamofire中不带缓存请求
-        Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-
+        Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         
         return true
     }
