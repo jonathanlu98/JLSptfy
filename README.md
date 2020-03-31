@@ -1,4 +1,4 @@
-# JLSpify
+# JLSptfy
 ## 模仿spotify的半成项目，使用了RxSwift SwiftJSON Web API请求等框架
 
 > spotify的登录会出现偶尔失败以及资源加载慢的问题（被墙问题）
