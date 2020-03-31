@@ -2,10 +2,12 @@
 
 [![CI Status](https://img.shields.io/travis/eroscai/SZAVPlayer.svg?style=flat)](https://travis-ci.org/eroscai/SZAVPlayer)
 [![Version](https://img.shields.io/cocoapods/v/SZAVPlayer.svg?style=flat)](https://cocoapods.org/pods/SZAVPlayer)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![SPM supported](https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat)](https://swift.org/package-manager/)
 [![License](https://img.shields.io/cocoapods/l/SZAVPlayer.svg?style=flat)](https://cocoapods.org/pods/SZAVPlayer)
 [![Platform](https://img.shields.io/cocoapods/p/SZAVPlayer.svg?style=flat)](https://cocoapods.org/pods/SZAVPlayer)
 
-中文说明请看[这里](https://github.com/eroscai/SZAVPlayer/wiki/iOS%E5%9F%BA%E4%BA%8EAVPlayer%E5%AE%9E%E7%8E%B0%E9%9F%B3%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%92%8C%E7%BC%93%E5%AD%98)
+[中文说明](./README_cn.md)
 
 SZAVPlayer is a lightweight audio/video player library, based on `AVPlayer`, pure-Swift. Support cache and video image output.
 
@@ -16,6 +18,10 @@ SZAVPlayer is a lightweight audio/video player library, based on `AVPlayer`, pur
 - [x] Support video image output, can be drawn to multiple views at the same time.
 - [x] Load AVAsset asynchronously to not blocking the main thread.
 - [x] Support setting cache size munually and also support cleaning.
+
+## Hint
+
+> If you find that always play failed in the simulator, try exit simulator completely and restart again. This is kind of simulator's bug.
 
 ## Usage
 
@@ -33,7 +39,7 @@ SZAVPlayer is a lightweight audio/video player library, based on `AVPlayer`, pur
     ```swift
     // uniqueID is to identify wether they are the same audio. If set to nil will use urlStr to create one.
     let config = SZAVPlayerConfig(urlStr: audio.url, uniqueID: nil)
-audioPlayer.setupPlayer(config: config)
+    audioPlayer.setupPlayer(config: config)
     
     // If you want play video, pass an additional parameter `isVideo`.
     let config = SZAVPlayerConfig(urlStr: video.url, uniqueID: nil, isVideo: true, isVideoOutputEnabled: true/false)
@@ -89,12 +95,16 @@ audioPlayer.setupPlayer(config: config)
     // The setupPlayer function will automatically determine if it has been setup before. 
     // If it is, it will directly call the replacePalyerItem function to replace the new audio.
     audioPlayer.setupPlayer(config: config)
+    ```
     
+    or
+    
+    ```swift
     // or just use this function.
     audioPlayer.replace(urlStr: audio.url, uniqueID: nil)
-    
-    // these two functions have the same effect.
     ```
+    
+    these two functions have the same effect.
     
 5. Enable video image output.
 
@@ -144,8 +154,6 @@ The Example project has implemented a complete play example, including play/paus
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-> If play failed in simulator, try exit simulator completely and restart again.
-
 ## Requirements
 
 - iOS 10.0+
@@ -153,12 +161,29 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+### CocoaPods
+
 SZAVPlayer is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'SZAVPlayer'
 ```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate SZAVPlayer into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "eroscai/SZAVPlayer" ~> 1.1.1
+```
+
+### Swift Package Manager
+
+From Xcode 11, you can use [Swift Package Manager](https://swift.org/package-manager/) to add SZAVPlayer to your project.
+
+- Select File > Swift Packages > Add Package Dependency. Enter https://github.com/eroscai/SZAVPlayer.git in the "Choose Package Repository" dialog.
+- Add `CoreServices.framework` and `AVFoundation.framework` to your project if not added before. (If anyone knows how to do this automatically, please tell me).
 
 ## Author
 

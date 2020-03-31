@@ -11,6 +11,9 @@ import IQKeyboardManagerSwift
 import AVFoundation
 import Alamofire
 import SZAVPlayer
+import SDWebImage
+import YYKit
+
 
 let JLRefreshTokenKey = "refreshToken"
 let JLTokenExpriedDateKey = "tokenExpirationDate"
@@ -91,6 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+//    let JLFetchDispatchQueuePool: YYDispatchQueuePool = .init(name: "JLFetch", queueCount: 32, qos: .utility)
     
     // MARK: UI
     
@@ -100,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootController = JLLoginViewController.init(nibName: "JLLoginViewController", bundle: nil)
     
     /// 第三方播放器
-    var mediaPlayer: SZAVPlayer = SZAVPlayer()
+    var player = JLPlayer.shared
     
     
     //MARK: FUNC
@@ -117,6 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = rootController
         window?.makeKeyAndVisible()
+
         
         
         /*第三方键盘辅助*/
@@ -128,15 +133,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
         
         //AVFoundation中的必须，用于后台激活
-        let session = AVAudioSession.sharedInstance()
-        do {
-            try session.setActive(true)
-            try session.setCategory(AVAudioSession.Category.playback)
-        } catch {
-            print(error)
-        }
+//        let session = AVAudioSession.sharedInstance()
+//        do {
+//            try session.setActive(true)
+//            try session.setCategory(AVAudioSession.Category.playback)
+//        } catch {
+//            print(error)
+//        }
+        
+        SZAVPlayer.activeAudioSession()
+        
         //让Alamofire中不带缓存请求
         Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        
+        //SZAVPlayer不带缓存
+        SZAVPlayerCache.shared.setup(maxCacheSize: 0)
         
         return true
     }
@@ -150,6 +161,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("zoule")
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("laile")
+        guard let viewController = UIViewController.currentViewController() else {
+            return
+        }
+        if viewController.isKind(of: JLPlayerViewController.self) {
+            print("keyi")
+            JLPlayer.shared.viewController.checkView()
+        }
+    }
+    
+    
     
     
 

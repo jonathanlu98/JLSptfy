@@ -18,6 +18,7 @@ class JLPlayItem: NSObject {
     var isFirst: Bool = false
     var isLast: Bool = false
     
+    
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? JLPlayItem {
             return wySongId == object.wySongId

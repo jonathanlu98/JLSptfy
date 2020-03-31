@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class JLPlayerImageCollectionViewCell: UICollectionViewCell {
 
@@ -20,7 +21,7 @@ class JLPlayerImageCollectionViewCell: UICollectionViewCell {
     
     func fetchImage(_ url:URL?) {
         self.imageUrl = url
-        self.imageVIew.fetchImage(url)
+        self.imageVIew.fetchImage(url, nil)
         
     }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2202E56E24078358005648A0 /* JLPlayerImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202E56C24078358005648A0 /* JLPlayerImageCollectionViewCell.swift */; };
 		2202E56F24078358005648A0 /* JLPlayerImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2202E56D24078358005648A0 /* JLPlayerImageCollectionViewCell.xib */; };
+		22094C7F2431ACEA00F9F0F1 /* JLPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22094C7E2431ACEA00F9F0F1 /* JLPlayer.swift */; };
 		220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */; };
 		2216E09323FA930A00E0FECE /* JLHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216E09123FA930A00E0FECE /* JLHomeViewController.swift */; };
 		2216E09423FA930A00E0FECE /* JLHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2216E09223FA930A00E0FECE /* JLHomeViewController.xib */; };
@@ -87,6 +88,7 @@
 		22EED240240CFD46000FCF7B /* ZMChineseConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EED23C240CFD46000FCF7B /* ZMChineseConvert.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		22EED241240CFD46000FCF7B /* SimplifiedCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 22EED23D240CFD46000FCF7B /* SimplifiedCode.txt */; };
 		22EED242240CFD46000FCF7B /* TraditionalCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 22EED23F240CFD46000FCF7B /* TraditionalCode.txt */; };
+		22EF39CB241399000046F08F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF39CA241399000046F08F /* CloudKit.framework */; };
 		22F37D2D23FC12D9007D9AE5 /* SPTJSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */; };
 		22FE07B12400DAE80080D2EE /* JLMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */; };
 		22FE07B22400DAE80080D2EE /* JLMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FE07B02400DAE80080D2EE /* JLMeViewController.xib */; };
@@ -115,6 +117,7 @@
 /* Begin PBXFileReference section */
 		2202E56C24078358005648A0 /* JLPlayerImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayerImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2202E56D24078358005648A0 /* JLPlayerImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLPlayerImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		22094C7E2431ACEA00F9F0F1 /* JLPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLPlayer.swift; sourceTree = "<group>"; };
 		220BE2A523F29AFE00A7F6DE /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2216E09123FA930A00E0FECE /* JLHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLHomeViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 		22EED23D240CFD46000FCF7B /* SimplifiedCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimplifiedCode.txt; sourceTree = "<group>"; };
 		22EED23E240CFD46000FCF7B /* ZMChineseConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMChineseConvert.h; sourceTree = "<group>"; };
 		22EED23F240CFD46000FCF7B /* TraditionalCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TraditionalCode.txt; sourceTree = "<group>"; };
+		22EF39CA241399000046F08F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		22F37D2C23FC12D9007D9AE5 /* SPTJSONError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTJSONError.swift; sourceTree = "<group>"; };
 		22FE07AF2400DAE80080D2EE /* JLMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLMeViewController.swift; sourceTree = "<group>"; };
 		22FE07B02400DAE80080D2EE /* JLMeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JLMeViewController.xib; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				226F813923EA84D40005FB78 /* SpotifyiOS.framework in Frameworks */,
+				22EF39CB241399000046F08F /* CloudKit.framework in Frameworks */,
 				220BE2A923F2A0DB00A7F6DE /* libSDWebImage.a in Frameworks */,
 				66C90559E5D2BBBA9C7A9BA5 /* libPods-JLSptfy.a in Frameworks */,
 			);
@@ -363,6 +368,7 @@
 		226F813723EA84BF0005FB78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22EF39CA241399000046F08F /* CloudKit.framework */,
 				2289FF4023FB97FC0027C429 /* libStreamingKit.a */,
 				220BE2A823F2A0DB00A7F6DE /* libSDWebImage.a */,
 				220BE2A523F29AFE00A7F6DE /* libYYKit.a */,
@@ -475,6 +481,7 @@
 		22BA215E23F018B60018C7A4 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				22094C7E2431ACEA00F9F0F1 /* JLPlayer.swift */,
 				22219B0924039DA300D3EE3D /* ProgressView */,
 				22BA215F23F0190F0018C7A4 /* JLPlayerViewController.swift */,
 				22BA216023F0190F0018C7A4 /* JLPlayerViewController.xib */,
@@ -854,6 +861,7 @@
 				22FE07B12400DAE80080D2EE /* JLMeViewController.swift in Sources */,
 				22D3473523F7F1B4003A3551 /* TrackJSONModel.swift in Sources */,
 				2202E56E24078358005648A0 /* JLPlayerImageCollectionViewCell.swift in Sources */,
+				22094C7F2431ACEA00F9F0F1 /* JLPlayer.swift in Sources */,
 				2249BFF623F55FB600397706 /* PageViewManager.swift in Sources */,
 				22BA216123F0190F0018C7A4 /* JLPlayerViewController.swift in Sources */,
 				2244865C23ED9F0100163156 /* JLNavigationViewController.swift in Sources */,

@@ -87,27 +87,41 @@ extension UICollectionViewCell {
 
 extension UIImageView {
     
+    typealias fetchImageCompletionBlock = (UIImage?, Bool) -> Void
+    
     /// 图片加载
     /// - Parameter url: 图片url
-    func fetchImage(_ url:URL?) {
+    func fetchImage(_ url:URL?,_ completionBlock: fetchImageCompletionBlock?) {
         self.alpha = 0
         if (url != nil) {
             self.sd_setImage(with: url, placeholderImage: nil, options: .retryFailed) { image, error, type, uurl in
                 //对于图片的渐出效果，通过判断图片来源（内存还是磁盘还是刚下载的），来选择效果
                 if (image != nil) {
-                switch type {
-                case .none, .disk, .all:
-                        UIImageView.animate(withDuration: 0.2) {
+                    if (completionBlock != nil) {
+                        completionBlock!(image,true)
+                    }
+                    
+                    switch type {
+                    case .none, .disk, .all:
+                            UIImageView.animate(withDuration: 0.2) {
+                                self.alpha = 1
+                            }
+                    case .memory:
                             self.alpha = 1
-                        }
-                case .memory:
-                        self.alpha = 1
 
-                @unknown default: break
+                    @unknown default: break
+                        }
+                } else {
+                    if (completionBlock != nil) {
+                        completionBlock!(nil,false)
                     }
                 }
             }
         } else {
+            
+            if (completionBlock != nil) {
+                completionBlock!(nil,false)
+            }
             UIImageView.animate(withDuration: 0.2) {
                 self.alpha = 1
             }
@@ -261,4 +275,20 @@ extension String {
     }
 }
 
-
+extension UIViewController {
+    
+    /// 当前显示得viewController
+    /// - Parameter base: UIApplication.shared.keyWindow?.rootViewController
+    class func currentViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return currentViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            return currentViewController(base: tab.selectedViewController)
+        }
+        if let presented = base?.presentedViewController {
+            return currentViewController(base: presented)
+        }
+        return base
+    }
+}

@@ -279,14 +279,15 @@ class JLMusicFetchManagement: NSObject {
     func searchIds(items:[Track_Full], completedBlock:JLSearchIdsCompletionBlock?) {
         var results: [Int:Int] = [:]
         let group = DispatchGroup()
-
-        for  offset in 0...(items.count-1) {
-            group.enter()
-            searchId(item: items[offset]) { (id, error) in
-                if let result = id {
-                    results.updateValue(result, forKey: offset)
+        if !items.isEmpty {
+            for  offset in 0...(items.count-1) {
+                group.enter()
+                searchId(item: items[offset]) { (id, error) in
+                    if let result = id {
+                        results.updateValue(result, forKey: offset)
+                    }
+                    group.leave()
                 }
-                group.leave()
             }
         }
         

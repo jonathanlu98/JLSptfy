@@ -17,7 +17,7 @@ class JLPlayerProgressView: UIView {
     public weak var delegate: JLPlayerProgressViewDelegate?
     private(set) public var isDraggingSlider: Bool = false
 
-    private var progressSlider: UISlider = {
+    private(set) public var progressSlider: UISlider = {
         let slider = UISlider()
         let thumbImage = UIImage.init(systemName: "circle.fill")
         slider.setThumbImage(thumbImage?.byResize(to: .init(width: 10, height: 10))?.withTintColor(#colorLiteral(red: 0.1137254902, green: 0.8392156863, blue: 0.3764705882, alpha: 1)), for: .normal)
@@ -119,6 +119,7 @@ class JLPlayerProgressView: UIView {
         minTimeLabel.text = minuteAndSecondStr(second: currentTime)
         maxTimeLabel.text = minuteAndSecondStr(second: totalTime)
         progressSlider.value = Float(currentTime)
+        
         progressSlider.maximumValue = Float(totalTime)
     }
 

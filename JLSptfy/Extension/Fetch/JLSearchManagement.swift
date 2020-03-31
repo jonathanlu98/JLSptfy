@@ -87,6 +87,7 @@ class JLSearchManagement: NSObject {
                 let json = try JLSearchQuickJSON.init(data: data)
                 if (completedBlock != nil) {
                     completedBlock!(json,nil)
+                    
                 }
 
             } catch {

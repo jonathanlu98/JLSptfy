@@ -106,15 +106,20 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
         case .all: break
 
         }
-
-
-        YYDispatchQueuePool.init(name: "singeSearch", queueCount: 10, qos: .userInteractive).queue().async {
+//        YYDispatchQueuePool.init(name: "singeSearch", queueCount: 10, qos: .userInteractive).queue().async {
+//            self.getData()
+//        }
+        
+//        AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
             self.getData()
-        }
+//        }
         self.tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: {
-            YYDispatchQueuePool.init(name: "searchPulldata", queueCount: 10, qos: .userInteractive).queue().async {
+//            YYDispatchQueuePool.init(name: "searchPulldata", queueCount: 10, qos: .userInteractive).queue().async {
+//                self.pullData()
+//            }
+//            AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
                 self.pullData()
-            }
+//            }
             
         })
         self.tableView.mj_footer?.isHidden = true
@@ -123,22 +128,22 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
     /// 下拉拉取数据
     private func pullData() {
         self.searchManagement.singleSearch(text: self.searchText, type: self.type) { (json, offset, error) in
-            DispatchQueue.main.async {
-                if (json != nil) {
-                    self.tableView.mj_footer?.endRefreshing()
-                    self.jsons.append(json!)
-                    let items = self.handleJsonData(json!)
-                    if items.count < self.searchManagement.limit {
-                        self.tableView.mj_footer?.isHidden = true
-                    }
-                    Observable.just(items).delay(TimeInterval(0.2), scheduler: MainScheduler.instance).asDriver(onErrorDriveWith: Driver.empty()).drive(onNext: { (items) in
-                        self.data.accept(self.data.value + items)
-                    }, onCompleted: nil, onDisposed: nil).disposed(by: self.dispose)
-                    
-                } else {
-                    self.tableView.mj_footer?.endRefreshing()
+
+            if (json != nil) {
+                self.tableView.mj_footer?.endRefreshing()
+                self.jsons.append(json!)
+                let items = self.handleJsonData(json!)
+                if items.count < self.searchManagement.limit {
+                    self.tableView.mj_footer?.isHidden = true
                 }
+                Observable.just(items).delay(TimeInterval(0.2), scheduler: MainScheduler.instance).asDriver(onErrorDriveWith: Driver.empty()).drive(onNext: { (items) in
+                    self.data.accept(self.data.value + items)
+                }, onCompleted: nil, onDisposed: nil).disposed(by: self.dispose)
+                
+            } else {
+                self.tableView.mj_footer?.endRefreshing()
             }
+
         }
     }
     
@@ -147,18 +152,18 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
         
         searchManagement.singleSearch(text: searchText, type: type) { (json, offset, error) in
 
-            DispatchQueue.main.async {
-                if (json != nil) {
-                    self.jsons.append(json!)
-                    Observable
-                        .just(
-                            self.handleJsonData(json!)
-                        )
-                        .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
-                        .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
-                    self.tableView.mj_footer?.isHidden = false
-                }
+
+            if (json != nil) {
+                self.jsons.append(json!)
+                Observable
+                    .just(
+                        self.handleJsonData(json!)
+                    )
+                    .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+                    .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
+                self.tableView.mj_footer?.isHidden = false
             }
+
         }
     }
     
@@ -202,13 +207,15 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
             case .AlbumSectionItem(let item):
                 break
             case .SongSectionItem(let item):
-                DispatchQueue.init(label: "playQueue").async {
+//                AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
                     JLMusicFetchManagement.shared.getMusicUrl(item: item) { (json, error) in
                         if (json != nil) {
                             DispatchQueue.main.async {
 
-                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
-                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
+//                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
+//                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
+//
+                                JLPlayer.shared.viewController.replaceMusic(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -217,7 +224,23 @@ class JLSearchMoreTableViewController: UITableViewController,UIGestureRecognizer
 
                         }
                     }
-                }
+//                }
+//                DispatchQueue.init(label: "playQueue").async {
+//                    JLMusicFetchManagement.shared.getMusicUrl(item: item) { (json, error) in
+//                        if (json != nil) {
+//                            DispatchQueue.main.async {
+//
+//                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
+//                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
+//                            }
+//                        } else {
+//                            DispatchQueue.main.async {
+//                                self.presentAlertController(title: "Error", message: error?.localizedDescription ?? "", buttonTitle: "Ok")
+//                            }
+//
+//                        }
+//                    }
+//                }
             case .PlaylistSectionItem(let item):
                 break
             @unknown default:

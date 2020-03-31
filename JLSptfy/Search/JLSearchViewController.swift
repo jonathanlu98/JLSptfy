@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import PanModal
+import YYKit
 
 
 let Search_ArtistCellID = "JLSearchListTableViewArtistCell"
@@ -131,13 +132,13 @@ class JLSearchViewController: UIViewController {
                 break
                 
             case .SongSectionItem(let item):
-                DispatchQueue.init(label: "playQueue").async {
+//                AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
                     JLMusicFetchManagement.shared.getMusicUrl(item: item) { (json, error) in
                         if (json != nil) {
                             DispatchQueue.main.async {
-
-                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
-                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
+                                
+                                JLPlayer.shared.viewController.replaceMusic(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
+                                
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -146,7 +147,23 @@ class JLSearchViewController: UIViewController {
 
                         }
                     }
-                }
+//                }
+//                DispatchQueue.init(label: "playQueue").async {
+//                    JLMusicFetchManagement.shared.getMusicUrl(item: item) { (json, error) in
+//                        if (json != nil) {
+//                            DispatchQueue.main.async {
+//
+//                                let viewController = JLPlayerViewController.init(item: .init(item: item, wySongUrl: URL.init(string: (json!.url)!)!, wySongId: (json!.id)!))
+//                                (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(viewController, animated: true, completion: nil)
+//                            }
+//                        } else {
+//                            DispatchQueue.main.async {
+//                                self.presentAlertController(title: "Error", message: error?.localizedDescription ?? "", buttonTitle: "Ok")
+//                            }
+//
+//                        }
+//                    }
+//                }
                 
             case .PlaylistSectionItem(let item):
                 
@@ -232,30 +249,53 @@ extension JLSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if (searchBar.text != nil && searchBar.text != "") {
             let text = searchBar.text!
-            DispatchQueue.init(label: "mutiSearch").async {
-                
+            
+//            AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
                 self.searchManagement.mutiSearch(text: text) { (json, error) in
                     
                     self.json = json
-                    DispatchQueue.main.async {
-                        if (json != nil) {
-                            Observable
-                                .just(
-                                    self.handleSectionData(json: json!, limit: 5, text: text)
-                                )
-                                .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
-                                .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
-                        } else {
-                            Observable
+
+                    if (json != nil) {
+                        Observable
                             .just(
-                                []
+                                self.handleSectionData(json: json!, limit: 5, text: text)
                             )
                             .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
                             .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
-                        }
+                    } else {
+                        Observable
+                        .just(
+                            []
+                        )
+                        .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+                        .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
                     }
                 }
-            }
+//            }
+//            DispatchQueue.init(label: "mutiSearch").async {
+//
+//                self.searchManagement.mutiSearch(text: text) { (json, error) in
+//
+//                    self.json = json
+//                    DispatchQueue.main.async {
+//                        if (json != nil) {
+//                            Observable
+//                                .just(
+//                                    self.handleSectionData(json: json!, limit: 5, text: text)
+//                                )
+//                                .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+//                                .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
+//                        } else {
+//                            Observable
+//                            .just(
+//                                []
+//                            )
+//                            .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+//                            .asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
+//                        }
+//                    }
+//                }
+//            }
         }
     }
     

@@ -16,13 +16,14 @@ import SDWebImage
 import SZAVPlayer
 import PanModal
 import RxDataSources
+import MediaPlayer
 
 class JLPlayerViewController: UIViewController {
     
 
     
-
-    @IBOutlet weak var naLabelContainerView: UIView!
+    
+    @IBOutlet private weak var naLabelContainerView: UIView!
     
     /// 标头label
     private var naLabel:MarqueeLabel = {
@@ -32,10 +33,10 @@ class JLPlayerViewController: UIViewController {
     }()
     
 
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet private weak var imageCollectionView: UICollectionView!
     
     
-    @IBOutlet weak var titleContainerView: UIView!
+    @IBOutlet private weak var titleContainerView: UIView!
     
     private var titleLabel: MarqueeLabel! = {
         let label = MarqueeLabel.init(frame: .zero, rate: 30, fadeLength: 0).shouldCancelAutoresizing(true)
@@ -50,71 +51,149 @@ class JLPlayerViewController: UIViewController {
         label.configLabel(font: .systemFont(ofSize: 16, weight: .medium), textColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7), textAlignment: .left, type: .leftRight)
         return label
     }()
-    
 
     
-    @IBOutlet weak var progressView: JLPlayerProgressView!
+    @IBOutlet weak private var progressView: JLPlayerProgressView!
     
-    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak private var playButton: UIButton!
     
-    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak private var previousButton: UIButton!
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak private var nextButton: UIButton!
     
     
-    private lazy var mediaPlayer = AppDelegate.sharedInstance.mediaPlayer
     
-    private var audios:[JLPlayItem] = []
+    private(set) lazy var mediaPlayer = JLPlayer.shared.mediaPlayer
     
-    private var currentAudio: JLPlayItem?
+    private(set) var playListName = ""
+    
+    private(set) var audios:[JLPlayItem] = []
+    
+    @objc dynamic private(set) var currentAudio: JLPlayItem? = nil
     
     private var isPaused: Bool = false
     
-    @objc dynamic private var playerControllerEvent: PlayerControllerEventType = .none {
+    private(set) var shouldUpdateCollectionView: Bool = false
+    
+    
+    @objc dynamic private(set) var playerControllerEvent: PlayerControllerEventType = .none {
         didSet {
             ListenerCenter.shared.notifyPlayerControllerEventDetected(event: playerControllerEvent)
         }
     }
     
-    let data = BehaviorRelay.init(value: [JLPlayItem]())
+    private let data = BehaviorRelay.init(value: [JLPlayItem]())
     
     
-    @objc dynamic private var currentIndex: IndexPath = .init(row: 0, section: 0)
+    @objc dynamic private(set) var currentIndex: IndexPath = .init(row: 0, section: 0)
     
     
-    let dispose = DisposeBag()
+    private let dispose = DisposeBag()
     
+    
+    
+    /// Returns the default singleton instance.
+    @objc public static let shared = JLPlayerViewController.init(nibName: "JLPlayerViewController", bundle: nil)
     
     
     /// 初始化播放器（单曲）
     /// - Parameter item: playitem
-    init(item: JLPlayItem) {
+    private init(item: JLPlayItem) {
         self.currentAudio = item
         self.audios = [item]
         super.init(nibName: "JLPlayerViewController", bundle: nil)
+        
     }
     
     /// 初始化播放器（来自列表）
     /// - Parameter items: items
-    init(items: [JLPlayItem],playlistName:String) {
+    private init(items: [JLPlayItem],playListName:String) {
         self.currentAudio = items.first!
         self.audios = items
-        self.naLabel.text = playlistName
+        self.playListName = playListName
+        self.naLabel.text = playListName
         super.init(nibName: "JLPlayerViewController", bundle: nil)
+
+    }
+    
+    override private init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     
-    /// 插播
+    
+    /// 插播,不影响当前的播放
     /// - Parameter item: item
     public func addToQueue(item: JLPlayItem) {
+        
         self.audios.insert(item, at: 1)
-        Observable.just(audios).delay(TimeInterval(0.2), scheduler: MainScheduler.instance).asDriver(onErrorDriveWith: Driver.empty()).drive(self.data).disposed(by: self.dispose)
+        Observable
+            .just(audios)
+            .delay(TimeInterval(0), scheduler: MainScheduler.instance)
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(self.data)
+            .disposed(by: self.dispose)
+
+    }
+    
+    /// 播放单曲，会移出之前的列表
+    /// - Parameter item: item
+    public func replaceMusic(item: JLPlayItem, from viewController: UIViewController = (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController)) {
+        self.currentAudio = item
+        self.audios = [item]
+        self.playListName = ""
+        self.currentIndex = .init(row: 0, section: 0)
+        self.playerControllerEvent = .none
+        
+        viewController.present(self, animated: true, completion: nil)
+        setupImageCollectionView()
+//        Observable
+//            .just(audios)
+//            .delay(TimeInterval(0), scheduler: MainScheduler.instance)
+//            .asDriver(onErrorDriveWith: Driver.empty())
+//            .drive(self.data)
+//            .disposed(by: self.dispose)
+        
+        updateView()
+        isPaused = false
+        playAudio()
+        
+
         
     }
     
+    /// 播放列表
+    /// - Parameters:
+    ///   - items: items
+    ///   - playListName: playListName
+    public func playList(items: [JLPlayItem],playListName:String, from viewController: UIViewController = (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController)) {
+        self.currentAudio = items.first
+        self.audios = items
+        self.playListName = playListName
+        self.currentIndex = .init(row: 0, section: 0)
+        self.playerControllerEvent = .none
+        
+        viewController.present(self, animated: true, completion: nil)
+        setupImageCollectionView()
+        
+//        Observable
+//            .just(audios)
+//            .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+//            .asDriver(onErrorDriveWith: Driver.empty())
+//            .drive(self.data)
+//            .disposed(by: self.dispose)
+        
+        updateView()
+        isPaused = false
+        playAudio()
+
+    }
+
     
     
-    override var prefersStatusBarHidden: Bool {
+    
+    
+    override internal var prefersStatusBarHidden: Bool {
         return true
     }
 
@@ -124,23 +203,32 @@ class JLPlayerViewController: UIViewController {
     }
     
     
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkView()
+    }
+    
+    public func checkView() {
+        
+        shouldUpdateCollectionView = true
+        self.imageCollectionView.scrollToItem(at: .init(item: self.currentIndex.row, section: 0), at: .centeredHorizontally, animated: true)
+        updateView()
+        shouldUpdateCollectionView = false
+        
+    }
     
     
-    override func viewDidLoad() {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         
-        SZAVPlayerCache.shared.setup(maxCacheSize: 1000)
-
-        currentAudio = audios.first
-        
-        setupUI()
     }
     
     
     
     private func setupUI() {
+        
         naLabelContainerView.addSubview(naLabel)
         titleContainerView.addSubview(titleLabel)
         titleContainerView.addSubview(artistLabel)
@@ -167,6 +255,7 @@ class JLPlayerViewController: UIViewController {
             return
         }
         
+        naLabel.text = playListName
         titleLabel.text = audio.trackItem.name
         var artistsString = ""
         if audio.trackItem.artists != nil {
@@ -192,13 +281,15 @@ class JLPlayerViewController: UIViewController {
         
         data.bind(to: self.imageCollectionView.rx.items(cellIdentifier: "JLPlayerImageCollectionViewCell", cellType: JLPlayerImageCollectionViewCell.self)) {index,element,cell in
             cell.item = element
-            cell.fetchImage(URL.init(string: element.trackItem.album?.images?.first?.url ?? ""))
+            cell.imageVIew.fetchImage(URL.init(string: element.trackItem.album?.images?.first?.url ?? "")) { image, succeed in
+                self.configNowPlayingCenter()
+            }
             
         }.disposed(by: dispose)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: dispose)
         
-        
+
 
 
         
@@ -207,8 +298,8 @@ class JLPlayerViewController: UIViewController {
     
     
     
-    /// 对于旋转m屏幕时，调整cell的尺寸
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    /// 对于旋转屏幕时，调整cell的尺寸
+    override internal func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .init(width: self.imageCollectionView.width, height: self.imageCollectionView.height)
         layout.minimumLineSpacing = 0
@@ -247,6 +338,7 @@ class JLPlayerViewController: UIViewController {
     
     
     private func setupButtonAction() {
+        
         playButton.addTarget(self, action: #selector(handlePlayBtnClick), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(handleNextBtnClick), for: .touchUpInside)
         previousButton.addTarget(self, action: #selector(handlePreviousBtnClick), for: .touchUpInside)
@@ -255,6 +347,7 @@ class JLPlayerViewController: UIViewController {
             guard let value = index?.row else {
                 return
             }
+            
             if self.audios.count > 1 {
                 if value == self.audios.count-1 {
                     self.nextButton.isEnabled = false
@@ -270,7 +363,7 @@ class JLPlayerViewController: UIViewController {
                 self.nextButton.isEnabled = false
                 self.previousButton.isEnabled = false
             }
-
+            
         }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: dispose)
         
         
@@ -278,10 +371,11 @@ class JLPlayerViewController: UIViewController {
             guard let status = type else {
                 return
             }
+
             switch status {
-                case .none, .paused ,.failed:
+            case .none, .paused , .failed, .stalled:
                     self.playButton.setImage(UIImage.init(systemName: "play.circle.fill"), for: .normal)
-                case .playing, .stalled:
+                case .playing:
                     self.playButton.setImage(UIImage.init(systemName: "pause.circle.fill"), for: .normal)
             }
             }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: dispose)
@@ -294,34 +388,41 @@ class JLPlayerViewController: UIViewController {
 
 
 extension JLPlayerViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return .init(width: collectionView.width, height: collectionView.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    
+    internal func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        guard let index = collectionView.indexPathsForVisibleItems.first else {
-            return
-        }
-        if currentIndex != index {
-            if currentIndex > index {
-                print("previous")
-                self.currentAudio = self.audios[index.row]
-                progressView.reset()
-                playAudio()
-                updateView()
-                
-            } else {
-                print("next")
-                self.currentAudio = self.audios[index.row]
-                progressView.reset()
-                playAudio()
-                updateView()
-                
+        
+        if !shouldUpdateCollectionView {
+            isPaused = false
+            
+            guard let index = collectionView.indexPathsForVisibleItems.first else {
+                return
             }
-            currentIndex = index
+            if currentIndex != index {
+                if currentIndex > index {
+                    print("previous")
+                    progressView.reset()
+                    self.currentAudio = self.audios[index.row]
+                    playAudio()
+                    updateView()
+                    
+                } else {
+                    print("next")
+                    progressView.reset()
+                    self.currentAudio = self.audios[index.row]
+                    playAudio()
+                    updateView()
+                    
+                }
+                currentIndex = index
+            }
         }
+
     }
     
 }
@@ -331,14 +432,15 @@ extension JLPlayerViewController: UICollectionViewDelegateFlowLayout {
 
 extension JLPlayerViewController: JLPlayerProgressViewDelegate {
 
-    func progressView(_ progressView: JLPlayerProgressView, didChanged currentTime: Float64) {
+    internal func progressView(_ progressView: JLPlayerProgressView, didChanged currentTime: Float64) {
         mediaPlayer.seekPlayerToTime(time: currentTime, completion: { succeed in
             if succeed {
                 self.playerControllerEvent  = .playing
+                self.configNowPlayingCenter()
                 
             } else {
+                self.playerControllerEvent = .paused
                 self.pauseAudio()
-                
             }
         })
 
@@ -355,8 +457,7 @@ extension JLPlayerViewController: JLPlayerProgressViewDelegate {
 extension JLPlayerViewController {
     
     
-    
-    @objc func handlePlayBtnClick() {
+    @objc private func handlePlayBtnClick() {
         if playerControllerEvent == .playing {
             pauseAudio()
         } else {
@@ -365,14 +466,16 @@ extension JLPlayerViewController {
         }
     }
 
-    @objc func handleNextBtnClick() {
+    @objc private func handleNextBtnClick() {
         isPaused = false
         self.imageCollectionView.scrollToItem(at: .init(item: self.currentIndex.row+1, section: 0), at: .right, animated: true)
+        
     }
 
-    @objc func handlePreviousBtnClick() {
+    @objc private func handlePreviousBtnClick() {
         isPaused = false
         self.imageCollectionView.scrollToItem(at: .init(item: self.currentIndex.row-1, section: 0), at: .left, animated: true)
+        
     }
 
     private func handlePlayEnd() {
@@ -395,36 +498,34 @@ extension JLPlayerViewController {
         if isPaused {
             isPaused = false
             mediaPlayer.play()
+            
         } else {
             mediaPlayer.pause()
             let config = SZAVPlayerConfig(urlStr: audio.wySongUrl.absoluteString, uniqueID: String(audio.wySongId))
             mediaPlayer.setupPlayer(config: config)
         }
+        
         playerControllerEvent = .playing
+        
+        self.configNowPlayingCenter()
+        
+        
     }
 
     private func pauseAudio() {
         isPaused = true
         mediaPlayer.pause()
+        
         playerControllerEvent = .paused
+        
+        self.configNowPlayingCenter()
+        
+        
     }
     
-//    private func findAudio(currentAudio: JLPlayItem, findNext: Bool) -> JLPlayItem? {
-//        let playlist = audios
-//        let audios = findNext ? playlist : playlist.reversed()
-//        var currentAudioDetected: Bool = false
-//        for audio in audios {
-//            if currentAudioDetected {
-//                return audio
-//            } else if audio == currentAudio {
-//                currentAudioDetected = true
-//            }
-//        }
-//
-//        return nil
-//    }
+
     
-    @IBAction func dismissButtonAction(_ sender: Any) {
+    @IBAction private func dismissButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -435,76 +536,154 @@ extension JLPlayerViewController {
 
 extension JLPlayerViewController: SZAVPlayerDelegate {
     
-    func avplayer(_ avplayer: SZAVPlayer, didReceived remoteCommand: SZAVPlayerRemoteCommand) -> Bool {
-        return false
+    internal func avplayer(_ avplayer: SZAVPlayer, didReceived remoteCommand: SZAVPlayerRemoteCommand) -> Bool {
+        
+        switch remoteCommand {
+            
+        case .play:
+            JLPlayer.shared.viewController.playAudio()
+        case .pause:
+            JLPlayer.shared.viewController.pauseAudio()
+        case .next:
+            if currentIndex.row >= 0 && currentIndex.row < audios.count-1 {
+                currentIndex.row += 1
+                isPaused = false
+                progressView.reset()
+                currentAudio = audios[currentIndex.row]
+                
+                playAudio()
+                updateView()
+            }
+
+        case .previous:
+            if currentIndex.row > 0 && currentIndex.row <= audios.count-1 {
+                currentIndex.row -= 1
+                isPaused = false
+                progressView.reset()
+                currentAudio = audios[currentIndex.row]
+                
+                playAudio()
+                updateView()
+            }
+        }
+        
+        return true
     }
     
-    func avplayer(_ avplayer: SZAVPlayer, didChanged status: SZAVPlayerStatus) {
+    internal func avplayer(_ avplayer: SZAVPlayer, didChanged status: SZAVPlayerStatus) {
         switch status {
         case .readyToPlay:
             SZLogInfo("ready to play")
-            if playerControllerEvent == .playing {
-                mediaPlayer.play()
-            }
+
+            playerControllerEvent = .playing
+            isPaused = false
+            mediaPlayer.play()
+            configNowPlayingCenter()
+
         case .playEnd:
             SZLogInfo("play end")
+            
+            playerControllerEvent = .paused
             handlePlayEnd()
+            
         case .loading:
             SZLogInfo("loading")
+            
+            playerControllerEvent = .playing
+            
         case .loadingFailed:
             SZLogInfo("loading failed")
-            playAudio()
-            updateView()
+            
+            self.playerControllerEvent = .failed
+            avplayer.pause()
+            
         case .bufferBegin:
             SZLogInfo("buffer begin")
+            
         case .bufferEnd:
             SZLogInfo("buffer end")
-            if playerControllerEvent == .stalled {
-                mediaPlayer.play()
-            }
+            
+//            playerControllerEvent = .playing
+//            isPaused = false
+//            mediaPlayer.play()
+//            configNowPlayingCenter()
+
         case .playbackStalled:
             SZLogInfo("playback stalled")
+            
             playerControllerEvent = .stalled
+            
         }
+        
+
+    }
+    
+    internal func avplayer(_ avplayer: SZAVPlayer, refreshed currentTime: Float64, loadedTime: Float64, totalTime: Float64) {
+        
+        
+        if playerControllerEvent == .playing {
+            progressView.update(currentTime: currentTime, totalTime: totalTime)
+        }
+
         
     }
     
-    func avplayer(_ avplayer: SZAVPlayer, refreshed currentTime: Float64, loadedTime: Float64, totalTime: Float64) {
-        progressView.update(currentTime: currentTime, totalTime: totalTime)
+    
+    
+    
+}
+
+
+//MARK: configNowPlayingCenter
+
+extension JLPlayerViewController {
+
+    
+    func configNowPlayingCenter() {
+
+        print("config")
+        
+        if let imageUrl = currentAudio?.trackItem.album?.images?.first?.url {
+            SDWebImageManager.shared.loadImage(with: URL.init(string: imageUrl), options: .retryFailed, progress: nil) { (image, _, _, _, _, _) in
+                
+                if (image != nil) {
+                    self.mediaPlayer.setupNowPlaying(title: self.currentAudio?.trackItem.name ?? "JLSptfy", description: self.currentAudio?.trackItem.artists?.first?.name ?? "", image: image ?? UIImage())
+                }
+
+            }
+        }
+
     }
-    
-    
-    
-    
+
 }
 
 extension JLPlayerViewController: PanModalPresentable {
-var panScrollable: UIScrollView? {
-    return nil
-}
-var topOffset: CGFloat {
-    return 0.0
-}
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    var topOffset: CGFloat {
+        return 0.0
+    }
 
-var springDamping: CGFloat {
-    return 1.0
-}
+    var springDamping: CGFloat {
+        return 1.0
+    }
 
-var transitionDuration: Double {
-    return 0.4
-}
+    var transitionDuration: Double {
+        return 0.4
+    }
 
-var transitionAnimationOptions: UIView.AnimationOptions {
-    return [.allowUserInteraction, .beginFromCurrentState]
-}
+    var transitionAnimationOptions: UIView.AnimationOptions {
+        return [.allowUserInteraction, .beginFromCurrentState]
+    }
 
-var shouldRoundTopCorners: Bool {
-    return false
-}
+    var shouldRoundTopCorners: Bool {
+        return false
+    }
 
-var showDragIndicator: Bool {
-    return false
-}
+    var showDragIndicator: Bool {
+        return false
+    }
 
 }
     

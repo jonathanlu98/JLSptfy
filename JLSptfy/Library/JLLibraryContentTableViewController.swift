@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import MJRefresh
-import YYKit
 import PanModal
 
 
@@ -21,6 +20,7 @@ let Library_PlaylistCellID = "JLLibraryListTableViewPlaylistCell"
 let Library_SongCellID = "JLLibraryListTableViewSongCell"
 
 
+
 class JLLibraryContentTableViewController: UITableViewController {
     let JLLibraryContentType: JLLibraryContentType
     var fetchManagement = JLLibraryFetchManagement()
@@ -28,9 +28,11 @@ class JLLibraryContentTableViewController: UITableViewController {
     var jsons:[JLLibraryQuickJSON] = []
     var contentItems = BehaviorRelay<[JLLibraryListSectionItem]>.init(value: [JLLibraryListSectionItem]())
     
+    
     init(style: UITableView.Style, type: JLLibraryContentType) {
         self.JLLibraryContentType = type
         super.init(style: style)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -69,22 +71,31 @@ class JLLibraryContentTableViewController: UITableViewController {
             
         }
         
-        YYDispatchQueuePool.init(name: "singeFetchLibrary", queueCount: 10, qos: .userInteractive).queue().async {
+//        YYDispatchQueuePool.init(name: "singeFetchLibrary", queueCount: 10, qos: .userInteractive).queue().async {
+//            self.getData()
+//        }
+//        AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
             self.getData()
-        }
+//        }
         
         self.tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: {
-            YYDispatchQueuePool.init(name: "libraryPulldata", queueCount: 10, qos: .userInteractive).queue().async {
+//            YYDispatchQueuePool.init(name: "libraryPulldata", queueCount: 10, qos: .userInteractive).queue().async {
+//                self.pullData()
+//            }
+//            AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
                 self.pullData()
-            }
+//            }
             
         })
         self.tableView.mj_footer?.isHidden = true
         
         self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
-            YYDispatchQueuePool.init(name: "libraryPulldata", queueCount: 10, qos: .userInteractive).queue().async {
+//            YYDispatchQueuePool.init(name: "libraryPulldata", queueCount: 10, qos: .userInteractive).queue().async {
+//                self.refreshData()
+//            }
+//            AppDelegate.sharedInstance.JLFetchDispatchQueuePool.queue().async {
                 self.refreshData()
-            }
+//            }
         })
         self.tableView.mj_header?.isHidden = true
 
@@ -93,23 +104,23 @@ class JLLibraryContentTableViewController: UITableViewController {
     func pullData() {
         self.fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: false) { (json, offset, error) in
             
-            DispatchQueue.main.async {
-                if (json != nil) {
-                    self.tableView.mj_footer?.endRefreshing()
-                    self.jsons.append(json!)
-                    let items = self.handleJsonData(json!)
-                    if items.count < self.fetchManagement.limit {
-                        self.tableView.mj_footer?.isHidden = true
-                    }
-                    Observable.just(items).delay(TimeInterval(0.2), scheduler: MainScheduler.instance).asDriver(onErrorDriveWith: Driver.empty()).drive(onNext: { (items) in
-                        self.contentItems.accept(self.contentItems.value + items)
-                    }, onCompleted: nil, onDisposed: nil).disposed(by: self.dispose)
-                    
-                } else {
-                    self.tableView.mj_footer?.endRefreshing()
-                    
+
+            if (json != nil) {
+                self.tableView.mj_footer?.endRefreshing()
+                self.jsons.append(json!)
+                let items = self.handleJsonData(json!)
+                if items.count < self.fetchManagement.limit {
+                    self.tableView.mj_footer?.isHidden = true
                 }
+                Observable.just(items).delay(TimeInterval(0.2), scheduler: MainScheduler.instance).asDriver(onErrorDriveWith: Driver.empty()).drive(onNext: { (items) in
+                    self.contentItems.accept(self.contentItems.value + items)
+                }, onCompleted: nil, onDisposed: nil).disposed(by: self.dispose)
+                
+            } else {
+                self.tableView.mj_footer?.endRefreshing()
+                
             }
+
         }
 
     }
@@ -118,44 +129,45 @@ class JLLibraryContentTableViewController: UITableViewController {
         
         fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: false) { (json, offset, error) in
 
-            DispatchQueue.main.async {
-                if (json != nil) {
-                    
-                    self.jsons.append(json!)
-                    Observable
-                        .just(
-                            self.handleJsonData(json!)
-                        )
-                        .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
-                        .asDriver(onErrorDriveWith: Driver.empty()).drive(self.contentItems).disposed(by: self.dispose)
-                    self.tableView.mj_footer?.isHidden = false
-                    self.tableView.mj_header?.isHidden = false
-                } else {
-                    self.tableView.mj_header?.isHidden = false
-                }
+
+            if (json != nil) {
+                
+                self.jsons.append(json!)
+                Observable
+                    .just(
+                        self.handleJsonData(json!)
+                    )
+                    .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+                    .asDriver(onErrorDriveWith: Driver.empty()).drive(self.contentItems).disposed(by: self.dispose)
+                self.tableView.mj_footer?.isHidden = false
+                self.tableView.mj_header?.isHidden = false
+            } else {
+                self.tableView.mj_header?.isHidden = false
             }
+
         }
     }
     
     func refreshData() {
         fetchManagement.fetchMyLibrary(type: self.JLLibraryContentType, isReload: true) { (json, offset, error) in
-            DispatchQueue.main.async {
-                self.tableView.mj_header?.endRefreshing()
-                if (json != nil) {
-                    self.jsons = [json!]
+
+            self.tableView.mj_header?.endRefreshing()
+            if (json != nil) {
+                self.jsons = [json!]
 //                    self.contentItems.accept([])
-                    Observable
-                        .just(
-                            self.handleJsonData(json!)
-                        )
-                        .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
-                        .asDriver(onErrorDriveWith: Driver.empty()).drive(self.contentItems).disposed(by: self.dispose)
-                    self.tableView.mj_footer?.isHidden = false
-                    
-                }
+                Observable
+                    .just(
+                        self.handleJsonData(json!)
+                    )
+                    .delay(TimeInterval(0.2), scheduler: MainScheduler.instance)
+                    .asDriver(onErrorDriveWith: Driver.empty()).drive(self.contentItems).disposed(by: self.dispose)
+                self.tableView.mj_footer?.isHidden = false
+                
             }
+
         }
     }
+    
     
     
     func bindData(cellId:String, cellType:UITableViewCell.Type) {
@@ -205,28 +217,26 @@ class JLLibraryContentTableViewController: UITableViewController {
                 tracks.append(iitem.track!)
             }
            
-            JLMusicFetchManagement.shared.getMusicUrls(items: tracks) { (results) in
-                if results != nil {
-                    
-//                    let dataItems = Array(results!.values)
-//                    let keys = Array(results!.keys)
-                    let dataItems = results?.sorted(by: { (arg0, arg1) -> Bool in
-                        if arg0.key < arg1.key {
-                            return true
-                        }
-                        return false
-                    })
-                    var playItems:[JLPlayItem] = []
-                    
-                    if item.items != nil {
-                        for data in dataItems! {
-                            playItems.append( .init(item: item.items![data.key].track!, wySongUrl: URL.init(string: data.value.url!)!, wySongId: data.value.id!))
-                        }
-                        (AppDelegate.sharedInstance.window?.rootViewController as! JLTabBarController).present(JLPlayerViewController.init(items: playItems,playlistName: "From My Liked Songs"), animated: true, completion: nil)
-                    }
-
-                }
-            }
+//            JLMusicFetchManagement.shared.getMusicUrls(items: tracks) { (results) in
+//                if results != nil {
+//                    let dataItems = results?.sorted(by: { (arg0, arg1) -> Bool in
+//                        if arg0.key < arg1.key {
+//                            return true
+//                        }
+//                        return false
+//                    })
+//                    var playItems:[JLPlayItem] = []
+//
+//                    if item.items != nil {
+//                        for data in dataItems! {
+//                            playItems.append( .init(item: item.items![data.key].track!, wySongUrl: URL.init(string: data.value.url!)!, wySongId: data.value.id!))
+//                        }
+//
+//                        JLPlayer.shared.viewController.playList(items: playItems, playListName: "From My Liked Songs")
+//                    }
+//
+//                }
+//            }
             
         case .Playlists(let item):
             for iitem in item.items ?? [] {

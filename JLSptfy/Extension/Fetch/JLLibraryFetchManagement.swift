@@ -13,7 +13,7 @@ class JLLibraryFetchManagement: NSObject {
     /**
      每次搜索限制的个数。
      */
-    public var limit:Int = 20
+    public var limit:Int = 50
     /**
      在该搜索结果下的索引值。配合limit可实现翻页效果
      */
@@ -95,6 +95,7 @@ class JLLibraryFetchManagement: NSObject {
             }
 
             do {
+                
                 var json: JLLibraryQuickJSON!
                 switch type {
                     
@@ -108,6 +109,8 @@ class JLLibraryFetchManagement: NSObject {
                     json = .Songs(item: try .init(data: data))
                     
                 }
+                
+                
                 
                 if (completedBlock != nil) {
                     if isReload == true {
@@ -131,5 +134,31 @@ class JLLibraryFetchManagement: NSObject {
             }
         }
     }
+    
+    func fetchList() {
+        let urlString = "https://api.spotify.com/v1/me/track"
+        let paras = ["limit":String(self.limit),"offset":String(self.offset)]
+        let headers: HTTPHeaders = ["Authorization":"Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? "")]
+        
+        Alamofire.request(urlString, method: .get, parameters: paras, encoding: URLEncoding.default, headers: headers).responseData { (response) in
+            
+        }
+    }
+    
+    private func fetchSubList(url:String) {
+        
+    }
+    
+//    private func request(_ url:String) -> Library_PagingTracks {
+//
+//        let headers: HTTPHeaders = ["Authorization":"Bearer " + (UserDefaults.standard.string(forKey: "accessToken") ?? "")]
+//
+//        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseData { (response) in
+//            guard let data = response.data else {
+//
+//            }
+//
+//        }
+//    }
     
 }

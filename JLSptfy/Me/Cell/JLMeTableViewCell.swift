@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import YYKit
 
 enum JLMeTableViewCellType {
     case spotify
@@ -126,6 +127,7 @@ extension JLMeTableViewCell: SPTSessionManagerDelegate {
     }
     
     func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+        
         DispatchQueue.main.async {
             do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: session, requiringSecureCoding: false)
